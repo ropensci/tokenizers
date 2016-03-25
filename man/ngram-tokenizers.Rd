@@ -7,20 +7,29 @@
 \alias{tokenize_skip_ngrams}
 \title{N-gram tokenizers}
 \usage{
-tokenize_ngrams(x, lowercase = TRUE, n = 3)
+tokenize_ngrams(x, lowercase = TRUE, n = 3, simplify = FALSE)
 
-tokenize_skip_ngrams(x, lowercase = TRUE, n = 3, k = 1)
+tokenize_skip_ngrams(x, lowercase = TRUE, n = 3, k = 1,
+  simplify = FALSE)
 
-tokenize_range_ngrams(x, n = 3, n_min = 1, lowercase = TRUE)
+tokenize_range_ngrams(x, n = 3, n_min = 1, lowercase = TRUE,
+  simplify = FALSE)
 }
 \arguments{
-\item{x}{A character vector to be tokenized into n-grams. This character
-vector can be of any length, and each element will be tokenized separately.
-Or a list of character vectors, where each element has a length of 1.}
+\item{x}{A character vector or a list of character vectors to be tokenized
+into n-grams. If \code{x} is a character vector, it can be of any length,
+and each element will be tokenized separately. If \code{x} is a list of
+character vectors, where each element of the list should have a length of
+1.}
 
 \item{lowercase}{Should the tokens be made lower case?}
 
 \item{n}{The number of words in the n-gram.}
+
+\item{simplify}{\code{FALSE} by default so that a consistent value is
+returned regardless of length of input. If \code{TRUE}, then an input with
+a single element will return a character vector of tokens instead of a
+list.}
 
 \item{k}{For the skip n-gram tokenizer, the maximum skip distance between
 words. The function will compute all skip n-grams between \code{0} and
@@ -31,8 +40,10 @@ the minimum value of \code{n}. This must be an integer greater than or
 equal to 1.}
 }
 \value{
-A character vector containing the n-gram tokens, or a list of
-  character vectors containing the n-gram tokens.
+A list of character vectors containing the tokens, with one element
+  in the list for each element that was passed as input. If `simplify = TRUE`
+  and only a single element was passed as input, then the output is a
+  character vector of tokens.
 }
 \description{
 These functions tokenize their inputs into different kinds of n-grams. The

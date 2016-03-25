@@ -19,11 +19,15 @@
 #' These functions will strip all punctuation and normalize all whitespace to a
 #' single space character.
 #'
-#' @return A character vector containing the n-gram tokens, or a list of
-#'   character vectors containing the n-gram tokens.
-#' @param x A character vector to be tokenized into n-grams. This character
-#'   vector can be of any length, and each element will be tokenized separately.
-#'   Or a list of character vectors, where each element has a length of 1.
+#' @return A list of character vectors containing the tokens, with one element
+#'   in the list for each element that was passed as input. If `simplify = TRUE`
+#'   and only a single element was passed as input, then the output is a
+#'   character vector of tokens.
+#' @param x A character vector or a list of character vectors to be tokenized
+#'   into n-grams. If \code{x} is a character vector, it can be of any length,
+#'   and each element will be tokenized separately. If \code{x} is a list of
+#'   character vectors, where each element of the list should have a length of
+#'   1.
 #' @param n The number of words in the n-gram.
 #' @param k For the skip n-gram tokenizer, the maximum skip distance between
 #'   words. The function will compute all skip n-grams between \code{0} and
@@ -32,6 +36,10 @@
 #'   the minimum value of \code{n}. This must be an integer greater than or
 #'   equal to 1.
 #' @param lowercase Should the tokens be made lower case?
+#' @param simplify \code{FALSE} by default so that a consistent value is
+#'   returned regardless of length of input. If \code{TRUE}, then an input with
+#'   a single element will return a character vector of tokens instead of a
+#'   list.
 #' @examples
 #' song <-  paste0("How many roads must a man walk down\n",
 #'                 "Before you call him a man?\n",
@@ -56,45 +64,30 @@
 
 #' @export
 #' @rdname ngram-tokenizers
-tokenize_ngrams <- function(x, lowercase = TRUE, n = 3) {
+tokenize_ngrams <- function(x, lowercase = TRUE, n = 3, simplify = FALSE) {
   words <- tokenize_words(x, lowercase = lowercase)
-
-  if (is.character(words))
-    out <- shingle_ngrams(words, n = n)
-  else if (is.list(words))
-    out <- lapply(words, shingle_ngrams, n = n)
-
-  out
+  out <- lapply(words, shingle_ngrams, n = n)
+  if (simplify & length(out) == 1) out[[1]] else out
 }
 
 #' @export
 #' @rdname ngram-tokenizers
-tokenize_skip_ngrams <- function(x, lowercase = TRUE, n = 3, k = 1) {
+tokenize_skip_ngrams <- function(x, lowercase = TRUE, n = 3, k = 1,
+                                 simplify = FALSE) {
   words <- tokenize_words(x, lowercase = lowercase)
-
-  if (is.character(words))
-    out <- skip_ngrams(words, n = n, k = k)
-  else if (is.list(words))
-    out <- lapply(words, skip_ngrams, n = n, k = k)
-
-  out
+  out <- lapply(words, skip_ngrams, n = n, k = k)
+  if (simplify & length(out) == 1) out[[1]] else out
 }
 
 #' @export
 #' @rdname ngram-tokenizers
-tokenize_range_ngrams <- function(x, n = 3, n_min = 1, lowercase = TRUE) {
+tokenize_range_ngrams <- function(x, n = 3, n_min = 1, lowercase = TRUE,
+                                  simplify = FALSE) {
   stopifnot(n_min >= 1, n >= n_min)
   n_range <- n:n_min
-
   words <- tokenize_words(x, lowercase = lowercase)
-
-  if (is.list(words)) {
-    out <- lapply(words, apply_range, n_range)
-  } else if (is.character(words)) {
-    out <- apply_range(words, n_range)
-  }
-
-  out
+  out <- lapply(words, apply_range, n_range)
+  if (simplify & length(out) == 1) out[[1]] else out
 }
 
 apply_range <- function(x, n_range) {

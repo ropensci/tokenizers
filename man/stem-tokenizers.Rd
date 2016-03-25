@@ -4,18 +4,29 @@
 \alias{tokenize_word_stems}
 \title{Word stem tokenizer}
 \usage{
-tokenize_word_stems(x, language = "english")
+tokenize_word_stems(x, language = "english", simplify = FALSE)
 }
 \arguments{
-\item{x}{A character vector or list of character vectors to be tokenized.}
+\item{x}{A character vector or a list of character vectors to be tokenized
+into n-grams. If \code{x} is a character vector, it can be of any length,
+and each element will be tokenized separately. If \code{x} is a list of
+character vectors, where each element of the list should have a length of
+1.}
 
 \item{language}{The language to use for word stemming. This must be one of
 the languages available in the SnowballC package. A list is provided by
 \code{\link[SnowballC]{getStemLanguages}}.}
+
+\item{simplify}{\code{FALSE} by default so that a consistent value is
+returned regardless of length of input. If \code{TRUE}, then an input with
+a single element will return a character vector of tokens instead of a
+list.}
 }
 \value{
-A character vector or list of character vectors containing the
-  tokens.
+A list of character vectors containing the tokens, with one element
+  in the list for each element that was passed as input. If `simplify = TRUE`
+  and only a single element was passed as input, then the output is a
+  character vector of tokens.
 }
 \description{
 This function turns its input into a character vector of word stems. This is

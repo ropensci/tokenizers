@@ -6,7 +6,11 @@
 #' paragraphs and then word tokens, or into sentences and then word tokens.
 #'
 #' @name basic-tokenizers
-#' @param x A character vector or list of character vectors to be tokenized.
+#' @param x A character vector or a list of character vectors to be tokenized
+#'   into n-grams. If \code{x} is a character vector, it can be of any length,
+#'   and each element will be tokenized separately. If \code{x} is a list of
+#'   character vectors, where each element of the list should have a length of
+#'   1.
 #' @param lowercase Should the tokens be made lower case? The default value
 #'   varies by tokenizer; it is only \code{TRUE} by default for the tokenizers
 #'   that you are likely to use last.
@@ -14,8 +18,14 @@
 #' @param strip_punctuation Should punctuation be stripped?
 #' @param paragraph_break A string identifying the boundary between two
 #'   paragraphs.
-#' @return A character vector or list of character vectors containing the
-#'   tokens.
+#' @param simplify \code{FALSE} by default so that a consistent value is
+#'   returned regardless of length of input. If \code{TRUE}, then an input with
+#'   a single element will return a character vector of tokens instead of a
+#'   list.
+#' @return A list of character vectors containing the tokens, with one element
+#'   in the list for each element that was passed as input. If `simplify = TRUE`
+#'   and only a single element was passed as input, then the output is a
+#'   character vector of tokens.
 #' @importFrom stringi stri_split_boundaries stri_trans_tolower stri_trim_both
 #'   stri_replace_all_charclass stri_split_fixed stri_split_lines
 #' @examples
@@ -47,26 +57,31 @@ NULL
 
 #' @export
 #' @rdname basic-tokenizers
-tokenize_chars <- function(x, lowercase = TRUE, strip_non_alphanum = TRUE) {
+tokenize_chars <- function(x, lowercase = TRUE, strip_non_alphanum = TRUE,
+                           simplify = FALSE) {
+  if (is.list(x) & length(x) == 1) x <- x[[1]]
   if (lowercase)
     x <- stri_trans_tolower(x)
   if (strip_non_alphanum)
     x <- stri_replace_all_charclass(x, "[[:punct:][:whitespace:]]", "")
   out <- stri_split_boundaries(x, type = "character")
-  if (length(out) == 1) out[[1]] else out
+  if (simplify & length(out) == 1) out[[1]] else out
 }
 
 #' @export
 #' @rdname basic-tokenizers
-tokenize_words <- function(x, lowercase = TRUE) {
+tokenize_words <- function(x, lowercase = TRUE, simplify = FALSE) {
+  if (is.list(x) & length(x) == 1) x <- x[[1]]
   if (lowercase) x <- stri_trans_tolower(x)
   out <- stri_split_boundaries(x, type = "word", skip_word_none = TRUE)
-  if (length(out) == 1) out[[1]] else out
+  if (simplify & length(out) == 1) out[[1]] else out
 }
 
 #' @export
 #' @rdname basic-tokenizers
-tokenize_sentences <- function(x, lowercase = FALSE, strip_punctuation = FALSE) {
+tokenize_sentences <- function(x, lowercase = FALSE, strip_punctuation = FALSE,
+                               simplify = FALSE) {
+  if (is.list(x) & length(x) == 1) x <- x[[1]]
   x <- stri_replace_all_charclass(x, "[[:whitespace:]]", " ")
   out <- stri_split_boundaries(x, type = "sentence", skip_word_none = FALSE)
   out <- lapply(out, stri_trim_both)
@@ -74,20 +89,21 @@ tokenize_sentences <- function(x, lowercase = FALSE, strip_punctuation = FALSE) 
     out <- lapply(out, stri_trans_tolower)
   if (strip_punctuation)
     out <- lapply(out, stri_replace_all_charclass, "[[:punct:]]", "")
-  if (length(out) == 1) out[[1]] else out
+  if (simplify & length(out) == 1) out[[1]] else out
 }
 
 #' @export
 #' @rdname basic-tokenizers
-tokenize_lines <- function(x) {
+tokenize_lines <- function(x, simplify = FALSE) {
+  if (is.list(x) & length(x) == 1) x <- x[[1]]
   out <- stri_split_lines(x, omit_empty = TRUE)
-  if (length(out) == 1) out[[1]] else out
+  if (simplify & length(out) == 1) out[[1]] else out
 }
 
 #' @export
 #' @rdname basic-tokenizers
-tokenize_paragraphs <- function(x, paragraph_break = "\n\n") {
+tokenize_paragraphs <- function(x, paragraph_break = "\n\n", simplify = FALSE) {
   out <- stri_split_fixed(x, pattern = paragraph_break, omit_empty = TRUE)
   out <- lapply(out, stri_replace_all_charclass, "[[:whitespace:]]", " ")
-  if (length(out) == 1) out[[1]] else out
+  if (simplify & length(out) == 1) out[[1]] else out
 }

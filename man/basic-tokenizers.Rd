@@ -9,18 +9,24 @@
 \alias{tokenize_words}
 \title{Basic tokenizers}
 \usage{
-tokenize_chars(x, lowercase = TRUE, strip_non_alphanum = TRUE)
+tokenize_chars(x, lowercase = TRUE, strip_non_alphanum = TRUE,
+  simplify = FALSE)
 
-tokenize_words(x, lowercase = TRUE)
+tokenize_words(x, lowercase = TRUE, simplify = FALSE)
 
-tokenize_sentences(x, lowercase = FALSE, strip_punctuation = FALSE)
+tokenize_sentences(x, lowercase = FALSE, strip_punctuation = FALSE,
+  simplify = FALSE)
 
-tokenize_lines(x)
+tokenize_lines(x, simplify = FALSE)
 
-tokenize_paragraphs(x, paragraph_break = "\\n\\n")
+tokenize_paragraphs(x, paragraph_break = "\\n\\n", simplify = FALSE)
 }
 \arguments{
-\item{x}{A character vector or list of character vectors to be tokenized.}
+\item{x}{A character vector or a list of character vectors to be tokenized
+into n-grams. If \code{x} is a character vector, it can be of any length,
+and each element will be tokenized separately. If \code{x} is a list of
+character vectors, where each element of the list should have a length of
+1.}
 
 \item{lowercase}{Should the tokens be made lower case? The default value
 varies by tokenizer; it is only \code{TRUE} by default for the tokenizers
@@ -28,14 +34,21 @@ that you are likely to use last.}
 
 \item{strip_non_alphanum}{Should punctuation and white space be stripped?}
 
+\item{simplify}{\code{FALSE} by default so that a consistent value is
+returned regardless of length of input. If \code{TRUE}, then an input with
+a single element will return a character vector of tokens instead of a
+list.}
+
 \item{strip_punctuation}{Should punctuation be stripped?}
 
 \item{paragraph_break}{A string identifying the boundary between two
 paragraphs.}
 }
 \value{
-A character vector or list of character vectors containing the
-  tokens.
+A list of character vectors containing the tokens, with one element
+  in the list for each element that was passed as input. If `simplify = TRUE`
+  and only a single element was passed as input, then the output is a
+  character vector of tokens.
 }
 \description{
 These functions perform basic tokenization into words, sentences, paragraphs,
