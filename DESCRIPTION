@@ -16,5 +16,6 @@ Depends:
 Imports:
   magrittr (>= 1.5),
   stringi (>= 1.0.1),
-  Rcpp (>= 0.12.3)
+  Rcpp (>= 0.12.3),
+  SnowballC (>= 0.5.1)
 LinkingTo: Rcpp
