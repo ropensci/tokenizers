@@ -3,12 +3,15 @@
 \name{ngram-tokenizers}
 \alias{ngram-tokenizers}
 \alias{tokenize_ngrams}
+\alias{tokenize_range_ngrams}
 \alias{tokenize_skip_ngrams}
 \title{N-gram tokenizers}
 \usage{
 tokenize_ngrams(x, lowercase = TRUE, n = 3)
 
 tokenize_skip_ngrams(x, lowercase = TRUE, n = 3, k = 1)
+
+tokenize_range_ngrams(x, n = 3, n_min = 1, lowercase = TRUE)
 }
 \arguments{
 \item{x}{A character vector to be tokenized into n-grams. This character
@@ -22,6 +25,10 @@ Or a list of character vectors, where each element has a length of 1.}
 \item{k}{For the skip n-gram tokenizer, the maximum skip distance between
 words. The function will compute all skip n-grams between \code{0} and
 \code{k}.}
+
+\item{n_min}{For the tokenizer that computes n-grams for a range of \code{n},
+the minimum value of \code{n}. This must be an integer greater than or
+equal to 1.}
 }
 \value{
 A character vector containing the n-gram tokens, or a list of
@@ -37,7 +44,10 @@ n-grams. See details for an explanation of what each function does.
 contiguous subsequence of \code{n} words. }
 \item{\code{tokenize_skip_ngrams}:}{Skip n-grams. A subsequence of \code{n}
 words which are at most a gap of \code{k} words between them. The skip
-n-grams will be calculated for all values from \code{0} to \code{k}. } }
+n-grams will be calculated for all values from \code{0} to \code{k}. }
+\item{\code{tokenize_range_ngrams}:}{Shingled n-grams for a range of
+\code{n}. This will compute shingled n-grams for every value of between
+\code{n_min} (which must be at least 1) and \code{n}.} }
 
 These functions will strip all punctuation and normalize all whitespace to a
 single space character.
@@ -55,6 +65,8 @@ song <-  paste0("How many roads must a man walk down\\n",
 
 tokenize_ngrams(song, n = 4) \%>\% head(10)
 tokenize_skip_ngrams(song, n = 4, k = 2) \%>\% head(10)
+tokenize_range_ngrams(song, n = 8, n_min = 1) \%>\% head(5)
+tokenize_range_ngrams(song, n = 8, n_min = 1) \%>\% tail(5)
 
 song \%>\%
   tokenize_sentences() \%>\%
