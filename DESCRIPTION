@@ -1,0 +1,15 @@
+Package: tokenizers
+Type: Package
+Title: Tokenize Text
+Version: 0.0.0.9000
+Description: A collection of functions with a consistent interface to convert
+    natural language text into tokens.
+License: MIT + file LICENSE
+LazyData: yes
+Authors@R: c(person("Lincoln", "Mullen", role = c("aut", "cre"),
+        email = "lincoln@lincolnmullen.com"))
+URL: https://github.com/lmullen/tokenizers
+BugReports: https://github.com/lmullen/tokenizers/issues
+RoxygenNote: 5.0.1
+Depends:
+  R (>= 3.2.4)
