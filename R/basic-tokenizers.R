@@ -80,7 +80,8 @@ tokenize_sentences <- function(x, lowercase = FALSE, strip_punctuation = FALSE) 
 #' @export
 #' @rdname basic-tokenizers
 tokenize_lines <- function(x) {
-  stri_split_lines(x, omit_empty = TRUE)
+  out <- stri_split_lines(x, omit_empty = TRUE)
+  if (length(out) == 1) out[[1]] else out
 }
 
 #' @export
