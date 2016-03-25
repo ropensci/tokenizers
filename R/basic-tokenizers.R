@@ -53,7 +53,7 @@ tokenize_chars <- function(x, lowercase = TRUE, strip_non_alphanum = TRUE) {
   if (strip_non_alphanum)
     x <- stri_replace_all_charclass(x, "[[:punct:][:whitespace:]]", "")
   out <- stri_split_boundaries(x, type = "character")
-  out
+  if (length(out) == 1) out[[1]] else out
 }
 
 #' @export
