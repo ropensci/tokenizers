@@ -14,7 +14,7 @@ To get the development version from GitHub, use [devtools](https://github.com/ha
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("ropensci/textreuse", build_vignettes = TRUE)
+devtools::install_github("lmullen/tokenizers")
 ```
 
 ### Examples
