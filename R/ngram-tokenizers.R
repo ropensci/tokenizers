@@ -1,8 +1,9 @@
 #' N-gram tokenizers
 #'
-#' These functions turn a character vector of any length (or a list of character
-#' vectors, where each character vector in the list has a length of 1) into
-#' n-grams. See details for an explanation of what each function does.
+#' These functions tokenize their inputs into different kinds of n-grams. The
+#' input can be a character vector of any length, or a list of character vectors
+#' where each character vector in the list has a length of 1. See details for an
+#' explanation of what each function does.
 #'
 #' @details
 #'

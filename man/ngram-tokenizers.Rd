@@ -35,9 +35,10 @@ A character vector containing the n-gram tokens, or a list of
   character vectors containing the n-gram tokens.
 }
 \description{
-These functions turn a character vector of any length (or a list of character
-vectors, where each character vector in the list has a length of 1) into
-n-grams. See details for an explanation of what each function does.
+These functions tokenize their inputs into different kinds of n-grams. The
+input can be a character vector of any length, or a list of character vectors
+where each character vector in the list has a length of 1. See details for an
+explanation of what each function does.
 }
 \details{
 \describe{ \item{\code{tokenize_ngrams}:}{ Basic shingled n-grams. A
