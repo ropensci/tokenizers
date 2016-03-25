@@ -34,6 +34,45 @@ To get the development version from GitHub, use  [devtools](https://github.com/h
 devtools::install_github("ropensci/textreuse", build_vignettes = TRUE)
 ```
 
+### Examples
+
+```{r}
+library(tokenizers)
+james <- paste0(
+  "The question thus becomes a verbal one\n",
+  "again; and our knowledge of all these early stages of thought and feeling\n",
+  "is in any case so conjectural and imperfect that farther discussion would\n",
+  "not be worth while.\n",
+  "\n",
+  "Religion, therefore, as I now ask you arbitrarily to take it, shall mean\n",
+  "for us _the feelings, acts, and experiences of individual men in their\n",
+  "solitude, so far as they apprehend themselves to stand in relation to\n",
+  "whatever they may consider the divine_. Since the relation may be either\n",
+  "moral, physical, or ritual, it is evident that out of religion in the\n",
+  "sense in which we take it, theologies, philosophies, and ecclesiastical\n",
+  "organizations may secondarily grow.\n"
+)
+
+tokenize_chars(james) %>% head(50)
+tokenize_words(james) %>% head(10)
+tokenize_word_stems(james) %>% head(10)
+tokenize_sentences(james) %>% head(1)
+tokenize_paragraphs(james) %>% head(1)
+tokenize_ngrams(james, n = 5) %>% head(10)
+tokenize_skip_ngrams(james, n = 5, k = 2) %>% head(10)
+tokenize_range_ngrams(james, n = 8, n_min = 1) %>% head(5)
+tokenize_range_ngrams(james, n = 8, n_min = 1) %>% tail(5)
+tokenize_lines(james) %>% head(3)
+```
+
+Tokenizers can also be piped into one another.
+
+```{r}
+james %>% tokenize_sentences() %>% tokenize_words() %>% head(2)
+```
+
+
+
 ### Contributing
 
 Contributions to the package are more than welcome. One way that you can help is by using this package in your R package for natural language processing. If you want to contribute a tokenization function to this package, it should follow the same conventions as the rest of the functions whenever it makes sense to do so.
