@@ -13,3 +13,6 @@ BugReports: https://github.com/lmullen/tokenizers/issues
 RoxygenNote: 5.0.1
 Depends:
   R (>= 3.2.4)
+Imports:
+  magrittr (>= 1.5),
+  stringi (>= 1.0.1)
