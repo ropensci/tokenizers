@@ -88,5 +88,6 @@ tokenize_lines <- function(x) {
 #' @rdname basic-tokenizers
 tokenize_paragraphs <- function(x, paragraph_break = "\n\n") {
   out <- stri_split_fixed(x, pattern = paragraph_break, omit_empty = TRUE)
+  out <- lapply(out, stri_replace_all_charclass, "[[:whitespace:]]", " ")
   if (length(out) == 1) out[[1]] else out
 }
