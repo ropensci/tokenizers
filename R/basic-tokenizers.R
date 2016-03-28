@@ -65,7 +65,7 @@ tokenize_chars <- function(x, lowercase = TRUE, strip_non_alphanum = TRUE,
   if (strip_non_alphanum)
     x <- stri_replace_all_charclass(x, "[[:punct:][:whitespace:]]", "")
   out <- stri_split_boundaries(x, type = "character")
-  if (simplify & length(out) == 1) out[[1]] else out
+  simplify_list(out, simplify)
 }
 
 #' @export
@@ -74,7 +74,7 @@ tokenize_words <- function(x, lowercase = TRUE, simplify = FALSE) {
   if (is.list(x) & length(x) == 1) x <- x[[1]]
   if (lowercase) x <- stri_trans_tolower(x)
   out <- stri_split_boundaries(x, type = "word", skip_word_none = TRUE)
-  if (simplify & length(out) == 1) out[[1]] else out
+  simplify_list(out, simplify)
 }
 
 #' @export
@@ -89,7 +89,7 @@ tokenize_sentences <- function(x, lowercase = FALSE, strip_punctuation = FALSE,
     out <- lapply(out, stri_trans_tolower)
   if (strip_punctuation)
     out <- lapply(out, stri_replace_all_charclass, "[[:punct:]]", "")
-  if (simplify & length(out) == 1) out[[1]] else out
+  simplify_list(out, simplify)
 }
 
 #' @export
@@ -97,7 +97,7 @@ tokenize_sentences <- function(x, lowercase = FALSE, strip_punctuation = FALSE,
 tokenize_lines <- function(x, simplify = FALSE) {
   if (is.list(x) & length(x) == 1) x <- x[[1]]
   out <- stri_split_lines(x, omit_empty = TRUE)
-  if (simplify & length(out) == 1) out[[1]] else out
+  simplify_list(out, simplify)
 }
 
 #' @export
@@ -105,5 +105,5 @@ tokenize_lines <- function(x, simplify = FALSE) {
 tokenize_paragraphs <- function(x, paragraph_break = "\n\n", simplify = FALSE) {
   out <- stri_split_fixed(x, pattern = paragraph_break, omit_empty = TRUE)
   out <- lapply(out, stri_replace_all_charclass, "[[:whitespace:]]", " ")
-  if (simplify & length(out) == 1) out[[1]] else out
+  simplify_list(out, simplify)
 }
