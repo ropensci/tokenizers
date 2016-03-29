@@ -5,18 +5,6 @@
 
 using namespace Rcpp;
 
-// shingle_ngrams
-CharacterVector shingle_ngrams(CharacterVector words, int n);
-RcppExport SEXP tokenizers_shingle_ngrams(SEXP wordsSEXP, SEXP nSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject __result;
-    Rcpp::RNGScope __rngScope;
-    Rcpp::traits::input_parameter< CharacterVector >::type words(wordsSEXP);
-    Rcpp::traits::input_parameter< int >::type n(nSEXP);
-    __result = Rcpp::wrap(shingle_ngrams(words, n));
-    return __result;
-END_RCPP
-}
 // generate_ngrams
 CharacterVector generate_ngrams(const CharacterVector terms, const uint32_t ngram_min, const uint32_t ngram_max, const CharacterVector stopwords, const String ngram_delim);
 RcppExport SEXP tokenizers_generate_ngrams(SEXP termsSEXP, SEXP ngram_minSEXP, SEXP ngram_maxSEXP, SEXP stopwordsSEXP, SEXP ngram_delimSEXP) {
