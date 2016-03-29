@@ -5,6 +5,14 @@ shingle_ngrams <- function(words, n) {
     .Call('tokenizers_shingle_ngrams', PACKAGE = 'tokenizers', words, n)
 }
 
+generate_ngrams <- function(terms, ngram_min, ngram_max, stopwords = character(), ngram_delim = " ") {
+    .Call('tokenizers_generate_ngrams', PACKAGE = 'tokenizers', terms, ngram_min, ngram_max, stopwords, ngram_delim)
+}
+
+generate_ngrams_batch <- function(documents_list, ngram_min, ngram_max, stopwords = character(), ngram_delim = " ") {
+    .Call('tokenizers_generate_ngrams_batch', PACKAGE = 'tokenizers', documents_list, ngram_min, ngram_max, stopwords, ngram_delim)
+}
+
 skip_ngrams <- function(words, n, k) {
     .Call('tokenizers_skip_ngrams', PACKAGE = 'tokenizers', words, n, k)
 }
