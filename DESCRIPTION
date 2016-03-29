@@ -7,7 +7,9 @@ Description: A collection of functions with a consistent interface to convert
 License: MIT + file LICENSE
 LazyData: yes
 Authors@R: c(person("Lincoln", "Mullen", role = c("aut", "cre"),
-        email = "lincoln@lincolnmullen.com"))
+        email = "lincoln@lincolnmullen.com"),
+        person("Dmitriy", "Selivanov", role = c("ctb"),
+        email = "selivanov.dmitriy@gmail.com"))
 URL: https://github.com/lmullen/tokenizers
 BugReports: https://github.com/lmullen/tokenizers/issues
 RoxygenNote: 5.0.1
