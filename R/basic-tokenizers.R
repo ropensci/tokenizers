@@ -76,14 +76,15 @@ tokenize_words <- function(x, lowercase = TRUE, simplify = FALSE) {
 #' @rdname basic-tokenizers
 tokenize_sentences <- function(x, lowercase = FALSE, strip_punctuation = FALSE,
                                simplify = FALSE) {
-  if (is.list(x) & length(x) == 1) x <- x[[1]]
+  check_input(x)
+  named <- names(x)
   x <- stri_replace_all_charclass(x, "[[:whitespace:]]", " ")
   out <- stri_split_boundaries(x, type = "sentence", skip_word_none = FALSE)
   out <- lapply(out, stri_trim_both)
-  if (lowercase)
-    out <- lapply(out, stri_trans_tolower)
+  if (lowercase) out <- lapply(out, stri_trans_tolower)
   if (strip_punctuation)
     out <- lapply(out, stri_replace_all_charclass, "[[:punct:]]", "")
+  if (!is.null(named)) names(out) <- named
   simplify_list(out, simplify)
 }
 
