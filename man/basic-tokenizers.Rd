@@ -2,14 +2,14 @@
 % Please edit documentation in R/basic-tokenizers.R
 \name{basic-tokenizers}
 \alias{basic-tokenizers}
-\alias{tokenize_chars}
+\alias{tokenize_characters}
 \alias{tokenize_lines}
 \alias{tokenize_paragraphs}
 \alias{tokenize_sentences}
 \alias{tokenize_words}
 \title{Basic tokenizers}
 \usage{
-tokenize_chars(x, lowercase = TRUE, strip_non_alphanum = TRUE,
+tokenize_characters(x, lowercase = TRUE, strip_non_alphanum = TRUE,
   simplify = FALSE)
 
 tokenize_words(x, lowercase = TRUE, simplify = FALSE)
@@ -71,14 +71,6 @@ tokenize_words(song)
 tokenize_sentences(song)
 tokenize_paragraphs(song)
 tokenize_lines(song)
-tokenize_chars(song)
-
-song \%>\%
-  tokenize_paragraphs() \%>\%
-  tokenize_sentences()
-
-song \%>\%
-  tokenize_sentences() \%>\%
-  tokenize_words()
+tokenize_characters(song)
 }
 

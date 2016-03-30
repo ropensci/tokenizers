@@ -43,28 +43,21 @@
 #' tokenize_sentences(song)
 #' tokenize_paragraphs(song)
 #' tokenize_lines(song)
-#' tokenize_chars(song)
-#'
-#' song %>%
-#'   tokenize_paragraphs() %>%
-#'   tokenize_sentences()
-#'
-#' song %>%
-#'   tokenize_sentences() %>%
-#'   tokenize_words()
+#' tokenize_characters(song)
 NULL
-
 
 #' @export
 #' @rdname basic-tokenizers
-tokenize_chars <- function(x, lowercase = TRUE, strip_non_alphanum = TRUE,
+tokenize_characters <- function(x, lowercase = TRUE, strip_non_alphanum = TRUE,
                            simplify = FALSE) {
-  if (is.list(x) & length(x) == 1) x <- x[[1]]
+  check_input(x)
+  named <- names(x)
   if (lowercase)
     x <- stri_trans_tolower(x)
   if (strip_non_alphanum)
     x <- stri_replace_all_charclass(x, "[[:punct:][:whitespace:]]", "")
   out <- stri_split_boundaries(x, type = "character")
+  if (!is.null(named)) names(out) <- named
   simplify_list(out, simplify)
 }
 
