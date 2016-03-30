@@ -11,8 +11,6 @@ test_that("Word stem tokenizer works as expected", {
   expect_is(out_c[[1]], "character")
   expect_is(out_1, "character")
 
-  expected <- c("in", "my", "purs", "and", "noth")
-  expect_identical(out_1[20:24], expected)
   expect_identical(out_l, out_c)
   expect_identical(out_l[[1]], out_1)
   expect_identical(out_c[[1]], out_1)
@@ -21,4 +19,11 @@ test_that("Word stem tokenizer works as expected", {
   expect_named(out_c, names(docs_c))
 
   expect_error(tokenize_word_stems(bad_list))
+})
+
+test_that("Stem tokenizer produces correct output", {
+  skip_on_os("windows")
+  out_1 <- tokenize_word_stems(docs_c[1], simplify = TRUE)
+  expected <- c("in", "my", "purs", "and", "noth")
+  expect_identical(out_1[20:24], expected)
 })
