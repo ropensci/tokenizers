@@ -5,21 +5,6 @@
 
 using namespace Rcpp;
 
-// generate_ngrams
-CharacterVector generate_ngrams(const CharacterVector terms, const uint32_t ngram_min, const uint32_t ngram_max, const CharacterVector stopwords, const String ngram_delim);
-RcppExport SEXP tokenizers_generate_ngrams(SEXP termsSEXP, SEXP ngram_minSEXP, SEXP ngram_maxSEXP, SEXP stopwordsSEXP, SEXP ngram_delimSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject __result;
-    Rcpp::RNGScope __rngScope;
-    Rcpp::traits::input_parameter< const CharacterVector >::type terms(termsSEXP);
-    Rcpp::traits::input_parameter< const uint32_t >::type ngram_min(ngram_minSEXP);
-    Rcpp::traits::input_parameter< const uint32_t >::type ngram_max(ngram_maxSEXP);
-    Rcpp::traits::input_parameter< const CharacterVector >::type stopwords(stopwordsSEXP);
-    Rcpp::traits::input_parameter< const String >::type ngram_delim(ngram_delimSEXP);
-    __result = Rcpp::wrap(generate_ngrams(terms, ngram_min, ngram_max, stopwords, ngram_delim));
-    return __result;
-END_RCPP
-}
 // generate_ngrams_batch
 ListOf<CharacterVector> generate_ngrams_batch(const ListOf<const CharacterVector> documents_list, const uint32_t ngram_min, const uint32_t ngram_max, const CharacterVector stopwords, const String ngram_delim);
 RcppExport SEXP tokenizers_generate_ngrams_batch(SEXP documents_listSEXP, SEXP ngram_minSEXP, SEXP ngram_maxSEXP, SEXP stopwordsSEXP, SEXP ngram_delimSEXP) {

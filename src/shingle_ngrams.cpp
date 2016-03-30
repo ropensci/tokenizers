@@ -65,24 +65,6 @@ CharacterVector generate_ngrams_internal(const CharacterVector terms_raw,
 }
 
 // [[Rcpp::export]]
-CharacterVector generate_ngrams(const CharacterVector terms,
-                                const uint32_t ngram_min,
-                                const uint32_t ngram_max,
-                                const CharacterVector stopwords = CharacterVector(),
-                                const String ngram_delim = " ") {
-
-  const string std_string_delim = ngram_delim.get_cstring();
-  vector<string> terms_filtered_buffer;
-  RCPP_UNORDERED_SET<string> stopwords_set;
-
-  for(auto it:stopwords)
-    stopwords_set.insert(as<string>(it));
-
-  return generate_ngrams_internal(terms, ngram_min, ngram_max, stopwords_set,
-                                  terms_filtered_buffer, std_string_delim);
-}
-
-// [[Rcpp::export]]
 ListOf<CharacterVector> generate_ngrams_batch(const ListOf<const CharacterVector> documents_list,
                                               const uint32_t ngram_min,
                                               const uint32_t ngram_max,
