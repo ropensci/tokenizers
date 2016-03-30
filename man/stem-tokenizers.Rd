@@ -52,11 +52,6 @@ song <-  paste0("How many roads must a man walk down\\n",
                 "The answer is blowin' in the wind.\\n")
 
 tokenize_word_stems(song)
-
-song \%>\%
- tokenize_sentences() \%>\%
- tokenize_word_stems()
-
 }
 \seealso{
 \code{\link[SnowballC]{wordStem}}

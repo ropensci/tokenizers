@@ -39,16 +39,14 @@
 #'                 "The answer is blowin' in the wind.\n")
 #'
 #' tokenize_word_stems(song)
-#'
-#' song %>%
-#'  tokenize_sentences() %>%
-#'  tokenize_word_stems()
-#'
 #' @export
 #' @rdname stem-tokenizers
 tokenize_word_stems <- function(x, language = "english", simplify = FALSE) {
+  check_input(x)
+  named <- names(x)
   language <- match.arg(language, getStemLanguages())
   words <- tokenize_words(x, lowercase = TRUE)
   out <- lapply(words, wordStem, language = language)
-  if (simplify & length(out) == 1) out[[1]] else out
+  if (!is.null(named)) names(out) <- named
+  simplify_list(out, simplify)
 }
