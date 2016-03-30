@@ -101,7 +101,10 @@ tokenize_lines <- function(x, simplify = FALSE) {
 #' @export
 #' @rdname basic-tokenizers
 tokenize_paragraphs <- function(x, paragraph_break = "\n\n", simplify = FALSE) {
+  check_input(x)
+  named <- names(x)
   out <- stri_split_fixed(x, pattern = paragraph_break, omit_empty = TRUE)
   out <- lapply(out, stri_replace_all_charclass, "[[:whitespace:]]", " ")
+  if (!is.null(named)) names(out) <- named
   simplify_list(out, simplify)
 }
