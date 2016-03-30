@@ -64,9 +64,11 @@ tokenize_characters <- function(x, lowercase = TRUE, strip_non_alphanum = TRUE,
 #' @export
 #' @rdname basic-tokenizers
 tokenize_words <- function(x, lowercase = TRUE, simplify = FALSE) {
-  if (is.list(x) & length(x) == 1) x <- x[[1]]
+  check_input(x)
+  named <- names(x)
   if (lowercase) x <- stri_trans_tolower(x)
   out <- stri_split_boundaries(x, type = "word", skip_word_none = TRUE)
+  if (!is.null(named)) names(out) <- named
   simplify_list(out, simplify)
 }
 
