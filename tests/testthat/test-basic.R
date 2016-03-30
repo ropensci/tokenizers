@@ -122,3 +122,27 @@ test_that("Paragraph tokenizer works as expected", {
 
   expect_error(tokenize_paragraphs(bad_list))
 })
+
+test_that("Regex tokenizer works as expected", {
+  out_l <- tokenize_regex(docs_l, pattern = "[[:punct:]\n]")
+  out_c <- tokenize_regex(docs_c, pattern = "[[:punct:]\n]")
+  out_1 <- tokenize_regex(docs_c[1], pattern = "[[:punct:]\n]", simplify = TRUE)
+
+  expect_is(out_l, "list")
+  expect_is(out_l[[1]], "character")
+  expect_is(out_c, "list")
+  expect_is(out_c[[1]], "character")
+  expect_is(out_1, "character")
+
+  expected <- c("CHAPTER 1", " Loomings", "Call me Ishmael", " Some years ago",
+                "never mind how long precisely")
+  expect_identical(head(out_1, 5), expected)
+  expect_identical(out_l, out_c)
+  expect_identical(out_l[[1]], out_1)
+  expect_identical(out_c[[1]], out_1)
+
+  expect_named(out_l, names(docs_l))
+  expect_named(out_c, names(docs_c))
+
+  expect_error(tokenize_paragraphs(bad_list))
+})

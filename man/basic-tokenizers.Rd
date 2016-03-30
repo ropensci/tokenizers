@@ -5,6 +5,7 @@
 \alias{tokenize_characters}
 \alias{tokenize_lines}
 \alias{tokenize_paragraphs}
+\alias{tokenize_regex}
 \alias{tokenize_sentences}
 \alias{tokenize_words}
 \title{Basic tokenizers}
@@ -20,6 +21,8 @@ tokenize_sentences(x, lowercase = FALSE, strip_punctuation = FALSE,
 tokenize_lines(x, simplify = FALSE)
 
 tokenize_paragraphs(x, paragraph_break = "\\n\\n", simplify = FALSE)
+
+tokenize_regex(x, pattern = "\\\\s+", simplify = FALSE)
 }
 \arguments{
 \item{x}{A character vector or a list of character vectors to be tokenized
@@ -43,6 +46,8 @@ list.}
 
 \item{paragraph_break}{A string identifying the boundary between two
 paragraphs.}
+
+\item{pattern}{A regular expression that defines the split}
 }
 \value{
 A list of character vectors containing the tokens, with one element
@@ -72,5 +77,6 @@ tokenize_sentences(song)
 tokenize_paragraphs(song)
 tokenize_lines(song)
 tokenize_characters(song)
+tokenize_regex("A,B,C,D,E", pattern = ",")
 }
 

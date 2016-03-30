@@ -18,6 +18,7 @@
 #' @param strip_punctuation Should punctuation be stripped?
 #' @param paragraph_break A string identifying the boundary between two
 #'   paragraphs.
+#' @param pattern A regular expression that defines the split
 #' @param simplify \code{FALSE} by default so that a consistent value is
 #'   returned regardless of length of input. If \code{TRUE}, then an input with
 #'   a single element will return a character vector of tokens instead of a
@@ -28,6 +29,7 @@
 #'   character vector of tokens.
 #' @importFrom stringi stri_split_boundaries stri_trans_tolower stri_trim_both
 #'   stri_replace_all_charclass stri_split_fixed stri_split_lines
+#'   stri_split_regex
 #' @examples
 #' song <-  paste0("How many roads must a man walk down\n",
 #'                 "Before you call him a man?\n",
@@ -44,6 +46,7 @@
 #' tokenize_paragraphs(song)
 #' tokenize_lines(song)
 #' tokenize_characters(song)
+#' tokenize_regex("A,B,C,D,E", pattern = ",")
 NULL
 
 #' @export
@@ -105,6 +108,16 @@ tokenize_paragraphs <- function(x, paragraph_break = "\n\n", simplify = FALSE) {
   named <- names(x)
   out <- stri_split_fixed(x, pattern = paragraph_break, omit_empty = TRUE)
   out <- lapply(out, stri_replace_all_charclass, "[[:whitespace:]]", " ")
+  if (!is.null(named)) names(out) <- named
+  simplify_list(out, simplify)
+}
+
+#' @export
+#' @rdname basic-tokenizers
+tokenize_regex <- function(x, pattern = "\\s+", simplify = FALSE) {
+  check_input(x)
+  named <- names(x)
+  out <- stri_split_regex(x, pattern = pattern, omit_empty = TRUE)
   if (!is.null(named)) names(out) <- named
   simplify_list(out, simplify)
 }
