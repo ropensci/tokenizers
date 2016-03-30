@@ -75,3 +75,27 @@ test_that("Sentence tokenizer works as expected", {
 
   expect_error(tokenize_sentences(bad_list))
 })
+
+test_that("Line tokenizer works as expected", {
+  out_l <- tokenize_lines(docs_l)
+  out_c <- tokenize_lines(docs_c)
+  out_1 <- tokenize_lines(docs_c[1], simplify = TRUE)
+
+  expect_is(out_l, "list")
+  expect_is(out_l[[1]], "character")
+  expect_is(out_c, "list")
+  expect_is(out_c[[1]], "character")
+  expect_is(out_1, "character")
+
+  expected <- c("CHAPTER 1. Loomings.",
+                "Call me Ishmael. Some years ago--never mind how long precisely--having")
+  expect_identical(head(out_1, 2), expected)
+  expect_identical(out_l, out_c)
+  expect_identical(out_l[[1]], out_1)
+  expect_identical(out_c[[1]], out_1)
+
+  expect_named(out_l, names(docs_l))
+  expect_named(out_c, names(docs_c))
+
+  expect_error(tokenize_lines(bad_list))
+})

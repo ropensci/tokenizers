@@ -91,8 +91,10 @@ tokenize_sentences <- function(x, lowercase = FALSE, strip_punctuation = FALSE,
 #' @export
 #' @rdname basic-tokenizers
 tokenize_lines <- function(x, simplify = FALSE) {
-  if (is.list(x) & length(x) == 1) x <- x[[1]]
+  check_input(x)
+  named <- names(x)
   out <- stri_split_lines(x, omit_empty = TRUE)
+  if (!is.null(named)) names(out) <- named
   simplify_list(out, simplify)
 }
 
