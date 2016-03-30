@@ -62,13 +62,14 @@ tokenize_ngrams <- function(x, lowercase = TRUE, n = 3L, n_min = n,
                             stopwords = character(), ngram_delim = " ",
                             simplify = FALSE) {
   check_input(x)
+  named <- names(x)
   if (n < n_min | n_min <= 0)
     stop("n and n-gram min must be integers, and ngram_min must be less than ",
          "n and greater than 1.")
   words <- tokenize_words(x, lowercase = lowercase)
-  out <- generate_ngrams_batch(words, ngram_min = n_min,
-                                  ngram_max = n, stopwords = stopwords,
-                                  ngram_delim = ngram_delim)
+  out <- generate_ngrams_batch(words, ngram_min = n_min, ngram_max = n,
+                               stopwords = stopwords, ngram_delim = ngram_delim)
+  if (!is.null(named)) names(out) <- named
   simplify_list(out, simplify)
 }
 
@@ -76,7 +77,10 @@ tokenize_ngrams <- function(x, lowercase = TRUE, n = 3L, n_min = n,
 #' @rdname ngram-tokenizers
 tokenize_skip_ngrams <- function(x, lowercase = TRUE, n = 3, k = 1,
                                  simplify = FALSE) {
+  check_input(x)
+  named <- names(x)
   words <- tokenize_words(x, lowercase = lowercase)
   out <- lapply(words, skip_ngrams, n = n, k = k)
-  if (simplify & length(out) == 1) out[[1]] else out
+  if (!is.null(named)) names(out) <- named
+  simplify_list(out, simplify)
 }
