@@ -74,8 +74,8 @@ song <-  paste0("How many roads must a man walk down\\n",
                 "The answer, my friend, is blowin' in the wind.\\n",
                 "The answer is blowin' in the wind.\\n")
 
-tokenize_ngrams(song, n = 4)[[1]] \%>\% head(10)
-tokenize_ngrams(song, n = 4, n_min = 1)[[1]] \%>\% head(10)
-tokenize_skip_ngrams(song, n = 4, k = 2)[[1]] \%>\% head(10)
+tokenize_ngrams(song, n = 4)
+tokenize_ngrams(song, n = 4, n_min = 1)
+tokenize_skip_ngrams(song, n = 4, k = 2)
 }
 

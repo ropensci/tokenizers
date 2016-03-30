@@ -15,10 +15,6 @@
 #' @docType package
 NULL
 
-#' @importFrom magrittr %>%
-#' @export
-magrittr::`%>%`
-
 #' @useDynLib tokenizers
 #' @importFrom Rcpp sourceCpp
 NULL
