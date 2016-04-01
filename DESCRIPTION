@@ -3,8 +3,11 @@ Type: Package
 Title: Tokenize Text
 Version: 0.1.0
 Date: 2016-03-31
-Description: A collection of functions with a consistent interface to convert
-    natural language text into tokens.
+Description: Convert natural language text into tokens. The tokenizers have a
+    consistent interface and are compatible with Unicode, thanks to being built
+    on the 'stringi' package. Includes tokenizers for shingled n-grams, skip
+    n-grams, words, word stems, sentences, paragraphs, characters, lines, and
+    regular expressions.
 License: MIT + file LICENSE
 LazyData: yes
 Authors@R: c(person("Lincoln", "Mullen", role = c("aut", "cre"),

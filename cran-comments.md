@@ -1,3 +1,8 @@
+## Response to CRAN maintainers' feedback
+
+I have revised the package description to remove redundancy and provide more d
+details as requested.
+
 ## Test environments
 
 * Local OS X install: R 3.2.4
