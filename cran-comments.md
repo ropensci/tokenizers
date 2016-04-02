@@ -1,6 +1,6 @@
 ## Response to CRAN maintainers' feedback
 
-I have revised the package description to remove redundancy and provide more d
+I have revised the package description to remove redundancy and provide more 
 details as requested.
 
 ## Test environments
