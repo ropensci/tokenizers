@@ -10,6 +10,12 @@ An R package that collects functions with a consistent interface to convert natu
 
 ### Installation
 
+You can install this package from CRAN:
+
+``` r
+install.packages("tokenizers")
+```
+
 To get the development version from GitHub, use [devtools](https://github.com/hadley/devtools).
 
 ``` r
