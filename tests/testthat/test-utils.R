@@ -1,5 +1,7 @@
 context("Utils")
 
+source("data-for-tests.R")
+
 test_that("Inputs are verified correct", {
   expect_silent(check_input(letters))
   expect_silent(check_input(list(a = "a", b = "b")))

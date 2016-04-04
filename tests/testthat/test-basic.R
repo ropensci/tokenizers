@@ -24,7 +24,7 @@ test_that("Character tokenizer works as expected", {
 })
 
 test_that("Character tokenizer produces correct output", {
-  skip_on_os("windows")
+  # skip_on_os("windows")
   out_1 <- tokenize_characters(docs_c[1], simplify = TRUE)
   expected <- c("c", "h", "a", "p", "t")
   expect_identical(head(out_1, 5), expected)
@@ -53,7 +53,7 @@ test_that("Word tokenizer works as expected", {
 })
 
 test_that("Word tokenizer produces correct output", {
-  skip_on_os("windows")
+  # skip_on_os("windows")
   out_1 <- tokenize_words(docs_c[1], simplify = TRUE)
   expected <- c("chapter", "1", "loomings", "call", "me")
   expect_identical(head(out_1, 5), expected)
@@ -83,7 +83,7 @@ test_that("Sentence tokenizer works as expected", {
 })
 
 test_that("Sentence tokenizer produces correct output", {
-  skip_on_os("windows")
+  # skip_on_os("windows")
   out_1 <- tokenize_sentences(docs_c[1], simplify = TRUE)
   out_1_lc <- tokenize_sentences(docs_c[1], lowercase = TRUE, simplify = TRUE)
   out_1_pc <- tokenize_sentences(docs_c[1], strip_punctuation = TRUE, simplify = TRUE)
@@ -116,7 +116,7 @@ test_that("Line tokenizer works as expected", {
 })
 
 test_that("Sentence tokenizer produces correct output", {
-  skip_on_os("windows")
+  # skip_on_os("windows")
   out_1 <- tokenize_lines(docs_c[1], simplify = TRUE)
   expected <- c("CHAPTER 1. Loomings.",
                 "Call me Ishmael. Some years ago--never mind how long precisely--having")
@@ -146,7 +146,7 @@ test_that("Paragraph tokenizer works as expected", {
 })
 
 test_that("Paragraph tokenizer produces correct output", {
-  skip_on_os("windows")
+  # skip_on_os("windows")
   out_1 <- tokenize_paragraphs(docs_c[1], simplify = TRUE)
   expected <- c("There now is your insular city of the Manhattoes")
   expect_true(grepl(expected, out_1[3]))
@@ -174,7 +174,7 @@ test_that("Regex tokenizer works as expected", {
 })
 
 test_that("Regex tokenizer produces correct output", {
-  skip_on_os("windows")
+  # skip_on_os("windows")
   out_1 <- tokenize_regex(docs_c[1], pattern = "[[:punct:]\n]", simplify = TRUE)
   expected <- c("CHAPTER 1", " Loomings", "Call me Ishmael", " Some years ago",
                 "never mind how long precisely")

@@ -1,5 +1,7 @@
 context("Stem tokenizers")
 
+source("data-for-tests.R")
+
 test_that("Word stem tokenizer works as expected", {
   out_l <- tokenize_word_stems(docs_l)
   out_c <- tokenize_word_stems(docs_c)
@@ -22,7 +24,7 @@ test_that("Word stem tokenizer works as expected", {
 })
 
 test_that("Stem tokenizer produces correct output", {
-  skip_on_os("windows")
+  # skip_on_os("windows")
   out_1 <- tokenize_word_stems(docs_c[1], simplify = TRUE)
   expected <- c("in", "my", "purs", "and", "noth")
   expect_identical(out_1[20:24], expected)

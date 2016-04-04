@@ -1,5 +1,7 @@
 context("N-gram tokenizers")
 
+source("data-for-tests.R")
+
 test_that("Shingled n-gram tokenizer works as expected", {
   stopwords <- c("chapter", "me")
   out_l <- tokenize_ngrams(docs_l, n = 3, n_min = 2, stopwords = stopwords)
@@ -24,7 +26,7 @@ test_that("Shingled n-gram tokenizer works as expected", {
 })
 
 test_that("Shingled n-gram tokenizer produces correct output", {
-  skip_on_os("windows")
+  # skip_on_os("windows")
   stopwords <- c("chapter", "me")
   out_1 <- tokenize_ngrams(docs_c[1], n = 3, n_min = 2, stopwords = stopwords,
                            simplify = TRUE)
@@ -58,7 +60,7 @@ test_that("Skip n-gram tokenizer works as expected", {
 })
 
 test_that("Skip n-gram tokenizer produces correct output", {
-  skip_on_os("windows")
+  # skip_on_os("windows")
   out_1 <- tokenize_skip_ngrams(docs_c[1], n = 3, k = 2, simplify = TRUE)
   expected <- c("chapter call some", "1 me years", "loomings ishmael ago",
                 "call some never", "me years mind", "ishmael ago how")
