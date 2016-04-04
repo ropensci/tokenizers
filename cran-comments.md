@@ -1,7 +1,10 @@
 ## Response to CRAN maintainers' feedback
 
-I have revised the package description to remove redundancy and provide more 
-details as requested.
+CRAN maintainers pointed out that tests fail in an environment that uses the
+Latin-1 environment by default. I have specified that the files which are loaded
+for tests should be loaded as UTF-8. This should work for all Latin-1
+environments, since tests which previously were skipped on Win-builder now pass
+without being skipped.
 
 ## Test environments
 
@@ -13,8 +16,4 @@ details as requested.
 
 0 errors | 0 warnings | 1 note
 
-* This is a new release.
-
-## Reverse dependencies
-
-This is a new release, so there are no reverse dependencies.
+* The 1 NOTE pertains to a new release of the package.
