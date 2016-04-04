@@ -6,7 +6,7 @@ An R package that collects functions with a consistent interface to convert natu
 
 **Author:** [Lincoln Mullen](http://lincolnmullen.com)<br> **License:** [MIT](http://opensource.org/licenses/MIT)<br>
 
-[![Travis-CI Build Status](https://travis-ci.org/lmullen/tokenizers.svg?branch=master)](https://travis-ci.org/lmullen/tokenizers)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/tokenizers)](http://cran.r-project.org/package=tokenizers) [![Travis-CI Build Status](https://travis-ci.org/lmullen/tokenizers.svg?branch=master)](https://travis-ci.org/lmullen/tokenizers)
 
 ### Installation
 
