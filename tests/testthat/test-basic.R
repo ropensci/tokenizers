@@ -59,6 +59,17 @@ test_that("Word tokenizer produces correct output", {
   expect_identical(head(out_1, 5), expected)
 })
 
+test_that("Word tokenizer removes stop words", {
+  test <- "Now is the time for every good person"
+  test_l <- list(test, test)
+  stopwords <- c("is", "the", "for")
+  expected <- c("now", "time", "every", "good", "person")
+  expected_l <- list(expected, expected)
+  expect_equal(tokenize_words(test, simplify = TRUE, stopwords = stopwords),
+               expected)
+  expect_equal(tokenize_words(test_l, stopwords = stopwords), expected_l)
+})
+
 test_that("Sentence tokenizer works as expected", {
   out_l <- tokenize_sentences(docs_l)
   out_c <- tokenize_sentences(docs_c)

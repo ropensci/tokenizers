@@ -16,3 +16,6 @@ check_input <- function(x) {
          "  vectors, each of which has a length of 1.")
 }
 
+remove_stopwords <- function(x, stopwords) {
+  x[!x %in% stopwords]
+}

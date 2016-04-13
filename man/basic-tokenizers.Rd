@@ -13,7 +13,7 @@
 tokenize_characters(x, lowercase = TRUE, strip_non_alphanum = TRUE,
   simplify = FALSE)
 
-tokenize_words(x, lowercase = TRUE, simplify = FALSE)
+tokenize_words(x, lowercase = TRUE, stopwords = NULL, simplify = FALSE)
 
 tokenize_sentences(x, lowercase = FALSE, strip_punctuation = FALSE,
   simplify = FALSE)
@@ -41,6 +41,8 @@ that you are likely to use last.}
 returned regardless of length of input. If \code{TRUE}, then an input with
 a single element will return a character vector of tokens instead of a
 list.}
+
+\item{stopwords}{A character vector of stop words to be excluded}
 
 \item{strip_punctuation}{Should punctuation be stripped?}
 

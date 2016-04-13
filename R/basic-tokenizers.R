@@ -18,6 +18,7 @@
 #' @param strip_punctuation Should punctuation be stripped?
 #' @param paragraph_break A string identifying the boundary between two
 #'   paragraphs.
+#' @param stopwords A character vector of stop words to be excluded
 #' @param pattern A regular expression that defines the split
 #' @param simplify \code{FALSE} by default so that a consistent value is
 #'   returned regardless of length of input. If \code{TRUE}, then an input with
@@ -66,12 +67,14 @@ tokenize_characters <- function(x, lowercase = TRUE, strip_non_alphanum = TRUE,
 
 #' @export
 #' @rdname basic-tokenizers
-tokenize_words <- function(x, lowercase = TRUE, simplify = FALSE) {
+tokenize_words <- function(x, lowercase = TRUE, stopwords = NULL,
+                           simplify = FALSE) {
   check_input(x)
   named <- names(x)
   if (lowercase) x <- stri_trans_tolower(x)
   out <- stri_split_boundaries(x, type = "word", skip_word_none = TRUE)
   if (!is.null(named)) names(out) <- named
+  if (!is.null(stopwords)) out <- lapply(out, remove_stopwords, stopwords)
   simplify_list(out, simplify)
 }
 
