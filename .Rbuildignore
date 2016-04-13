@@ -5,3 +5,4 @@
 ^README-.*\.png$
 ^CONDUCT\.md$
 ^cran-comments\.md$
+^data-raw$
