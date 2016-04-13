@@ -1,4 +1,5 @@
 #' Stopword lists
+#'
 #' Retrieve lists of stopwords by language.
 #' @param language The two-letter code for the name of the language.
 #' @references

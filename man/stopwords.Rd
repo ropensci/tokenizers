@@ -2,8 +2,7 @@
 % Please edit documentation in R/stopwords.R
 \name{stopwords}
 \alias{stopwords}
-\title{Stopword lists
-Retrieve lists of stopwords by language.}
+\title{Stopword lists}
 \usage{
 stopwords(language = c("en", "da", "de", "el", "es", "fr", "it"))
 }
@@ -11,7 +10,6 @@ stopwords(language = c("en", "da", "de", "el", "es", "fr", "it"))
 \item{language}{The two-letter code for the name of the language.}
 }
 \description{
-Stopword lists
 Retrieve lists of stopwords by language.
 }
 \examples{
