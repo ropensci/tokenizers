@@ -3,7 +3,7 @@
 #' Retrieve lists of stopwords by language.
 #' @param language The two-letter code for the name of the language.
 #' @references
-#' The stopword lists are a subset of the stopword lists available in the \href{Apache Lucene/Solr}{https://github.com/apache/lucene-solr/tree/master/solr/contrib/morphlines-core/src/test-files/solr/collection1/conf/lang} project, available under the Apache 2.0 license.
+#' The stopword lists are a subset of the stopword lists available in the \href{https://github.com/apache/lucene-solr/tree/master/solr/contrib/morphlines-core/src/test-files/solr/collection1/conf/lang}{Apache Lucene/Solr} project, available under the Apache 2.0 license.
 #' @examples
 #' stopwords("en")
 #' stopwords("de")
