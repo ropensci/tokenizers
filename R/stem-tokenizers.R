@@ -17,6 +17,7 @@
 #' @param language The language to use for word stemming. This must be one of
 #'   the languages available in the SnowballC package. A list is provided by
 #'   \code{\link[SnowballC]{getStemLanguages}}.
+#' @param stopwords A character vector of stop words to be excluded
 #' @param simplify \code{FALSE} by default so that a consistent value is
 #'   returned regardless of length of input. If \code{TRUE}, then an input with
 #'   a single element will return a character vector of tokens instead of a
@@ -41,11 +42,12 @@
 #' tokenize_word_stems(song)
 #' @export
 #' @rdname stem-tokenizers
-tokenize_word_stems <- function(x, language = "english", simplify = FALSE) {
+tokenize_word_stems <- function(x, language = "english", stopwords = NULL,
+                                simplify = FALSE) {
   check_input(x)
   named <- names(x)
   language <- match.arg(language, getStemLanguages())
-  words <- tokenize_words(x, lowercase = TRUE)
+  words <- tokenize_words(x, lowercase = TRUE, stopwords = stopwords)
   out <- lapply(words, wordStem, language = language)
   if (!is.null(named)) names(out) <- named
   simplify_list(out, simplify)

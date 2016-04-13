@@ -4,7 +4,8 @@
 \alias{tokenize_word_stems}
 \title{Word stem tokenizer}
 \usage{
-tokenize_word_stems(x, language = "english", simplify = FALSE)
+tokenize_word_stems(x, language = "english", stopwords = NULL,
+  simplify = FALSE)
 }
 \arguments{
 \item{x}{A character vector or a list of character vectors to be tokenized
@@ -16,6 +17,8 @@ character vectors, where each element of the list should have a length of
 \item{language}{The language to use for word stemming. This must be one of
 the languages available in the SnowballC package. A list is provided by
 \code{\link[SnowballC]{getStemLanguages}}.}
+
+\item{stopwords}{A character vector of stop words to be excluded}
 
 \item{simplify}{\code{FALSE} by default so that a consistent value is
 returned regardless of length of input. If \code{TRUE}, then an input with
