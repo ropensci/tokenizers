@@ -81,7 +81,6 @@ ListOf<CharacterVector> generate_ngrams_batch(const ListOf<const CharacterVector
   for(auto it:stopwords)
     stopwords_set.insert(as<string>(it));
 
-  size_t current_doc_ngram_len = 0;
   for (size_t i_document = 0; i_document < n_docs; i_document++) {
     terms = documents_list[i_document];
     result[i_document] = generate_ngrams_internal(documents_list[i_document],

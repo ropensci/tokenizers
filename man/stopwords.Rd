@@ -4,7 +4,7 @@
 \alias{stopwords}
 \title{Stopword lists}
 \usage{
-stopwords(language = c("en", "da", "de", "el", "es", "fr", "it"))
+stopwords(language = c("en", "da", "de", "el", "es", "fr", "it", "ru"))
 }
 \arguments{
 \item{language}{The two-letter code for the name of the language.}
