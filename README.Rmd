@@ -22,6 +22,7 @@ An R package that collects functions with a consistent interface to convert natu
 **License:** [MIT](http://opensource.org/licenses/MIT)<br>
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/tokenizers)](http://cran.r-project.org/package=tokenizers)
+[![CRAN_Downloads](http://cranlogs.r-pkg.org/badges/grand-total/tokenizers)](http://cran.r-project.org/package=tokenizers)
 [![Travis-CI Build Status](https://travis-ci.org/lmullen/tokenizers.svg?branch=master)](https://travis-ci.org/lmullen/tokenizers)
 [![Coverage Status](https://img.shields.io/codecov/c/github/lmullen/tokenizers/master.svg)](https://codecov.io/github/lmullen/tokenizers?branch=master)
 
