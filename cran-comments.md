@@ -9,4 +9,7 @@ tokenization functions.
 
 ## R CMD check results
 
-0 errors | 0 warnings | 0 notes
+0 errors | 0 warnings | 1 note
+
+The one note pertains to a new release of the package. The possible spelling 
+errors are in fact correct.
