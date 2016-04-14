@@ -8,7 +8,7 @@
 #' stopwords("en")
 #' stopwords("de")
 #' @export
-stopwords <- function(language = c("en", "da", "de", "el", "es", "fr", "it")) {
+stopwords <- function(language = c("en", "da", "de", "el", "es", "fr", "it", "ru")) {
   language <- match.arg(language)
   stopword_lists[[language]]
 }
