@@ -24,4 +24,5 @@ Imports:
   Rcpp (>= 0.12.3),
   SnowballC (>= 0.5.1)
 LinkingTo: Rcpp
-Suggests: testthat
+Suggests: testthat,
+    covr
