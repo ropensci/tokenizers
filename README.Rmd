@@ -24,6 +24,7 @@ An R package that collects functions with a consistent interface to convert natu
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/tokenizers)](http://cran.r-project.org/package=tokenizers)
 [![CRAN_Downloads](http://cranlogs.r-pkg.org/badges/grand-total/tokenizers)](http://cran.r-project.org/package=tokenizers)
 [![Travis-CI Build Status](https://travis-ci.org/lmullen/tokenizers.svg?branch=master)](https://travis-ci.org/lmullen/tokenizers)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/lmullen/tokenizers?branch=master&svg=true)](https://ci.appveyor.com/project/lmullen/tokenizers)
 [![Coverage Status](https://img.shields.io/codecov/c/github/lmullen/tokenizers/master.svg)](https://codecov.io/github/lmullen/tokenizers?branch=master)
 
 ### Installation
