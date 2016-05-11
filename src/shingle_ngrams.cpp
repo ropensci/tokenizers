@@ -8,7 +8,6 @@ inline  size_t get_ngram_seq_len(uint32_t input_len, uint32_t ngram_min, uint32_
   uint32_t out_ngram_len_adjust = 0;
   for (size_t i = ngram_min - 1; i < ngram_max; i++)
     out_ngram_len_adjust += i;
-
   if(input_len < ngram_min)
     return 0;
   else
@@ -34,16 +33,16 @@ CharacterVector generate_ngrams_internal(const CharacterVector terms_raw,
   }
 
   uint32_t len = terms_filtered_buffer.size();
-  size_t ngram_out_len = get_ngram_seq_len(len, ngram_min, ngram_max);
+  size_t ngram_out_len = get_ngram_seq_len(len, ngram_min, min(ngram_max, len));
   CharacterVector result(ngram_out_len);
 
   string k_gram;
   size_t k, i = 0, j_max_observed;
   // iterates through input vector by window of size = n_max and build n-grams
-  // for terms ["a", "b", "c", "d"] and n_min = 1, n_max = 2
+  // for terms ["a", "b", "c", "d"] and n_min = 1, n_max = 3
   // will build 1:3-grams in following order
   //"a"     "a_b"   "a_b_c" "b"     "b_c"   "b_c_d" "c"     "c_d"   "d"
-  for(size_t j = 0; j < len; j ++ ) {
+  for(size_t j = 0; j < len; j++ ) {
     k = 1;
     j_max_observed = j;
     while (k <= ngram_max && j_max_observed < len) {
