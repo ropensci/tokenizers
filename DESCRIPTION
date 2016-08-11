@@ -1,6 +1,6 @@
 Package: tokenizers
 Type: Package
-Title: Tokenize Text
+Title: A Consistent Interface to Tokenize Natural Language Text
 Version: 0.1.2
 Date: 2016-04-14
 Description: Convert natural language text into tokens. The tokenizers have a
