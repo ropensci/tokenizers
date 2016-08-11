@@ -48,8 +48,9 @@ CharacterVector generate_ngrams_internal(const CharacterVector terms_raw,
 
       if( k == 1) {
         k_gram = terms_filtered_buffer[j_max_observed];
-      } else
+      } else {
         k_gram = k_gram + ngram_delim + terms_filtered_buffer[j_max_observed];
+      }
 
       if(k >= ngram_min) {
         result[i] = k_gram;
