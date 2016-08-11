@@ -1,8 +1,8 @@
 Package: tokenizers
 Type: Package
 Title: A Consistent Interface to Tokenize Natural Language Text
-Version: 0.1.2
-Date: 2016-04-14
+Version: 0.1.2.9000
+Date: 2016-08-11
 Description: Convert natural language text into tokens. The tokenizers have a
     consistent interface and are compatible with Unicode, thanks to being built
     on the 'stringi' package. Includes tokenizers for shingled n-grams, skip
