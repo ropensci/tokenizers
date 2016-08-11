@@ -42,14 +42,14 @@ returned regardless of length of input. If \code{TRUE}, then an input with
 a single element will return a character vector of tokens instead of a
 list.}
 
-\item{stopwords}{A character vector of stop words to be excluded}
+\item{stopwords}{A character vector of stop words to be excluded.}
 
 \item{strip_punctuation}{Should punctuation be stripped?}
 
 \item{paragraph_break}{A string identifying the boundary between two
 paragraphs.}
 
-\item{pattern}{A regular expression that defines the split}
+\item{pattern}{A regular expression that defines the split.}
 }
 \value{
 A list of character vectors containing the tokens, with one element

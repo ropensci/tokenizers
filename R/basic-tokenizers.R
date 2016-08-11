@@ -18,8 +18,8 @@
 #' @param strip_punctuation Should punctuation be stripped?
 #' @param paragraph_break A string identifying the boundary between two
 #'   paragraphs.
-#' @param stopwords A character vector of stop words to be excluded
-#' @param pattern A regular expression that defines the split
+#' @param stopwords A character vector of stop words to be excluded.
+#' @param pattern A regular expression that defines the split.
 #' @param simplify \code{FALSE} by default so that a consistent value is
 #'   returned regardless of length of input. If \code{TRUE}, then an input with
 #'   a single element will return a character vector of tokens instead of a
