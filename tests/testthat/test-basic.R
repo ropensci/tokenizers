@@ -1,7 +1,5 @@
 context("Basic tokenizers")
 
-source("data-for-tests.R")
-
 test_that("Character tokenizer works as expected", {
   out_l <- tokenize_characters(docs_l)
   out_c <- tokenize_characters(docs_c)

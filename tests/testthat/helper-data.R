@@ -1,5 +1,4 @@
-paths <- list.files(system.file("extdata", package = "tokenizers"),
-                    pattern = "\\.txt$", full.names = TRUE)
+paths <- list.files(".", pattern = "\\.txt$", full.names = TRUE)
 docs_full <- lapply(paths, readLines, encoding = "UTF-8")
 docs_l <- lapply(docs_full, paste, collapse = "\n")
 # docs_l <- lapply(docs_full, enc2utf8)

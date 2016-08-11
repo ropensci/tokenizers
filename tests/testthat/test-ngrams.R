@@ -1,7 +1,5 @@
 context("N-gram tokenizers")
 
-source("data-for-tests.R")
-
 test_that("Shingled n-gram tokenizer works as expected", {
   stopwords <- c("chapter", "me")
   out_l <- tokenize_ngrams(docs_l, n = 3, n_min = 2, stopwords = stopwords)

@@ -1,7 +1,5 @@
 context("Stem tokenizers")
 
-source("data-for-tests.R")
-
 test_that("Word stem tokenizer works as expected", {
   out_l <- tokenize_word_stems(docs_l)
   out_c <- tokenize_word_stems(docs_c)
