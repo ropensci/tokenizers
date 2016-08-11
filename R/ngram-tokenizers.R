@@ -63,7 +63,7 @@ tokenize_ngrams <- function(x, lowercase = TRUE, n = 3L, n_min = n,
                             simplify = FALSE) {
   check_input(x)
   named <- names(x)
-  if (n < n_min | n_min <= 0)
+  if (n < n_min || n_min <= 0)
     stop("n and n-gram min must be integers, and ngram_min must be less than ",
          "n and greater than 1.")
   words <- tokenize_words(x, lowercase = lowercase)
