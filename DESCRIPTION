@@ -25,4 +25,7 @@ Imports:
   SnowballC (>= 0.5.1)
 LinkingTo: Rcpp
 Suggests: testthat,
-    covr
+    covr,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
