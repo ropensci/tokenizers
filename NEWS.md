@@ -1,3 +1,8 @@
+# tokenizers 0.1.3
+
+- Add vignette.
+- Improvements to n-gram tokenizers.
+
 # tokenizers 0.1.2
 
 - Add stopwords for several languages.
