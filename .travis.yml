@@ -6,10 +6,16 @@ r:
 sudo: false
 cache: packages
 
+# Set CXX1X for R-devel, as R-devel does not detect CXX1X support for gcc 4.6.3,
+# this was causing hunspell installation to fail
+before_install:
+  - test $TRAVIS_R_VERSION_STRING = 'devel' && mkdir ~/.R && echo 'CXX1X=g++ -std=c++0x -g -O2 -fPIC' > ~/.R/Makevars
+
+# Only report coverage for the release version
 after_success:
-  - Rscript -e 'covr::codecov()'
+  - test $TRAVIS_R_VERSION_STRING = 'release' && Rscript -e 'covr::codecov()'
 
 notifications:
   email:
-    on_success: change
-    on_failure: change
+    on_success: never
+    on_failure: always
