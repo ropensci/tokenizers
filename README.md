@@ -4,9 +4,9 @@ tokenizers
 
 An R package that collects functions with a consistent interface to convert natural language text into tokens.
 
-**Author:** [Lincoln Mullen](http://lincolnmullen.com)<br> **License:** [MIT](http://opensource.org/licenses/MIT)<br>
+**Author:** [Lincoln Mullen](http://lincolnmullen.com) and [Dmitriy Selivanov](https://github.com/dselivanov)<br> **License:** [MIT](http://opensource.org/licenses/MIT)<br>
 
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/tokenizers)](http://cran.r-project.org/package=tokenizers) [![CRAN\_Downloads](http://cranlogs.r-pkg.org/badges/grand-total/tokenizers)](http://cran.r-project.org/package=tokenizers) [![Travis-CI Build Status](https://travis-ci.org/lmullen/tokenizers.svg?branch=master)](https://travis-ci.org/lmullen/tokenizers) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/lmullen/tokenizers?branch=master&svg=true)](https://ci.appveyor.com/project/lmullen/tokenizers) [![Coverage Status](https://img.shields.io/codecov/c/github/lmullen/tokenizers/master.svg)](https://codecov.io/github/lmullen/tokenizers?branch=master)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/tokenizers)](http://cran.r-project.org/package=tokenizers) [![CRAN\_Downloads](http://cranlogs.r-pkg.org/badges/grand-total/tokenizers)](http://cran.r-project.org/package=tokenizers) [![Travis-CI Build Status](https://travis-ci.org/ropensci/tokenizers.svg?branch=master)](https://travis-ci.org/ropensci/tokenizers) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ropensci/tokenizers?branch=master&svg=true)](https://ci.appveyor.com/project/ropensci/tokenizers) [![Coverage Status](https://img.shields.io/codecov/c/github/ropensci/tokenizers/master.svg)](https://codecov.io/github/ropensci/tokenizers?branch=master)
 
 ### Installation
 
@@ -20,7 +20,7 @@ To get the development version from GitHub, use [devtools](https://github.com/ha
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("lmullen/tokenizers")
+devtools::install_github("ropensci/tokenizers")
 ```
 
 ### Examples
@@ -96,3 +96,7 @@ tokenize_regex(james, pattern = "[,.;]")[[1]] %>% head(5)
 Contributions to the package are more than welcome. One way that you can help is by using this package in your R package for natural language processing. If you want to contribute a tokenization function to this package, it should follow the same conventions as the rest of the functions whenever it makes sense to do so.
 
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+
+------------------------------------------------------------------------
+
+[![rOpenSCi logo](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
