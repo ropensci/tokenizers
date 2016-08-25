@@ -25,8 +25,8 @@
 #'   a single element will return a character vector of tokens instead of a
 #'   list.
 #' @return A list of character vectors containing the tokens, with one element
-#'   in the list for each element that was passed as input. If `simplify = TRUE`
-#'   and only a single element was passed as input, then the output is a
+#'   in the list for each element that was passed as input. If \code{simplify =
+#'   TRUE} and only a single element was passed as input, then the output is a
 #'   character vector of tokens.
 #' @importFrom stringi stri_split_boundaries stri_trans_tolower stri_trim_both
 #'   stri_replace_all_charclass stri_split_fixed stri_split_lines
