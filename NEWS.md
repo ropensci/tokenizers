@@ -1,3 +1,8 @@
+# Tokenizers 0.1.4
+
+- Add the `tokenize_character_shingles()` tokenizer. 
+- Improvements to documentation.
+
 # tokenizers 0.1.3
 
 - Add vignette.

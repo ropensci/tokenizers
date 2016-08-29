@@ -1,4 +1,4 @@
-This is a minor update to improve the reliability of the C++ code that performs tokenization, and to add a vignette.
+This is a minor update to add a new tokenizer, fix documentation, and improve performance.
 
 ## Test environments
 
