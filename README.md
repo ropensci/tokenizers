@@ -50,6 +50,9 @@ tokenize_characters(james)[[1]] %>% head(50)
 #>  [1] "t" "h" "e" "q" "u" "e" "s" "t" "i" "o" "n" "t" "h" "u" "s" "b" "e"
 #> [18] "c" "o" "m" "e" "s" "a" "v" "e" "r" "b" "a" "l" "o" "n" "e" "a" "g"
 #> [35] "a" "i" "n" "a" "n" "d" "o" "u" "r" "k" "n" "o" "w" "l" "e" "d"
+tokenize_character_shingles(james)[[1]] %>% head(20)
+#>  [1] "the" "heq" "equ" "que" "ues" "est" "sti" "tio" "ion" "ont" "nth"
+#> [12] "thu" "hus" "usb" "sbe" "bec" "eco" "com" "ome" "mes"
 tokenize_words(james)[[1]] %>% head(10)
 #>  [1] "the"      "question" "thus"     "becomes"  "a"        "verbal"  
 #>  [7] "one"      "again"    "and"      "our"

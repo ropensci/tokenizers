@@ -66,6 +66,7 @@ james <- paste0(
 )
 
 tokenize_characters(james)[[1]] %>% head(50)
+tokenize_character_shingles(james)[[1]] %>% head(20)
 tokenize_words(james)[[1]] %>% head(10)
 tokenize_word_stems(james)[[1]] %>% head(10)
 tokenize_sentences(james) 

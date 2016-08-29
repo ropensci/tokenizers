@@ -45,6 +45,13 @@ james <- paste0(
 tokenize_characters(james)[[1]] 
 ```
 
+You can also tokenize character-based shingles.
+
+```{r}
+tokenize_character_shingles(james, strip_non_alphanum = FALSE)[[1]][1:20]
+```
+
+
 ### Words and word stems
 
 ```{r}
