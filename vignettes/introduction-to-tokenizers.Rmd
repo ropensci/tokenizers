@@ -70,6 +70,12 @@ You can also provide a vector of stop words. A default is provided for several l
 tokenize_words(james, stopwords = stopwords())
 ```
 
+An alternative word stemmer often used in NLP that preserves punctuation and separates common English contractions is the Penn Treebank tokenizer.
+```{r}
+tokenize_ptb(james)
+```
+
+
 ### Sentences and paragraphs
 
 ```{r}
