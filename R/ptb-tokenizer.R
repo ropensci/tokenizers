@@ -110,11 +110,14 @@ tokenize_ptb <- function(x, lowercase = FALSE, simplify = FALSE) {
 
   stri_replace_all_regex(out, CONTRACTIONS2, " $1 $2 ",
                              opts_regex =
-                               stri_opts_regex(case_insensitive = TRUE))
+                               stri_opts_regex(case_insensitive = TRUE),
+                         vectorize_all = FALSE)
   stri_replace_all_regex(out, CONTRACTIONS3, " $1 $2 ",
-                         opts_regex = stri_opts_regex(case_insensitive = TRUE))
+                         opts_regex = stri_opts_regex(case_insensitive = TRUE),
+                         vectorize_all = FALSE)
   stri_replace_all_regex(out, CONTRACTIONS4, " $1 $2 $3 ",
-                         opts_regex = stri_opts_regex(case_insensitive = TRUE))
+                         opts_regex = stri_opts_regex(case_insensitive = TRUE),
+                         vectorize_all = FALSE)
 
   # return
   out <- stri_split_regex(stri_trim_both(out), '\\s+')
