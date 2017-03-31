@@ -2,9 +2,9 @@
 using namespace Rcpp;
 
 // calculates size of the ngram vector
-inline  size_t get_ngram_seq_len(uint32_t input_len, uint32_t ngram_min, uint32_t ngram_max) {
+inline size_t get_ngram_seq_len(int input_len, int ngram_min, int ngram_max) {
 
-  uint32_t out_ngram_len_adjust = 0;
+  int out_ngram_len_adjust = 0;
   for (size_t i = ngram_min - 1; i < ngram_max; i++)
     out_ngram_len_adjust += i;
   if(input_len < ngram_min)
@@ -14,25 +14,26 @@ inline  size_t get_ngram_seq_len(uint32_t input_len, uint32_t ngram_min, uint32_
 }
 
 CharacterVector generate_ngrams_internal(const CharacterVector terms_raw,
-                                const uint32_t ngram_min,
-                                const uint32_t ngram_max,
-                                RCPP_UNORDERED_SET<std::string> &stopwords,
+                                const int ngram_min,
+                                const int ngram_max,
+                                std::set<std::string> &stopwords,
                                 // pass buffer by reference to avoid memory allocation
                                 // on each iteration
-                                std::vector<std::string> &terms_filtered_buffer,
+                                std::deque<std::string> &terms_filtered_buffer,
                                 const std::string ngram_delim) {
   // clear buffer from previous iteration result
   terms_filtered_buffer.clear();
   std::string term;
   // filter out stopwords
-  for (auto it: terms_raw) {
-    term  = as<std::string>(it);
+  for (size_t i = 0; i < terms_raw.size(); i++) {
+    term  = as<std::string>(terms_raw[i]);
     if(stopwords.find(term) == stopwords.end())
       terms_filtered_buffer.push_back(term);
   }
 
-  uint32_t len = terms_filtered_buffer.size();
+  int len = terms_filtered_buffer.size();
   size_t ngram_out_len = get_ngram_seq_len(len, ngram_min, std::min(ngram_max, len));
+
   CharacterVector result(ngram_out_len);
 
   std::string k_gram;
@@ -65,20 +66,23 @@ CharacterVector generate_ngrams_internal(const CharacterVector terms_raw,
 
 // [[Rcpp::export]]
 ListOf<CharacterVector> generate_ngrams_batch(const ListOf<const CharacterVector> documents_list,
-                                              const uint32_t ngram_min,
-                                              const uint32_t ngram_max,
-                                              const CharacterVector stopwords = CharacterVector(),
+                                              const int ngram_min,
+                                              const int ngram_max,
+                                              CharacterVector stopwords = CharacterVector(),
                                               const String ngram_delim = " ") {
 
-  std::vector<std::string> terms_filtered_buffer;
+  std::deque<std::string> terms_filtered_buffer;
   const std::string std_string_delim = ngram_delim.get_cstring();
   size_t n_docs = documents_list.size();
   List result(n_docs);
   CharacterVector terms;
 
-  RCPP_UNORDERED_SET<std::string> stopwords_set;
-  for(auto it:stopwords)
-    stopwords_set.insert(as<std::string>(it));
+  std::set<std::string> stopwords_set;
+  for(size_t i = 0; i < stopwords.size(); i++){
+    if(stopwords[i] != NA_STRING){
+      stopwords_set.insert(as<std::string>(stopwords[i]));
+    }
+  }
 
   for (size_t i_document = 0; i_document < n_docs; i_document++) {
     terms = documents_list[i_document];

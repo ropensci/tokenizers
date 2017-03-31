@@ -49,4 +49,3 @@ tokenize_character_shingles(x, n = 5, strip_non_alphanum = FALSE)
 tokenize_character_shingles(x, n = 5, n_min = 3, strip_non_alphanum = FALSE)
 
 }
-

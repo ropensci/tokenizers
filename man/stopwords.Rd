@@ -19,4 +19,3 @@ stopwords("de")
 \references{
 The stopword lists are a subset of the stopword lists available in the \href{https://github.com/apache/lucene-solr/tree/master/solr/contrib/morphlines-core/src/test-files/solr/collection1/conf/lang}{Apache Lucene/Solr} project, available under the Apache 2.0 license.
 }
-

@@ -3,11 +3,11 @@
 \name{basic-tokenizers}
 \alias{basic-tokenizers}
 \alias{tokenize_characters}
+\alias{tokenize_words}
+\alias{tokenize_sentences}
 \alias{tokenize_lines}
 \alias{tokenize_paragraphs}
 \alias{tokenize_regex}
-\alias{tokenize_sentences}
-\alias{tokenize_words}
 \title{Basic tokenizers}
 \usage{
 tokenize_characters(x, lowercase = TRUE, strip_non_alphanum = TRUE,
@@ -81,4 +81,3 @@ tokenize_lines(song)
 tokenize_characters(song)
 tokenize_regex("A,B,C,D,E", pattern = ",")
 }
-
