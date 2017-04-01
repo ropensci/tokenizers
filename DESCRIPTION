@@ -12,7 +12,7 @@ LazyData: yes
 Authors@R: c(person("Lincoln", "Mullen", role = c("aut", "cre"),
         email = "lincoln@lincolnmullen.com"),
         person("Oliver", "Keyes", role = c("ctb"),
-        email = "ironholds@gmail.com"))
+        email = "ironholds@gmail.com"),
         person("Dmitriy", "Selivanov", role = c("ctb"),
         email = "selivanov.dmitriy@gmail.com"))
 URL: https://github.com/ropensci/tokenizers
