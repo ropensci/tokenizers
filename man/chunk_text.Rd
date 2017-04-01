@@ -22,7 +22,7 @@ character vectors, each element of the list should have a length of 1.}
 Given a text or vector/list of texts, break the texts into smaller segments with the same number of words.
 }
 \examples{
-chunked <- chunk_text(mobydick, chunk_size = 100)
+chunked <- chunk_text(mobydick, chunk_size = 1000)
 length(chunked)
 chunked[1:3]
 }
