@@ -11,6 +11,8 @@ License: MIT + file LICENSE
 LazyData: yes
 Authors@R: c(person("Lincoln", "Mullen", role = c("aut", "cre"),
         email = "lincoln@lincolnmullen.com"),
+        person("Oliver", "Keyes", role = c("ctb"),
+        email = "ironholds@gmail.com"),
         person("Dmitriy", "Selivanov", role = c("ctb"),
         email = "selivanov.dmitriy@gmail.com"),
         person("Jeffrey", "Arnold", role = c("ctb"),

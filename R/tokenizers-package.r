@@ -15,6 +15,6 @@
 #' @docType package
 NULL
 
-#' @useDynLib tokenizers
+#' @useDynLib tokenizers, .registration = TRUE
 #' @importFrom Rcpp sourceCpp
 NULL
