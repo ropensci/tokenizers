@@ -1,7 +1,10 @@
-# Tokenizers 0.2.0 [WIP]
-* C++98 has replaced the C++11 code used for ngram generation, widening the range of compilers `tokenizers` supports (#26)
+# tokenizers (development)
 
-# Tokenizers 0.1.4
+- Add a function `chunk_text()` to split long documents into pieces.
+- Add the `tokenize_ptb()` function for Penn Tree Bank tokenizations (@jrnold).
+- C++98 has replaced the C++11 code used for ngram generation, widening the range of compilers `tokenizers` supports (#26)
+
+# tokenizers 0.1.4
 
 - Add the `tokenize_character_shingles()` tokenizer. 
 - Improvements to documentation.
