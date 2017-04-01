@@ -1,4 +1,9 @@
-# Tokenizers 0.1.4
+# tokenizers (development)
+
+- Add a function `chunk_text()` to split long documents into pieces.
+- Add the `tokenize_ptb()` function for Penn Tree Bank tokenizations (@jrnold).
+
+# tokenizers 0.1.4
 
 - Add the `tokenize_character_shingles()` tokenizer. 
 - Improvements to documentation.
