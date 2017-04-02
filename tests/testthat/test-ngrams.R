@@ -82,3 +82,12 @@ test_that("Skip n-gram tokenizer consistently produces NAs where appropriate", {
   out <- tokenize_skip_ngrams(test)
   expect_true(is.na(out$b))
 })
+
+
+test_that("Skip n-gram tokenizer can use stopwords", {
+  test <- c("This is a text", "So is this")
+  names(test) <- letters[1:2]
+  out <- tokenize_skip_ngrams(test, stopwords = "is", n = 2)
+  expect_equal(length(out$a), 3)
+  expect_identical(out$a[2], "this a")
+})

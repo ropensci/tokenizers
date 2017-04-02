@@ -5,7 +5,7 @@ generate_ngrams_batch <- function(documents_list, ngram_min, ngram_max, stopword
     .Call('tokenizers_generate_ngrams_batch', PACKAGE = 'tokenizers', documents_list, ngram_min, ngram_max, stopwords, ngram_delim)
 }
 
-skip_ngrams <- function(words, n, k) {
-    .Call('tokenizers_skip_ngrams', PACKAGE = 'tokenizers', words, n, k)
+skip_ngrams_vectorised <- function(words, stopwords, n, k) {
+    .Call('tokenizers_skip_ngrams_vectorised', PACKAGE = 'tokenizers', words, stopwords, n, k)
 }
 

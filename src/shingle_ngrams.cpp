@@ -32,7 +32,6 @@ CharacterVector generate_ngrams_internal(const CharacterVector terms_raw,
   }
 
   int len = terms_filtered_buffer.size();
-  int result_len;
   size_t ngram_out_len = get_ngram_seq_len(len, ngram_min, std::min(ngram_max, len));
 
   CharacterVector result(ngram_out_len);
