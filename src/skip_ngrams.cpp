@@ -13,6 +13,9 @@ CharacterVector skip_ngrams(CharacterVector words, int n, int k) {
     if(window > w) continue;
     g += w - window + 1;
   }
+  if(!g){
+    return CharacterVector(1, NA_STRING);
+  }
   CharacterVector ngrams(g);
 
   int position = 0; // position = place to store current ngram

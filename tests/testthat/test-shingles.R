@@ -40,3 +40,10 @@ test_that("Character shingle tokenizer produces correct output", {
                                           " to", "to ", "o s", " se", "see"))
 
 })
+
+test_that("Character shingle tokenizer consistently produces NAs where appropriate", {
+  test <- c("This is a text", NA, "So is this")
+  names(test) <- letters[1:3]
+  out <- tokenize_character_shingles(test)
+  expect_true(is.na(out$b))
+})

@@ -38,6 +38,13 @@ test_that("Shingled n-gram tokenizer produces correct output", {
 
 })
 
+test_that("Shingled n-gram tokenizer consistently produces NAs where appropriate", {
+  test <- c("This is a text", NA, "So is this")
+  names(test) <- letters[1:3]
+  out <- tokenize_ngrams(test)
+  expect_true(is.na(out$b))
+})
+
 test_that("Skip n-gram tokenizer works as expected", {
   stopwords <- c("chapter", "me")
   out_l <- tokenize_skip_ngrams(docs_l, n = 3, k = 2)
@@ -67,4 +74,11 @@ test_that("Skip n-gram tokenizer produces correct output", {
   expected <- c("chapter call some", "1 me years", "loomings ishmael ago",
                 "call some never", "me years mind", "ishmael ago how")
   expect_identical(head(out_1, 6), expected)
+})
+
+test_that("Skip n-gram tokenizer consistently produces NAs where appropriate", {
+  test <- c("This is a text", NA, "So is this")
+  names(test) <- letters[1:3]
+  out <- tokenize_skip_ngrams(test)
+  expect_true(is.na(out$b))
 })
