@@ -32,6 +32,7 @@ CharacterVector generate_ngrams_internal(const CharacterVector terms_raw,
   }
 
   int len = terms_filtered_buffer.size();
+  int result_len;
   size_t ngram_out_len = get_ngram_seq_len(len, ngram_min, std::min(ngram_max, len));
 
   CharacterVector result(ngram_out_len);
@@ -60,6 +61,10 @@ CharacterVector generate_ngrams_internal(const CharacterVector terms_raw,
       j_max_observed = j + k;
       k = k + 1;
     }
+  }
+
+  if(!result.size()){
+    result.push_back(NA_STRING);
   }
   return result;
 }

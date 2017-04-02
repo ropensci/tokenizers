@@ -17,5 +17,9 @@ check_input <- function(x) {
 }
 
 remove_stopwords <- function(x, stopwords) {
-  x[!x %in% stopwords]
+  out <- x[!x %in% stopwords]
+  if(!length(out)){
+    return(NA_character_)
+  }
+  return(out)
 }
