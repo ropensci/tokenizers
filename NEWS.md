@@ -3,6 +3,7 @@
 - Add a function `chunk_text()` to split long documents into pieces.
 - Add the `tokenize_ptb()` function for Penn Tree Bank tokenizations (@jrnold).
 - C++98 has replaced the C++11 code used for ngram generation, widening the range of compilers `tokenizers` supports (#26)
+- If tokenisers fail to generate tokens for a particular entry, they return NA consistently (#33)
 
 # tokenizers 0.1.4
 
