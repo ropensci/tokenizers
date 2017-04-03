@@ -1,17 +1,9 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
-CharacterVector subset_words(std::deque<std::string>& words, NumericVector indices){
-  CharacterVector output(indices.size());
-
-  for(unsigned int i = 0; i < indices.size(); i++){
-    output[i] = words[indices[i]];
-  }
-
-  return output;
-}
-
-CharacterVector skip_ngrams(CharacterVector words, std::set<std::string>& stopwords, int n, int k) {
+CharacterVector skip_ngrams(CharacterVector words,
+                            ListOf<NumericVector>& skips,
+                            std::set<std::string>& stopwords) {
 
   std::deque < std::string > checked_words;
   std::string holding;
@@ -24,54 +16,31 @@ CharacterVector skip_ngrams(CharacterVector words, std::set<std::string>& stopwo
       }
     }
   }
-  int w = checked_words.size(); // w = number of words
-  int g = 0; // g = number of n-grams
-  for(int i = k; i >= 0; i--) { // i = current iteration of k
-    int window = n + n * i - i; // width of n-grams plus skips
-    if(window > w) continue;
-    g += w - window + 1;
-  }
-  if(!g){
-    return CharacterVector(1, NA_STRING);
-  }
-  CharacterVector ngrams(g);
 
-  int position = 0; // position = place to store current ngram
-  while(k >= 0) { // loop over k in descending order
+  CharacterVector output(skips.size());
 
-    int window = n + n * k - k;
-    for(int i = 0; i < w - window + 1; i++) { // loop over the words
-      NumericVector subset(n); // the subset we are going to make of words
-      for(int j = 0; j < n; j++) { // loop over number of n in ngrams
-        subset[j] = i + j + j * k;
-        // Rcpp::Rcout << "j = " << j << std::endl;
-        // Rcpp::Rcout << "j + j * k = " << j + j * k << std::endl;
+  for(unsigned int i = 0; i < skips.size(); i++){
+    std::string holding;
+    for(unsigned int j = 0; j < skips[i].size(); j++){
+      if(skips[i][j] < (checked_words.size() - 1)){
+        holding += " " + checked_words[skips[i][j]];
       }
-
-      CharacterVector words_subset = subset_words(checked_words, subset);
-
-      // turn the vector of words into a string
-      std::string ngram;
-      for(int l = 0; l < n; l++) {
-        ngram += words_subset[l];
-        if(l != n - 1) ngram += " ";
-      }
-      // store the current ngram and iterate
-      ngrams[position] = ngram;
-      position++;
-
     }
-    k--; // iterate k
+    if(holding.size()){
+      holding.erase(0,1);
+      output[i] = holding;
+    } else {
+      output[i] = NA_STRING;
+    }
   }
 
-  return ngrams;
+  return output;
 }
 
 //[[Rcpp::export]]
 ListOf<CharacterVector> skip_ngrams_vectorised(ListOf<CharacterVector> words,
-                                               CharacterVector stopwords,
-                                               int n,
-                                               int k){
+                                               ListOf<NumericVector> skips,
+                                               CharacterVector stopwords){
 
   // Create output object and set up for further work
   unsigned int input_size = words.size();
@@ -86,7 +55,7 @@ ListOf<CharacterVector> skip_ngrams_vectorised(ListOf<CharacterVector> words,
   }
 
   for(unsigned int i = 0; i < input_size; i++){
-    output[i] = skip_ngrams(words[i], checked_stopwords, n, k);
+    output[i] = skip_ngrams(words[i], skips, checked_stopwords);
   }
 
   return output;
