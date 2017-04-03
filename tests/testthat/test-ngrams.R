@@ -71,8 +71,8 @@ test_that("Skip n-gram tokenizer works as expected", {
 test_that("Skip n-gram tokenizer produces correct output", {
   # skip_on_os("windows")
   out_1 <- tokenize_skip_ngrams(docs_c[1], n = 3, k = 2, simplify = TRUE)
-  expected <- c("chapter call some", "1 me years", "loomings ishmael ago",
-                "call some never", "me years mind", "ishmael ago how")
+  expected <- c("chapter", "chapter 1", "chapter loomings",
+                "chapter call", "chapter 1 loomings", "chapter 1 call")
   expect_identical(head(out_1, 6), expected)
 })
 

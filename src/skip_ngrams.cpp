@@ -6,29 +6,45 @@ CharacterVector skip_ngrams(CharacterVector words,
                             std::set<std::string>& stopwords) {
 
   std::deque < std::string > checked_words;
-  std::string holding;
+  std::string str_holding;
 
+  // Eliminate stopwords
   for(unsigned int i = 0; i < words.size(); i++){
     if(words[i] != NA_STRING){
-      holding = as<std::string>(words[i]);
-      if(stopwords.find(holding)  == stopwords.end()){
-        checked_words.push_back(holding);
+      str_holding = as<std::string>(words[i]);
+      if(stopwords.find(str_holding)  == stopwords.end()){
+        checked_words.push_back(str_holding);
       }
     }
   }
 
-  CharacterVector output(skips.size());
+  str_holding.clear();
+  std::deque < std::string > holding;
+  unsigned int checked_size = checked_words.size();
 
   for(unsigned int i = 0; i < skips.size(); i++){
-    std::string holding;
-    for(unsigned int j = 0; j < skips[i].size(); j++){
-      if(skips[i][j] < (checked_words.size() - 1)){
-        holding += " " + checked_words[skips[i][j]];
+    unsigned int in_size = skips[i].size();
+    if(skips[i][in_size-1] < checked_size){
+      for(unsigned int j = 0; j < skips[i].size(); j++){
+        str_holding += " " + checked_words[skips[i][j]];
       }
+      if(str_holding.size()){
+        str_holding.erase(0,1);
+      }
+      holding.push_back(str_holding);
+      str_holding.clear();
     }
-    if(holding.size()){
-      holding.erase(0,1);
-      output[i] = holding;
+  }
+
+  if(!holding.size()){
+    return CharacterVector(1,NA_STRING);
+  }
+
+  CharacterVector output(holding.size());
+
+  for(unsigned int i = 0; i < holding.size(); i++){
+    if(holding[i].size()){
+      output[i] = holding[i];
     } else {
       output[i] = NA_STRING;
     }
