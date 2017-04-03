@@ -9,7 +9,7 @@
 tokenize_ngrams(x, lowercase = TRUE, n = 3L, n_min = n,
   stopwords = character(), ngram_delim = " ", simplify = FALSE)
 
-tokenize_skip_ngrams(x, lowercase = TRUE, n = 3, k = 1,
+tokenize_skip_ngrams(x, lowercase = TRUE, n_min = 1, n = 3, k = 1,
   stopwords = character(), simplify = FALSE)
 }
 \arguments{
