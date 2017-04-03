@@ -71,6 +71,9 @@ ListOf<CharacterVector> skip_ngrams_vectorised(ListOf<CharacterVector> words,
   }
 
   for(unsigned int i = 0; i < input_size; i++){
+    if(i % 10000 == 0){
+      Rcpp::checkUserInterrupt();
+    }
     output[i] = skip_ngrams(words[i], skips, checked_stopwords);
   }
 
