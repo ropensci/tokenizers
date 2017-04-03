@@ -103,12 +103,13 @@ get_valid_skips <- function(n, k) {
 
 #' @export
 #' @rdname ngram-tokenizers
-tokenize_skip_ngrams <- function(x, lowercase = TRUE, n = 3, k = 1,
+tokenize_skip_ngrams <- function(x, lowercase = TRUE, n_min = 1, n = 3, k = 1,
                                  stopwords = character(), simplify = FALSE) {
   check_input(x)
   named <- names(x)
   words <- tokenize_words(x, lowercase = lowercase)
-  skips <- get_valid_skips(n, k)
+  skips <- unique(unlist(lapply(n_min:n, get_valid_skips, k),
+                         recursive = FALSE, use.names = FALSE))
   out <- skip_ngrams_vectorised(words, skips, stopwords)
   if (!is.null(named)) names(out) <- named
   simplify_list(out, simplify)
