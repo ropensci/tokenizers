@@ -1,51 +1,78 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
-// Skip n-grams
-// @param n = number of words in an n-gram
-// @param k = max number of words to skip
-// [[Rcpp::export]]
-CharacterVector skip_ngrams(CharacterVector words, int n, int k) {
-  int w = words.size(); // w = number of words
-  int g = 0; // g = number of n-grams
-  for(int i = k; i >= 0; i--) { // i = current iteration of k
-    int window = n + n * i - i; // width of n-grams plus skips
-    if(window > w) continue;
-    g += w - window + 1;
-  }
-  if(!g){
-    return CharacterVector(1, NA_STRING);
-  }
-  CharacterVector ngrams(g);
+CharacterVector skip_ngrams(CharacterVector words,
+                            ListOf<NumericVector>& skips,
+                            std::set<std::string>& stopwords) {
 
-  int position = 0; // position = place to store current ngram
-  while(k >= 0) { // loop over k in descending order
+  std::deque < std::string > checked_words;
+  std::string str_holding;
 
-    int window = n + n * k - k;
-    for(int i = 0; i < w - window + 1; i++) { // loop over the words
-      NumericVector subset(n); // the subset we are going to make of words
-      for(int j = 0; j < n; j++) { // loop over number of n in ngrams
-        subset[j] = i + j + j * k;
-        // Rcpp::Rcout << "j = " << j << std::endl;
-        // Rcpp::Rcout << "j + j * k = " << j + j * k << std::endl;
+  // Eliminate stopwords
+  for(unsigned int i = 0; i < words.size(); i++){
+    if(words[i] != NA_STRING){
+      str_holding = as<std::string>(words[i]);
+      if(stopwords.find(str_holding)  == stopwords.end()){
+        checked_words.push_back(str_holding);
       }
-
-      CharacterVector words_subset = words[subset];
-
-
-      // turn the vector of words into a string
-      std::string ngram;
-      for(int l = 0; l < n; l++) {
-        ngram += words_subset[l];
-        if(l != n - 1) ngram += " ";
-      }
-      // store the current ngram and iterate
-      ngrams[position] = ngram;
-      position++;
-
     }
-    k--; // iterate k
   }
 
-  return ngrams;
+  str_holding.clear();
+  std::deque < std::string > holding;
+  unsigned int checked_size = checked_words.size();
+
+  for(unsigned int i = 0; i < skips.size(); i++){
+    unsigned int in_size = skips[i].size();
+    if(skips[i][in_size-1] < checked_size){
+      for(unsigned int j = 0; j < skips[i].size(); j++){
+        str_holding += " " + checked_words[skips[i][j]];
+      }
+      if(str_holding.size()){
+        str_holding.erase(0,1);
+      }
+      holding.push_back(str_holding);
+      str_holding.clear();
+    }
+  }
+
+  if(!holding.size()){
+    return CharacterVector(1,NA_STRING);
+  }
+
+  CharacterVector output(holding.size());
+
+  for(unsigned int i = 0; i < holding.size(); i++){
+    if(holding[i].size()){
+      output[i] = holding[i];
+    } else {
+      output[i] = NA_STRING;
+    }
+  }
+
+  return output;
+}
+
+//[[Rcpp::export]]
+ListOf<CharacterVector> skip_ngrams_vectorised(ListOf<CharacterVector> words,
+                                               ListOf<NumericVector> skips,
+                                               CharacterVector stopwords){
+
+  // Create output object and set up for further work
+  unsigned int input_size = words.size();
+  List output(input_size);
+
+  // Create stopwords set
+  std::set < std::string > checked_stopwords;
+  for(unsigned int i = 0; i < stopwords.size(); i++){
+    if(stopwords[i] != NA_STRING){
+      checked_stopwords.insert(as<std::string>(stopwords[i]));
+    }
+  }
+
+  for(unsigned int i = 0; i < input_size; i++){
+    output[i] = skip_ngrams(words[i], skips, checked_stopwords);
+  }
+
+  return output;
 }

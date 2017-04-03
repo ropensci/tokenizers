@@ -20,16 +20,16 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// skip_ngrams
-CharacterVector skip_ngrams(CharacterVector words, int n, int k);
-RcppExport SEXP tokenizers_skip_ngrams(SEXP wordsSEXP, SEXP nSEXP, SEXP kSEXP) {
+// skip_ngrams_vectorised
+ListOf<CharacterVector> skip_ngrams_vectorised(ListOf<CharacterVector> words, ListOf<NumericVector> skips, CharacterVector stopwords);
+RcppExport SEXP tokenizers_skip_ngrams_vectorised(SEXP wordsSEXP, SEXP skipsSEXP, SEXP stopwordsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< CharacterVector >::type words(wordsSEXP);
-    Rcpp::traits::input_parameter< int >::type n(nSEXP);
-    Rcpp::traits::input_parameter< int >::type k(kSEXP);
-    rcpp_result_gen = Rcpp::wrap(skip_ngrams(words, n, k));
+    Rcpp::traits::input_parameter< ListOf<CharacterVector> >::type words(wordsSEXP);
+    Rcpp::traits::input_parameter< ListOf<NumericVector> >::type skips(skipsSEXP);
+    Rcpp::traits::input_parameter< CharacterVector >::type stopwords(stopwordsSEXP);
+    rcpp_result_gen = Rcpp::wrap(skip_ngrams_vectorised(words, skips, stopwords));
     return rcpp_result_gen;
 END_RCPP
 }
