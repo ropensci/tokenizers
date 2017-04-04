@@ -45,29 +45,6 @@ test_that("Shingled n-gram tokenizer consistently produces NAs where appropriate
   expect_true(is.na(out$b))
 })
 
-test_that("Skip n-gram tokenizer works as expected", {
-  stopwords <- c("chapter", "me")
-  out_l <- tokenize_skip_ngrams(docs_l, n = 3, k = 2)
-  out_c <- tokenize_skip_ngrams(docs_c, n = 3, k = 2)
-  out_1 <- tokenize_skip_ngrams(docs_c[1], n = 3, k = 2, simplify = TRUE)
-
-  expect_is(out_l, "list")
-  expect_is(out_l[[1]], "character")
-  expect_is(out_c, "list")
-  expect_is(out_c[[1]], "character")
-  expect_is(out_1, "character")
-
-
-  expect_identical(out_l, out_c)
-  expect_identical(out_l[[1]], out_1)
-  expect_identical(out_c[[1]], out_1)
-
-  expect_named(out_l, names(docs_l))
-  expect_named(out_c, names(docs_c))
-
-  expect_error(tokenize_skip_ngrams(bad_list))
-})
-
 test_that("Skip n-gram tokenizer consistently produces NAs where appropriate", {
   test <- c("This is a text", NA, "So is this")
   names(test) <- letters[1:3]
@@ -75,13 +52,12 @@ test_that("Skip n-gram tokenizer consistently produces NAs where appropriate", {
   expect_true(is.na(out$b))
 })
 
-
 test_that("Skip n-gram tokenizer can use stopwords", {
   test <- c("This is a text", "So is this")
   names(test) <- letters[1:2]
-  out <- tokenize_skip_ngrams(test, stopwords = "is", n = 2)
+  out <- tokenize_skip_ngrams(test, stopwords = "is", n = 2, n_min = 2)
   expect_equal(length(out$a), 3)
-  expect_identical(out$a[2], "this a")
+  expect_identical(out$a[1], "this a")
 })
 
 test_that("Skips with values greater than k are refused", {
