@@ -5,6 +5,8 @@
 - C++98 has replaced the C++11 code used for ngram generation, widening the range of compilers `tokenizers` supports (#26)
 - If tokenisers fail to generate tokens for a particular entry, they return NA consistently (#33)
 - `tokenize_skip_ngrams` now supports stopwords (#31)
+- `tokenize_skip_ngrams` has been improved to generate unigrams and bigrams, according to the skip definition (#24)
+- Keyboard interrupt checks have been added to Rcpp-backed functions to enable users to terminate them before completion (#37)
 
 # tokenizers 0.1.4
 

@@ -89,6 +89,9 @@ ListOf<CharacterVector> generate_ngrams_batch(const ListOf<const CharacterVector
   }
 
   for (size_t i_document = 0; i_document < n_docs; i_document++) {
+    if(i_document % 10000 == 0){
+      Rcpp::checkUserInterrupt();
+    }
     terms = documents_list[i_document];
     result[i_document] = generate_ngrams_internal(documents_list[i_document],
                                                   ngram_min, ngram_max,
