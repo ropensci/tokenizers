@@ -86,7 +86,6 @@ tokenize_sentences(song)
 tokenize_paragraphs(song)
 tokenize_lines(song)
 tokenize_characters(song)
-tokenize_regex("A,B,C,D,E", pattern = ",")
 tokenize_tweets("@rOpenSci and #rstats see: https://cran.r-project.org",
                 strip_punctuation = TRUE)
 tokenize_tweets("@rOpenSci and #rstats see: https://cran.r-project.org",

@@ -75,23 +75,16 @@ tokenize_ngrams(james, n = 5, n_min = 2)[[1]] %>% head(10)
 #>  [7] "question thus becomes a"        "question thus becomes a verbal"
 #>  [9] "thus becomes"                   "thus becomes a"
 tokenize_skip_ngrams(james, n = 5, k = 2)[[1]] %>% head(10)
-#>  [1] "the becomes one our all"          "question a again knowledge these"
-#>  [3] "thus verbal and of early"         "becomes one our all stages"      
-#>  [5] "a again knowledge these of"       "verbal and of early thought"     
-#>  [7] "one our all stages and"           "again knowledge these of feeling"
-#>  [9] "and of early thought is"          "our all stages and in"
+#>  [1] "the"                  "the question"         "the thus"            
+#>  [4] "the becomes"          "the question thus"    "the question becomes"
+#>  [7] "the question a"       "the thus becomes"     "the thus a"          
+#> [10] "the thus verbal"
 tokenize_lines(james)[[1]] %>% head(5)
 #> [1] "The question thus becomes a verbal one"                                   
 #> [2] "again; and our knowledge of all these early stages of thought and feeling"
 #> [3] "is in any case so conjectural and imperfect that farther discussion would"
 #> [4] "not be worth while."                                                      
 #> [5] "Religion, therefore, as I now ask you arbitrarily to take it, shall mean"
-tokenize_regex(james, pattern = "[,.;]")[[1]] %>% head(5)
-#> [1] "The question thus becomes a verbal one\nagain"                                                                                                                     
-#> [2] " and our knowledge of all these early stages of thought and feeling\nis in any case so conjectural and imperfect that farther discussion would\nnot be worth while"
-#> [3] "\n\nReligion"                                                                                                                                                      
-#> [4] " therefore"                                                                                                                                                        
-#> [5] " as I now ask you arbitrarily to take it"
 ```
 
 ### Contributing

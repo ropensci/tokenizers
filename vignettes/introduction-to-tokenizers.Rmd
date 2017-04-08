@@ -94,5 +94,4 @@ tokenize_skip_ngrams(james, n = 5, k = 2)
 
 ```{r}
 tokenize_lines(james)
-tokenize_regex(james, pattern = "[,.;]")
 ```

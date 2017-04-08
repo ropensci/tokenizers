@@ -74,7 +74,6 @@ tokenize_paragraphs(james)
 tokenize_ngrams(james, n = 5, n_min = 2)[[1]] %>% head(10)
 tokenize_skip_ngrams(james, n = 5, k = 2)[[1]] %>% head(10)
 tokenize_lines(james)[[1]] %>% head(5)
-tokenize_regex(james, pattern = "[,.;]")[[1]] %>% head(5)
 ```
 
 ### Contributing

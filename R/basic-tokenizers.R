@@ -47,7 +47,6 @@
 #' tokenize_paragraphs(song)
 #' tokenize_lines(song)
 #' tokenize_characters(song)
-#' tokenize_regex("A,B,C,D,E", pattern = ",")
 NULL
 
 #' @export
@@ -118,6 +117,7 @@ tokenize_paragraphs <- function(x, paragraph_break = "\n\n", simplify = FALSE) {
 #' @export
 #' @rdname basic-tokenizers
 tokenize_regex <- function(x, pattern = "\\s+", simplify = FALSE) {
+  .Deprecated(package = "tokenizers", msg = "tokenize_regex() is deprecated and will be removed in the next major release.")
   check_input(x)
   named <- names(x)
   out <- stri_split_regex(x, pattern = pattern, omit_empty = TRUE)
