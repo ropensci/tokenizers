@@ -8,6 +8,7 @@
 - `tokenize_skip_ngrams` has been improved to generate unigrams and bigrams, according to the skip definition (#24)
 - Keyboard interrupt checks have been added to Rcpp-backed functions to enable users to terminate them before completion (#37)
 - New functions to count words, characters, and sentences without tokenization (#36).
+- New function `tokenize_tweets()` preserves usernames, hashtags, and URLS (@kbenoit) (#44)
 
 # tokenizers 0.1.4
 
