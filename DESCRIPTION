@@ -16,7 +16,9 @@ Authors@R: c(person("Lincoln", "Mullen", role = c("aut", "cre"),
         person("Dmitriy", "Selivanov", role = c("ctb"),
         email = "selivanov.dmitriy@gmail.com"),
         person("Jeffrey", "Arnold", role = c("ctb"),
-        email = "jeffrey.arnold@gmail.com"))
+        email = "jeffrey.arnold@gmail.com"),
+        person("Kenneth", "Benoit", role = c("ctb"),
+        email = "kbenoit@lse.ac.uk"))
 URL: https://github.com/ropensci/tokenizers
 BugReports: https://github.com/ropensci/tokenizers/issues
 RoxygenNote: 6.0.1
