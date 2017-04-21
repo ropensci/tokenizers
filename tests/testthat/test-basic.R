@@ -68,12 +68,27 @@ test_that("Word tokenizer removes stop words", {
   expect_equal(tokenize_words(test_l, stopwords = stopwords), expected_l)
 })
 
+test_that("Word tokenizer can remove punctuation or numbers", {
+  test_punct <- "This sentence ... has punctuation, doesn't it?"
+  out_punct <- c("this", "sentence", ".", ".", ".", "has", "punctuation",
+                       ",", "doesn't", "it", "?")
+  test_num <- "In 1968 the GDP was 1.2 trillion."
+  out_num_f <- c("in", "1968", "the", "gdp", "was", "1.2", "trillion")
+  out_num_t <- c("in", "the", "gdp", "was", "trillion")
+  expect_equal(tokenize_words(test_punct, simplify = TRUE, strip_punct = FALSE),
+               out_punct)
+  expect_equal(tokenize_words(test_num, simplify = TRUE, strip_numeric = FALSE),
+               out_num_f)
+  expect_equal(tokenize_words(test_num, simplify = TRUE, strip_numeric = TRUE),
+               out_num_t)
+})
+
 test_that("Sentence tokenizer works as expected", {
   out_l <- tokenize_sentences(docs_l)
   out_c <- tokenize_sentences(docs_c)
   out_1 <- tokenize_sentences(docs_c[1], simplify = TRUE)
   out_1_lc <- tokenize_sentences(docs_c[1], lowercase = TRUE, simplify = TRUE)
-  out_1_pc <- tokenize_sentences(docs_c[1], strip_punctuation = TRUE, simplify = TRUE)
+  out_1_pc <- tokenize_sentences(docs_c[1], strip_punct = TRUE, simplify = TRUE)
 
   expect_is(out_l, "list")
   expect_is(out_l[[1]], "character")
@@ -95,7 +110,7 @@ test_that("Sentence tokenizer produces correct output", {
   # skip_on_os("windows")
   out_1 <- tokenize_sentences(docs_c[1], simplify = TRUE)
   out_1_lc <- tokenize_sentences(docs_c[1], lowercase = TRUE, simplify = TRUE)
-  out_1_pc <- tokenize_sentences(docs_c[1], strip_punctuation = TRUE, simplify = TRUE)
+  out_1_pc <- tokenize_sentences(docs_c[1], strip_punct = TRUE, simplify = TRUE)
   expected <- c("CHAPTER 1.", "Loomings.", "Call me Ishmael.")
   expected_pc <- c("CHAPTER 1", "Loomings", "Call me Ishmael")
   expect_identical(head(out_1, 3), expected)

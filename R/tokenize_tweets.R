@@ -5,11 +5,11 @@
 #' @export
 #' @examples
 #' tokenize_tweets("@rOpenSci and #rstats see: https://cran.r-project.org",
-#'                 strip_punctuation = TRUE)
+#'                 strip_punct = TRUE)
 #' tokenize_tweets("@rOpenSci and #rstats see: https://cran.r-project.org",
-#'                 strip_punctuation = FALSE)
+#'                 strip_punct = FALSE)
 tokenize_tweets <- function(x, lowercase = TRUE, stopwords = NULL,
-                            strip_punctuation = TRUE,
+                            strip_punct = TRUE,
                             strip_url = FALSE,
                             simplify = FALSE) {
   check_input(x)
@@ -37,7 +37,7 @@ tokenize_tweets <- function(x, lowercase = TRUE, stopwords = NULL,
       stri_trans_tolower(out[!(index_twitter | index_url)])
   }
 
-  if (strip_punctuation) {
+  if (strip_punct) {
     twitter_chars <- stri_sub(out[index_twitter], 1, 1)
     out[!index_url] <-
       stri_replace_all_charclass(out[!index_url], "\\p{P}", "")
@@ -58,7 +58,7 @@ tokenize_tweets <- function(x, lowercase = TRUE, stopwords = NULL,
   # convert the vector back to a list
   out <- split(out,
                cut(seq_along(out), docindex, include.lowest = TRUE, labels = named))
-  # in case !strip_punctuation, otherwise has no effect
+  # in case !strip_punct, otherwise has no effect
   out <- lapply(out, unlist)
 
   names(out) <- named

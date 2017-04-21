@@ -14,9 +14,10 @@
 tokenize_characters(x, lowercase = TRUE, strip_non_alphanum = TRUE,
   simplify = FALSE)
 
-tokenize_words(x, lowercase = TRUE, stopwords = NULL, simplify = FALSE)
+tokenize_words(x, lowercase = TRUE, stopwords = NULL, strip_punct = TRUE,
+  strip_numeric = FALSE, simplify = FALSE)
 
-tokenize_sentences(x, lowercase = FALSE, strip_punctuation = FALSE,
+tokenize_sentences(x, lowercase = FALSE, strip_punct = FALSE,
   simplify = FALSE)
 
 tokenize_lines(x, simplify = FALSE)
@@ -25,8 +26,8 @@ tokenize_paragraphs(x, paragraph_break = "\\n\\n", simplify = FALSE)
 
 tokenize_regex(x, pattern = "\\\\s+", simplify = FALSE)
 
-tokenize_tweets(x, lowercase = TRUE, stopwords = NULL,
-  strip_punctuation = TRUE, strip_url = FALSE, simplify = FALSE)
+tokenize_tweets(x, lowercase = TRUE, stopwords = NULL, strip_punct = TRUE,
+  strip_url = FALSE, simplify = FALSE)
 }
 \arguments{
 \item{x}{A character vector or a list of character vectors to be tokenized
@@ -48,7 +49,9 @@ list.}
 
 \item{stopwords}{A character vector of stop words to be excluded.}
 
-\item{strip_punctuation}{Should punctuation be stripped?}
+\item{strip_punct}{Should punctuation be stripped?}
+
+\item{strip_numeric}{Should numbers be stripped?}
 
 \item{paragraph_break}{A string identifying the boundary between two
 paragraphs.}
@@ -82,12 +85,13 @@ song <-  paste0("How many roads must a man walk down\\n",
                 "The answer is blowin' in the wind.\\n")
 
 tokenize_words(song)
+tokenize_words(song, strip_punct = FALSE)
 tokenize_sentences(song)
 tokenize_paragraphs(song)
 tokenize_lines(song)
 tokenize_characters(song)
 tokenize_tweets("@rOpenSci and #rstats see: https://cran.r-project.org",
-                strip_punctuation = TRUE)
+                strip_punct = TRUE)
 tokenize_tweets("@rOpenSci and #rstats see: https://cran.r-project.org",
-                strip_punctuation = FALSE)
+                strip_punct = FALSE)
 }

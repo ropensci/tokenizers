@@ -19,11 +19,11 @@ test_that("tweet tokenizer works correctly with strip_punctuation", {
            t2 = "#rstats awesome Package! @rOpenSci",
            t3 = "one two three Four #FIVE")
 
-  out_tw1 <- tokenize_tweets(txt, strip_punctuation = TRUE, lowercase = TRUE)
+  out_tw1 <- tokenize_tweets(txt, strip_punct = TRUE, lowercase = TRUE)
   expect_identical(out_tw1$t2, c("#rstats", "awesome", "package", "@rOpenSci"))
   expect_identical(out_tw1$t3, c("one", "two", "three", "four", "#FIVE"))
 
-  out_tw2 <- tokenize_tweets(txt, strip_punctuation = FALSE, lowercase = TRUE)
+  out_tw2 <- tokenize_tweets(txt, strip_punct = FALSE, lowercase = TRUE)
   expect_identical(
     out_tw2$t1,
     c("try", "this", ":", "tokenizers", "at", "@rOpenSci", "https://twitter.com/search?q=ropensci&src=typd")
@@ -33,12 +33,12 @@ test_that("tweet tokenizer works correctly with strip_punctuation", {
 test_that("tweet tokenizer works correctly with strip_url", {
   txt <- c(t1 = "Tokenizers at @rOpenSci https://twitter.com/search?q=ropensci&src=typd")
 
-  out_tw1 <- tokenize_tweets(txt, strip_punctuation = TRUE, strip_url = FALSE)
+  out_tw1 <- tokenize_tweets(txt, strip_punct = TRUE, strip_url = FALSE)
   expect_identical(
     out_tw1$t1,
     c("tokenizers", "at", "@rOpenSci", "https://twitter.com/search?q=ropensci&src=typd")
   )
-  out_tw2 <- tokenize_tweets(txt, strip_punctuation = TRUE, strip_url = TRUE)
+  out_tw2 <- tokenize_tweets(txt, strip_punct = TRUE, strip_url = TRUE)
   expect_identical(
     out_tw2$t1,
     c("tokenizers", "at", "@rOpenSci")
@@ -61,13 +61,13 @@ test_that("punctuation as part of tweets can preserved", {
            t2 = "@rOpenSci: See you at UseR!")
 
   expect_equal(
-    tokenize_tweets(txt, strip_punctuation = FALSE, lowercase = FALSE),
+    tokenize_tweets(txt, strip_punct = FALSE, lowercase = FALSE),
     list(t1 = c("We", "love", "#rstats", "!"),
          t2 = c("@rOpenSci", ":", "See", "you", "at", "UseR", "!"))
   )
 
   expect_equal(
-    tokenize_tweets(txt, strip_punctuation = TRUE, lowercase = FALSE),
+    tokenize_tweets(txt, strip_punct = TRUE, lowercase = FALSE),
     list(t1 = c("We", "love", "#rstats"),
          t2 = c("@rOpenSci", "See", "you", "at", "UseR"))
   )
