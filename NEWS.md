@@ -9,6 +9,7 @@
 - Keyboard interrupt checks have been added to Rcpp-backed functions to enable users to terminate them before completion (#37)
 - New functions to count words, characters, and sentences without tokenization (#36).
 - New function `tokenize_tweets()` preserves usernames, hashtags, and URLS (@kbenoit) (#44)
+- `tokenize_words()` gains arguments to preserve or strip punctuation and numbers (#48)
 
 # tokenizers 0.1.4
 
