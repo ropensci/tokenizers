@@ -8,6 +8,7 @@ An R package that collects functions with a consistent interface to convert natu
 **Author:** [Lincoln Mullen](http://lincolnmullen.com) and [Dmitriy Selivanov](https://github.com/dselivanov)<br> **License:** [MIT](http://opensource.org/licenses/MIT)<br>
 
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/tokenizers)](http://cran.r-project.org/package=tokenizers) [![CRAN\_Downloads](http://cranlogs.r-pkg.org/badges/grand-total/tokenizers)](http://cran.r-project.org/package=tokenizers) [![Travis-CI Build Status](https://travis-ci.org/ropensci/tokenizers.svg?branch=master)](https://travis-ci.org/ropensci/tokenizers) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ropensci/tokenizers?branch=master&svg=true)](https://ci.appveyor.com/project/ropensci/tokenizers) [![Coverage Status](https://img.shields.io/codecov/c/github/ropensci/tokenizers/master.svg)](https://codecov.io/github/ropensci/tokenizers?branch=master)
+[![](https://badges.ropensci.org/33_status.svg)](https://github.com/ropensci/onboarding/issues/33)
 
 ### Installation
 
