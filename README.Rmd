@@ -22,7 +22,7 @@ An R package that collects functions with a consistent interface to convert natu
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/tokenizers)](http://cran.r-project.org/package=tokenizers)
 [![CRAN_Downloads](http://cranlogs.r-pkg.org/badges/grand-total/tokenizers)](http://cran.r-project.org/package=tokenizers)
 [![Travis-CI Build Status](https://travis-ci.org/ropensci/tokenizers.svg?branch=master)](https://travis-ci.org/ropensci/tokenizers)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ropensci/tokenizers?branch=master&svg=true)](https://ci.appveyor.com/project/ropensci/tokenizers)
+[![Appveyor Build status](https://ci.appveyor.com/api/projects/status/qx3vh3ukjgo99iu4/branch/master?svg=true)](https://ci.appveyor.com/project/lmullen/tokenizers-dkf3v/branch/master)
 [![Coverage Status](https://img.shields.io/codecov/c/github/ropensci/tokenizers/master.svg)](https://codecov.io/github/ropensci/tokenizers?branch=master)
 [![](https://badges.ropensci.org/33_status.svg)](https://github.com/ropensci/onboarding/issues/33)
 
