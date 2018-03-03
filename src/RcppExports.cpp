@@ -5,6 +5,17 @@
 
 using namespace Rcpp;
 
+// ensureUTF8
+CharacterVector ensureUTF8(CharacterVector x);
+RcppExport SEXP _tokenizers_ensureUTF8(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< CharacterVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(ensureUTF8(x));
+    return rcpp_result_gen;
+END_RCPP
+}
 // generate_ngrams_batch
 ListOf<CharacterVector> generate_ngrams_batch(const ListOf<const CharacterVector> documents_list, const int ngram_min, const int ngram_max, CharacterVector stopwords, const String ngram_delim);
 RcppExport SEXP _tokenizers_generate_ngrams_batch(SEXP documents_listSEXP, SEXP ngram_minSEXP, SEXP ngram_maxSEXP, SEXP stopwordsSEXP, SEXP ngram_delimSEXP) {
@@ -35,6 +46,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_tokenizers_ensureUTF8", (DL_FUNC) &_tokenizers_ensureUTF8, 1},
     {"_tokenizers_generate_ngrams_batch", (DL_FUNC) &_tokenizers_generate_ngrams_batch, 5},
     {"_tokenizers_skip_ngrams_vectorised", (DL_FUNC) &_tokenizers_skip_ngrams_vectorised, 3},
     {NULL, NULL, 0}
