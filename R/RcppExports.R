@@ -2,10 +2,10 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 generate_ngrams_batch <- function(documents_list, ngram_min, ngram_max, stopwords = character(), ngram_delim = " ") {
-    .Call('tokenizers_generate_ngrams_batch', PACKAGE = 'tokenizers', documents_list, ngram_min, ngram_max, stopwords, ngram_delim)
+    .Call(`_tokenizers_generate_ngrams_batch`, documents_list, ngram_min, ngram_max, stopwords, ngram_delim)
 }
 
 skip_ngrams_vectorised <- function(words, skips, stopwords) {
-    .Call('tokenizers_skip_ngrams_vectorised', PACKAGE = 'tokenizers', words, skips, stopwords)
+    .Call(`_tokenizers_skip_ngrams_vectorised`, words, skips, stopwords)
 }
 

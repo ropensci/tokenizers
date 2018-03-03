@@ -7,7 +7,7 @@ using namespace Rcpp;
 
 // generate_ngrams_batch
 ListOf<CharacterVector> generate_ngrams_batch(const ListOf<const CharacterVector> documents_list, const int ngram_min, const int ngram_max, CharacterVector stopwords, const String ngram_delim);
-RcppExport SEXP tokenizers_generate_ngrams_batch(SEXP documents_listSEXP, SEXP ngram_minSEXP, SEXP ngram_maxSEXP, SEXP stopwordsSEXP, SEXP ngram_delimSEXP) {
+RcppExport SEXP _tokenizers_generate_ngrams_batch(SEXP documents_listSEXP, SEXP ngram_minSEXP, SEXP ngram_maxSEXP, SEXP stopwordsSEXP, SEXP ngram_delimSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -22,7 +22,7 @@ END_RCPP
 }
 // skip_ngrams_vectorised
 ListOf<CharacterVector> skip_ngrams_vectorised(ListOf<CharacterVector> words, ListOf<NumericVector> skips, CharacterVector stopwords);
-RcppExport SEXP tokenizers_skip_ngrams_vectorised(SEXP wordsSEXP, SEXP skipsSEXP, SEXP stopwordsSEXP) {
+RcppExport SEXP _tokenizers_skip_ngrams_vectorised(SEXP wordsSEXP, SEXP skipsSEXP, SEXP stopwordsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -32,4 +32,15 @@ BEGIN_RCPP
     rcpp_result_gen = Rcpp::wrap(skip_ngrams_vectorised(words, skips, stopwords));
     return rcpp_result_gen;
 END_RCPP
+}
+
+static const R_CallMethodDef CallEntries[] = {
+    {"_tokenizers_generate_ngrams_batch", (DL_FUNC) &_tokenizers_generate_ngrams_batch, 5},
+    {"_tokenizers_skip_ngrams_vectorised", (DL_FUNC) &_tokenizers_skip_ngrams_vectorised, 3},
+    {NULL, NULL, 0}
+};
+
+RcppExport void R_init_tokenizers(DllInfo *dll) {
+    R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
+    R_useDynamicSymbols(dll, FALSE);
 }
