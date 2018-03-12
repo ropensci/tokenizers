@@ -55,7 +55,7 @@ CharacterVector generate_ngrams_internal(const CharacterVector terms_raw,
       }
 
       if(k >= ngram_min) {
-        result[i] = k_gram;
+        result[i] = String(k_gram, CE_UTF8);
         i++;
       }
       j_max_observed = j + k;
