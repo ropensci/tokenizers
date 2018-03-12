@@ -1,5 +1,4 @@
 #include <Rcpp.h>
-#include "ensure-encoding.h"
 using namespace Rcpp;
 
 // calculates size of the ngram vector
@@ -55,7 +54,7 @@ CharacterVector generate_ngrams_internal(const CharacterVector terms_raw,
       }
 
       if(k >= ngram_min) {
-        result[i] = k_gram;
+        result[i] = String(k_gram, CE_UTF8);
         i++;
       }
       j_max_observed = j + k;
@@ -66,7 +65,6 @@ CharacterVector generate_ngrams_internal(const CharacterVector terms_raw,
   if(!result.size()){
     result.push_back(NA_STRING);
   }
-  result = ensureUTF8(result);
   return result;
 }
 

@@ -1,5 +1,4 @@
 #include <Rcpp.h>
-#include "ensure-encoding.h"
 using namespace Rcpp;
 
 CharacterVector skip_ngrams(CharacterVector words,
@@ -47,12 +46,11 @@ CharacterVector skip_ngrams(CharacterVector words,
 
   for(unsigned int i = 0; i < holding.size(); i++){
     if(holding[i].size()){
-      output[i] = holding[i];
+      output[i] = String(holding[i], CE_UTF8);
     } else {
       output[i] = NA_STRING;
     }
   }
-  output = ensureUTF8(output);
   return output;
 }
 
