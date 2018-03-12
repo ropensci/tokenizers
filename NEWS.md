@@ -11,6 +11,7 @@
 - New function `tokenize_tweets()` preserves usernames, hashtags, and URLS (@kbenoit) (#44)
 - `tokenize_words()` gains arguments to preserve or strip punctuation and numbers (#48)
 - `tokenize_skip_ngrams()` and `tokenize_ngrams()` to return properly marked UTF8 strings on Windows (@patperry) (#58).
+- New stopword list from Matthew Jockers suitable for novels (#53).
 
 # tokenizers 0.1.4
 
