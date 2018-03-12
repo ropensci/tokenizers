@@ -10,7 +10,8 @@ Description: Convert natural language text into tokens. The tokenizers have a
 License: MIT + file LICENSE
 LazyData: yes
 Authors@R: c(person("Lincoln", "Mullen", role = c("aut", "cre"),
-        email = "lincoln@lincolnmullen.com"),
+        email = "lincoln@lincolnmullen.com",
+        comment = c(ORCID = "0000-0001-5103-6917")),
         person("Oliver", "Keyes", role = c("ctb"),
         email = "ironholds@gmail.com"),
         person("Dmitriy", "Selivanov", role = c("ctb"),
