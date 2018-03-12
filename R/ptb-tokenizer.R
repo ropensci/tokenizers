@@ -1,22 +1,23 @@
 #' Penn Tree Bank Tokenizer
 #'
-#' This function implements the Penn Treebank word tokenizer. This tokenizer
-#' uses regular expressions to tokenize text similar to the tokenization used
-#' in the Penn Treebank. It assumes that text has already been tokenized into
-#' sentences. The tokenizer
-#' \itemize{
-#' \item{splits common English contractions, e.g. \verb{don't} is tokenized into
-#'     \verb{do n't} and \verb{they'll} is tokenized into -> \verb{they 'll},}
-#' \item{handles punctuation characters as separate tokens,}
-#' \item{splits commas and single quotes off from words, when they followed by whitespace,}
-#' \item{splits off periods that occur at the end of the line (sentence).}
-#' }
-#' @details This function is a port of the Python NLTK version of the Penn Treebank Tokenizer.
+#' This function implements the Penn Treebank word tokenizer.
+#'
+#' @details This tokenizer uses regular expressions to tokenize text similar to
+#'   the tokenization used in the Penn Treebank. It assumes that text has
+#'   already been split into sentences. The tokenizer does the following:
+#'
+#'   \itemize{ \item{splits common English contractions, e.g. \verb{don't} is
+#'   tokenized into \verb{do n't} and \verb{they'll} is tokenized into ->
+#'   \verb{they 'll},} \item{handles punctuation characters as separate tokens,}
+#'   \item{splits commas and single quotes off from words, when they are
+#'   followed by whitespace,} \item{splits off periods that occur at the end of
+#'   the sentence.} }
+#' @details This function is a port of the Python NLTK version of the Penn
+#'   Treebank Tokenizer.
 #' @param x A character vector or a list of character vectors to be tokenized
 #'   into n-grams. If \code{x} is a character vector, it can be of any length,
 #'   and each element will be tokenized separately. If \code{x} is a list of
-#'   character vectors, where each element of the list should have a length of
-#'   1.
+#'   character vectors, each element of the list should have a length of 1.
 #' @param lowercase	Should the tokens be made lower case?
 #' @param simplify \code{FALSE} by default so that a consistent value is
 #'   returned regardless of length of input. If \code{TRUE}, then an input with
@@ -27,11 +28,10 @@
 #'   TRUE} and only a single element was passed as input, then the output is a
 #'   character vector of tokens.
 #' @references
-#' \itemize{
-#' \href{http://www.nltk.org/_modules/nltk/tokenize/treebank.html#TreebankWordTokenizer}{NLTK TreebankWordTokenizer}
-#' \href{http://www.cis.upenn.edu/~treebank/tokenizer.sed}{Original sed script}
-#' }
-#' @importFrom stringi stri_c stri_replace_all_regex stri_trim_both stri_split_regex stri_opts_regex
+#' \href{http://www.nltk.org/_modules/nltk/tokenize/treebank.html#TreebankWordTokenizer}{NLTK
+#' TreebankWordTokenizer}
+#' @importFrom stringi stri_c stri_replace_all_regex stri_trim_both
+#'   stri_split_regex stri_opts_regex
 #' @importFrom stringi stri_trans_tolower
 #' @examples
 #' song <- list(paste0("How many roads must a man walk down\n",
@@ -43,12 +43,13 @@
 #'              "The answer, my friend, is blowin' in the wind.",
 #'              "The answer is blowin' in the wind.")
 #' tokenize_ptb(song)
-#' tokenize_ptb(c("Good muffins cost $3.88\nin New York. Please buy me\ntwo of them.\nThanks.",
+#' tokenize_ptb(c("Good muffins cost $3.88\nin New York. Please buy me\ntwo of them.",
 #'   "They'll save and invest more.",
-#'   "hi, my name can't hello,"))
+#'   "Hi, I can't say hello."))
 #' @export
 #' @rdname ptb-tokenizer
 tokenize_ptb <- function(x, lowercase = FALSE, simplify = FALSE) {
+
   check_input(x)
   named <- names(x)
 
@@ -61,68 +62,64 @@ tokenize_ptb <- function(x, lowercase = FALSE, simplify = FALSE) {
       "\\b(mor)('n)\\b",
       "\\b(wan)(na) "
     )
-  CONTRACTIONS3 <-
-    c(" ('t)(is)\\b",
-      " ('t)(was)\\b")
+  CONTRACTIONS3 <- c(" ('t)(is)\\b", " ('t)(was)\\b")
 
-  CONTRACTIONS4 <-
-    c("\\b(whad)(dd)(ya)\\b",
-      "\\b(wha)(t)(cha)\\b")
-
-  out <- x
-
-  if (lowercase) {
-    x <- stri_trans_tolower(x)
-  }
-
+  CONTRACTIONS4 <- c("\\b(whad)(dd)(ya)\\b", "\\b(wha)(t)(cha)\\b")
 
   # Starting quotes
-  out <- stri_replace_all_regex(out, '^\\"', '``')
-  out <- stri_replace_all_regex(out, '(``)', '$1')
-  out <- stri_replace_all_regex(out, '([ (\\[{<])"', '$1 `` ')
-  # Punctuation
-  out <- stri_replace_all_regex(out, '([:,])([^\\d])', ' $1 $2')
-  out <- stri_replace_all_regex(out, '\\.{3}', ' ... ')
-  out <- stri_replace_all_regex(out, '([,;@#$%&])', ' $1 ')
-  out <- stri_replace_all_regex(out,
-                                '([^\\.])(\\.)([\\]\\)}>"\\\']*)?\\s*$',
-                                '$1 $2$3 ')
-  out <- stri_replace_all_regex(out, '([?!])', ' $1 ')
+  x <- stri_replace_all_regex(x, '^\\"', '``')
+  x <- stri_replace_all_regex(x, '(``)', '$1')
+  x <- stri_replace_all_regex(x, '([ (\\[{<])"', '$1 `` ')
 
-  out <- stri_replace_all_regex(out, "([^'])' ", "$1 ' ")
-  # re.sub\\(r(['"].*?['"]), r(["'].*?['"]), text\\)
+  # Punctuation
+  x <- stri_replace_all_regex(x, '([:,])([^\\d])', ' $1 $2')
+  x <- stri_replace_all_regex(x, '\\.{3}', ' ... ')
+  x <- stri_replace_all_regex(x, '([,;@#$%&])', ' $1 ')
+  x <- stri_replace_all_regex(x,
+                              '([^\\.])(\\.)([\\]\\)}>"\\\']*)?\\s*$',
+                              '$1 $2$3 ')
+  x <- stri_replace_all_regex(x, '([?!])', ' $1 ')
+
+  x <- stri_replace_all_regex(x, "([^'])' ", "$1 ' ")
 
   # parens, brackets, etc
-  out <- stri_replace_all_regex(out, '([\\]\\[\\(\\)\\{\\}\\<\\>])', ' $1 ')
-  out <- stri_replace_all_regex(out, '--', ' -- ')
+  x <- stri_replace_all_regex(x, '([\\]\\[\\(\\)\\{\\}\\<\\>])', ' $1 ')
+  x <- stri_replace_all_regex(x, '--', ' -- ')
 
   # add extra space
-  out <- stri_c(" ", out, " ")
+  x <- stri_c(" ", x, " ")
 
   # ending quotes
-  out <- stri_replace_all_regex(out, '"', " '' ")
-  out <- stri_replace_all_regex(out, "(\\S)('')", "\\1 \\2 ")
-  out <- stri_replace_all_regex(out, "([^' ])('[sS]|'[mM]|'[dD]|') ",
-                                "$1 $2 ")
-  out <- stri_replace_all_regex(out,
-                                "([^' ])('ll|'LL|'re|'RE|'ve|'VE|n't|N'T) ",
-                                "$1 $2 ")
+  x <- stri_replace_all_regex(x, '"', " '' ")
+  x <- stri_replace_all_regex(x, "(\\S)('')", "\\1 \\2 ")
+  x <- stri_replace_all_regex(x, "([^' ])('[sS]|'[mM]|'[dD]|') ",
+                              "$1 $2 ")
+  x <- stri_replace_all_regex(x,
+                              "([^' ])('ll|'LL|'re|'RE|'ve|'VE|n't|N'T) ",
+                              "$1 $2 ")
 
-  stri_replace_all_regex(out, CONTRACTIONS2, " $1 $2 ",
-                             opts_regex =
-                               stri_opts_regex(case_insensitive = TRUE),
-                         vectorize_all = FALSE)
-  stri_replace_all_regex(out, CONTRACTIONS3, " $1 $2 ",
-                         opts_regex = stri_opts_regex(case_insensitive = TRUE),
-                         vectorize_all = FALSE)
-  stri_replace_all_regex(out, CONTRACTIONS4, " $1 $2 $3 ",
-                         opts_regex = stri_opts_regex(case_insensitive = TRUE),
-                         vectorize_all = FALSE)
+  x <- stri_replace_all_regex(x, CONTRACTIONS2, " $1 $2 ",
+                              opts_regex =
+                              stri_opts_regex(case_insensitive = TRUE),
+                              vectorize_all = FALSE)
+  x <- stri_replace_all_regex(x, CONTRACTIONS3, " $1 $2 ",
+                              opts_regex = stri_opts_regex(case_insensitive = TRUE),
+                              vectorize_all = FALSE)
+  x <- stri_replace_all_regex(x, CONTRACTIONS4, " $1 $2 $3 ",
+                              opts_regex = stri_opts_regex(case_insensitive = TRUE),
+                              vectorize_all = FALSE)
 
   # return
-  out <- stri_split_regex(stri_trim_both(out), '\\s+')
-  if (!is.null(named)) {
-    names(out) <- named
+  x <- stri_split_regex(stri_trim_both(x), '\\s+')
+
+  if (lowercase) {
+    x <- lapply(x, stri_trans_tolower)
   }
-  simplify_list(out, simplify)
+
+  if (!is.null(named)) {
+    names(x) <- named
+  }
+
+  simplify_list(x, simplify)
+
 }

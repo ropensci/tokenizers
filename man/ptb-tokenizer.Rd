@@ -10,8 +10,7 @@ tokenize_ptb(x, lowercase = FALSE, simplify = FALSE)
 \item{x}{A character vector or a list of character vectors to be tokenized
 into n-grams. If \code{x} is a character vector, it can be of any length,
 and each element will be tokenized separately. If \code{x} is a list of
-character vectors, where each element of the list should have a length of
-1.}
+character vectors, each element of the list should have a length of 1.}
 
 \item{lowercase}{Should the tokens be made lower case?}
 
@@ -27,20 +26,22 @@ A list of character vectors containing the tokens, with one element
   character vector of tokens.
 }
 \description{
-This function implements the Penn Treebank word tokenizer. This tokenizer
-uses regular expressions to tokenize text similar to the tokenization used
-in the Penn Treebank. It assumes that text has already been tokenized into
-sentences. The tokenizer
-\itemize{
-\item{splits common English contractions, e.g. \verb{don't} is tokenized into
-    \verb{do n't} and \verb{they'll} is tokenized into -> \verb{they 'll},}
-\item{handles punctuation characters as separate tokens,}
-\item{splits commas and single quotes off from words, when they followed by whitespace,}
-\item{splits off periods that occur at the end of the line (sentence).}
-}
+This function implements the Penn Treebank word tokenizer.
 }
 \details{
-This function is a port of the Python NLTK version of the Penn Treebank Tokenizer.
+This tokenizer uses regular expressions to tokenize text similar to
+  the tokenization used in the Penn Treebank. It assumes that text has
+  already been split into sentences. The tokenizer does the following:
+
+  \itemize{ \item{splits common English contractions, e.g. \verb{don't} is
+  tokenized into \verb{do n't} and \verb{they'll} is tokenized into ->
+  \verb{they 'll},} \item{handles punctuation characters as separate tokens,}
+  \item{splits commas and single quotes off from words, when they are
+  followed by whitespace,} \item{splits off periods that occur at the end of
+  the sentence.} }
+
+This function is a port of the Python NLTK version of the Penn
+  Treebank Tokenizer.
 }
 \examples{
 song <- list(paste0("How many roads must a man walk down\\n",
@@ -52,13 +53,11 @@ song <- list(paste0("How many roads must a man walk down\\n",
              "The answer, my friend, is blowin' in the wind.",
              "The answer is blowin' in the wind.")
 tokenize_ptb(song)
-tokenize_ptb(c("Good muffins cost $3.88\\nin New York. Please buy me\\ntwo of them.\\nThanks.",
+tokenize_ptb(c("Good muffins cost $3.88\\nin New York. Please buy me\\ntwo of them.",
   "They'll save and invest more.",
-  "hi, my name can't hello,"))
+  "Hi, I can't say hello."))
 }
 \references{
-\itemize{
-\href{http://www.nltk.org/_modules/nltk/tokenize/treebank.html#TreebankWordTokenizer}{NLTK TreebankWordTokenizer}
-\href{http://www.cis.upenn.edu/~treebank/tokenizer.sed}{Original sed script}
-}
+\href{http://www.nltk.org/_modules/nltk/tokenize/treebank.html#TreebankWordTokenizer}{NLTK
+TreebankWordTokenizer}
 }
