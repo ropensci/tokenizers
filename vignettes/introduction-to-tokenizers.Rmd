@@ -64,13 +64,14 @@ Word stemming is provided by the [SnowballC](https://cran.r-project.org/package=
 tokenize_word_stems(james)
 ```
 
-You can also provide a vector of stop words. A default is provided for several languages by the `stopwords()` function.
+You can also provide a vector of stopwords. A default is provided for several languages by the `stopwords()` function.
 
 ```{r}
 tokenize_words(james, stopwords = stopwords())
 ```
 
 An alternative word stemmer often used in NLP that preserves punctuation and separates common English contractions is the Penn Treebank tokenizer.
+
 ```{r}
 tokenize_ptb(james)
 ```

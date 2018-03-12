@@ -3,9 +3,11 @@ library(stringr)
 files <- list.files("data-raw/lucene-stopwords", full.names = TRUE)
 languages <- files %>% basename() %>% str_replace("\\.txt", "") %>%
   str_replace("stopwords_", "")
-stopword_lists <- lapply(files, readLines) %>%
+stopwords_lucene <- lapply(files, readLines) %>%
   lapply(str_subset, pattern = regex("^[^#]"))
 names(stopword_lists) <- languages
-stopword_lists[["en"]]
 
-devtools::use_data(stopword_lists, internal = TRUE, overwrite = TRUE)
+stopwords_jockers <- readLines("data-raw/jockers-stopwords.txt", encoding = "UTF-8")
+
+devtools::use_data(stopwords_lucene, stopwords_jockers,
+                   internal = TRUE, overwrite = TRUE)
