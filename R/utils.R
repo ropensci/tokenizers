@@ -23,3 +23,12 @@ remove_stopwords <- function(x, stopwords) {
   }
   return(out)
 }
+
+ensure_utf8 <- function(x) {
+  if (is.character(x)) {
+    x <- stringi::stri_enc_toutf8(x)
+  } else if (is.list(x)) {
+    x <- lapply(x, stringi::stri_enc_toutf8)
+  }
+  x
+}

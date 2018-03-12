@@ -65,6 +65,7 @@ tokenize_ngrams <- function(x, lowercase = TRUE, n = 3L, n_min = n,
                             simplify = FALSE) {
   check_input(x)
   named <- names(x)
+  x <- ensure_utf8(x)
   if (n < n_min || n_min <= 0)
     stop("n and n_min must be integers, and n_min must be less than ",
          "n and greater than 1.")
@@ -107,6 +108,7 @@ tokenize_skip_ngrams <- function(x, lowercase = TRUE, n_min = 1, n = 3, k = 1,
                                  stopwords = character(), simplify = FALSE) {
   check_input(x)
   named <- names(x)
+  x <- ensure_utf8(x)
   words <- tokenize_words(x, lowercase = lowercase)
   skips <- unique(unlist(lapply(n_min:n, get_valid_skips, k),
                          recursive = FALSE, use.names = FALSE))
