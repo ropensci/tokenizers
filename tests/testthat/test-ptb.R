@@ -1,4 +1,4 @@
-context("PTB Tokenizer")
+context("PTB tokenizer")
 
 test_that("PTB tokenizer works as expected", {
   out_l <- tokenize_ptb(docs_l)

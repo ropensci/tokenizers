@@ -1,4 +1,4 @@
-context("test tokenize_tweets")
+context("Tweet tokenizer")
 
 test_that("tweet tokenizer works correctly with case", {
   txt <- c(t1 = "Try this: tokenizers at @rOpenSci https://twitter.com/search?q=ropensci&src=typd",
