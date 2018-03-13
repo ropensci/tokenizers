@@ -9,7 +9,8 @@ Description: Convert natural language text into tokens. The tokenizers have a
     characters, lines, tweets, Penn Treebank, regular expressions, as well
     as functions for counting characters, words, and sentences, and a function
     for splitting longer texts into separate documents, each with the same number
-    of words.
+    of words.  The package is built on the 'stringi' and 'Rcpp' packages for 
+    lightening fast yet correct tokenization in 'UTF-8'. 
 License: MIT + file LICENSE
 LazyData: yes
 Authors@R: c(person("Lincoln", "Mullen", role = c("aut", "cre"),

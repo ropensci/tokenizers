@@ -20,7 +20,11 @@ natural language text into tokens. Includes tokenizers for shingled
 n-grams, skip n-grams, words, word stems, sentences, paragraphs,
 characters, shingled characters, lines, tweets, Penn Treebank, and
 regular expressions, as well as functions for counting characters,
-words, and sentences.
+words, and sentences, and a function for splitting longer texts into
+separate documents, each with the same number of words. The package is
+built on the [stringi](http://www.gagolewski.com/software/stringi/) and
+[Rcpp](http://www.rcpp.org/) packages for lightening fast yet correct
+tokenization in UTF-8.
 
 ## Installation
 
