@@ -78,7 +78,7 @@
       <h1>Introduction to the tokenizers Package</h1>
                         <h4 class="author">Lincoln Mullen</h4>
             
-            <h4 class="date">2018-03-12</h4>
+            <h4 class="date">2018-03-13</h4>
           </div>
 
     
@@ -143,15 +143,15 @@
 ## [19] "and"      "feel"     "is"       "in"       "ani"      "case"    
 ## [25] "so"      
 ##  [ reached getOption("max.print") -- omitted 87 entries ]</code></pre>
-<p>You can also provide a vector of stopwords which will be omitted. A default is provided for several languages by the <code><a href="../reference/stopwords.html">stopwords()</a></code> function. This argument also works with the n-gram and skip n-gram tokenizers.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="../reference/basic-tokenizers.html">tokenize_words</a></span>(james, <span class="dt">stopwords =</span> <span class="kw"><a href="../reference/stopwords.html">stopwords</a></span>())</a></code></pre></div>
+<p>You can also provide a vector of stopwords which will be omitted. The <a href="https://github.com/quanteda/stopwords">stopwords package</a>, which contains stopwords for many languages from several sources, is recommended. This argument also works with the n-gram and skip n-gram tokenizers.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="../reference/basic-tokenizers.html">tokenize_words</a></span>(james, <span class="dt">stopwords =</span> stopwords<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/stopwords/topics/stopwords">stopwords</a></span>(<span class="st">"en"</span>))</a></code></pre></div>
 <pre><code>## [[1]]
 ##  [1] "question"    "thus"        "becomes"     "verbal"      "one"        
-##  [6] "again"       "our"         "knowledge"   "all"         "early"      
-## [11] "stages"      "thought"     "feeling"     "any"         "case"       
-## [16] "so"          "conjectural" "imperfect"   "farther"     "discussion" 
-## [21] "would"       "worth"       "while"       "religion"    "therefore"  
-##  [ reached getOption("max.print") -- omitted 47 entries ]</code></pre>
+##  [6] "knowledge"   "early"       "stages"      "thought"     "feeling"    
+## [11] "case"        "conjectural" "imperfect"   "farther"     "discussion" 
+## [16] "worth"       "religion"    "therefore"   "now"         "ask"        
+## [21] "arbitrarily" "take"        "shall"       "mean"        "us"         
+##  [ reached getOption("max.print") -- omitted 33 entries ]</code></pre>
 <p>An alternative word stemmer often used in NLP that preserves punctuation and separates common English contractions is the Penn Treebank tokenizer.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw"><a href="../reference/ptb-tokenizer.html">tokenize_ptb</a></span>(james)</a></code></pre></div>
 <pre><code>## [[1]]
@@ -166,39 +166,65 @@
 <h2 class="hasAnchor">
 <a href="#n-gram-and-skip-n-gram-tokenizers" class="anchor"></a>N-gram and skip n-gram tokenizers</h2>
 <p>An n-gram is a contiguous sequence of words containing at least <code>n_min</code> words and at most <code>n</code> words. This function will generate all such combinations of n-grams, omitting stopwords if desired.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw"><a href="../reference/ngram-tokenizers.html">tokenize_ngrams</a></span>(james, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">n_min =</span> <span class="dv">2</span>, <span class="dt">stopwords =</span> <span class="kw"><a href="../reference/stopwords.html">stopwords</a></span>())</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw"><a href="../reference/ngram-tokenizers.html">tokenize_ngrams</a></span>(james, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">n_min =</span> <span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">                <span class="dt">stopwords =</span> stopwords<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/stopwords/topics/stopwords">stopwords</a></span>(<span class="st">"en"</span>))</a></code></pre></div>
 <pre><code>## [[1]]
-##  [1] "question thus"                    "question thus becomes"           
-##  [3] "question thus becomes verbal"     "question thus becomes verbal one"
-##  [5] "thus becomes"                     "thus becomes verbal"             
-##  [7] "thus becomes verbal one"          "thus becomes verbal one again"   
-##  [9] "becomes verbal"                   "becomes verbal one"              
-## [11] "becomes verbal one again"         "becomes verbal one again our"    
-## [13] "verbal one"                       "verbal one again"                
-## [15] "verbal one again our"             "verbal one again our knowledge"  
-## [17] "one again"                        "one again our"                   
-## [19] "one again our knowledge"          "one again our knowledge all"     
-## [21] "again our"                        "again our knowledge"             
-## [23] "again our knowledge all"          "again our knowledge all early"   
-## [25] "our knowledge"                   
-##  [ reached getOption("max.print") -- omitted 253 entries ]</code></pre>
+##  [1] "question thus"                         
+##  [2] "question thus becomes"                 
+##  [3] "question thus becomes verbal"          
+##  [4] "question thus becomes verbal one"      
+##  [5] "thus becomes"                          
+##  [6] "thus becomes verbal"                   
+##  [7] "thus becomes verbal one"               
+##  [8] "thus becomes verbal one knowledge"     
+##  [9] "becomes verbal"                        
+## [10] "becomes verbal one"                    
+## [11] "becomes verbal one knowledge"          
+## [12] "becomes verbal one knowledge early"    
+## [13] "verbal one"                            
+## [14] "verbal one knowledge"                  
+## [15] "verbal one knowledge early"            
+## [16] "verbal one knowledge early stages"     
+## [17] "one knowledge"                         
+## [18] "one knowledge early"                   
+## [19] "one knowledge early stages"            
+## [20] "one knowledge early stages thought"    
+## [21] "knowledge early"                       
+## [22] "knowledge early stages"                
+## [23] "knowledge early stages thought"        
+## [24] "knowledge early stages thought feeling"
+## [25] "early stages"                          
+##  [ reached getOption("max.print") -- omitted 197 entries ]</code></pre>
 <p>A skip n-gram is like an n-gram in that it takes the <code>n</code> and <code>n_min</code> parameters. But rather than returning contiguous sequences of words, it will also return sequences of n-grams skipping words with gaps between <code>0</code> and the value of <code>k</code>. This function generates all such sequences, again omitting stopwords if desired. Note that the number of tokens returned can be very large.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw"><a href="../reference/ngram-tokenizers.html">tokenize_skip_ngrams</a></span>(james, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">n_min =</span> <span class="dv">2</span>, <span class="dt">k =</span> <span class="dv">2</span>, <span class="dt">stopwords =</span> <span class="kw"><a href="../reference/stopwords.html">stopwords</a></span>())</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw"><a href="../reference/ngram-tokenizers.html">tokenize_skip_ngrams</a></span>(james, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">n_min =</span> <span class="dv">2</span>, <span class="dt">k =</span> <span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb16-2" data-line-number="2">                     <span class="dt">stopwords =</span> stopwords<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/stopwords/topics/stopwords">stopwords</a></span>(<span class="st">"en"</span>))</a></code></pre></div>
 <pre><code>## [[1]]
-##  [1] "question thus"                 "question becomes"             
-##  [3] "question verbal"               "question thus becomes"        
-##  [5] "question thus verbal"          "question thus one"            
-##  [7] "question becomes verbal"       "question becomes one"         
-##  [9] "question becomes again"        "question verbal one"          
-## [11] "question verbal again"         "question verbal our"          
-## [13] "question thus becomes verbal"  "question thus becomes one"    
-## [15] "question thus becomes again"   "question thus verbal one"     
-## [17] "question thus verbal again"    "question thus verbal our"     
-## [19] "question thus one again"       "question thus one our"        
-## [21] "question thus one knowledge"   "question becomes verbal one"  
-## [23] "question becomes verbal again" "question becomes verbal our"  
-## [25] "question becomes one again"   
-##  [ reached getOption("max.print") -- omitted 7763 entries ]</code></pre>
+##  [1] "question thus"                    
+##  [2] "question becomes"                 
+##  [3] "question verbal"                  
+##  [4] "question thus becomes"            
+##  [5] "question thus verbal"             
+##  [6] "question thus one"                
+##  [7] "question becomes verbal"          
+##  [8] "question becomes one"             
+##  [9] "question becomes knowledge"       
+## [10] "question verbal one"              
+## [11] "question verbal knowledge"        
+## [12] "question verbal early"            
+## [13] "question thus becomes verbal"     
+## [14] "question thus becomes one"        
+## [15] "question thus becomes knowledge"  
+## [16] "question thus verbal one"         
+## [17] "question thus verbal knowledge"   
+## [18] "question thus verbal early"       
+## [19] "question thus one knowledge"      
+## [20] "question thus one early"          
+## [21] "question thus one stages"         
+## [22] "question becomes verbal one"      
+## [23] "question becomes verbal knowledge"
+## [24] "question becomes verbal early"    
+## [25] "question becomes one knowledge"   
+##  [ reached getOption("max.print") -- omitted 6083 entries ]</code></pre>
 </div>
 <div id="tweet-tokenizer" class="section level2">
 <h2 class="hasAnchor">

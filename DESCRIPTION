@@ -23,9 +23,7 @@ Authors@R: c(person("Lincoln", "Mullen", role = c("aut", "cre"),
         person("Jeffrey", "Arnold", role = c("ctb"),
         email = "jeffrey.arnold@gmail.com"),
         person("Kenneth", "Benoit", role = c("ctb"),
-        email = "kbenoit@lse.ac.uk"),
-        person("Matthew", "Jockers", role = c("ctb"),
-        comment = "Jockers stopwords list"))
+        email = "kbenoit@lse.ac.uk"))
 URL: https://github.com/ropensci/tokenizers
 BugReports: https://github.com/ropensci/tokenizers/issues
 RoxygenNote: 6.0.1
@@ -34,6 +32,7 @@ Depends:
 Imports:
   stringi (>= 1.0.1),
   Rcpp (>= 0.12.3),
+  stopwords (>= 0.9.0),
   SnowballC (>= 0.5.1)
 LinkingTo: Rcpp
 Suggests: testthat,
