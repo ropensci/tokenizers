@@ -103,25 +103,33 @@
 
 
 <div class="section level1">
-<h1>tokenizers (development)</h1>
+<h1>tokenizers 0.2.0</h1>
+<div class="section level2">
+<h2>Features</h2>
 <ul>
+<li>Add the <code><a href="reference/ptb-tokenizer.html">tokenize_ptb()</a></code> function for Penn Treebank tokenizations (@jrnold) (#12).</li>
 <li>Add a function <code><a href="reference/chunk_text.html">chunk_text()</a></code> to split long documents into pieces (#30).</li>
-<li>Add the <code><a href="reference/ptb-tokenizer.html">tokenize_ptb()</a></code> function for Penn Tree Bank tokenizations (@jrnold).</li>
-<li>C++98 has replaced the C++11 code used for ngram generation, widening the range of compilers <code>tokenizers</code> supports (#26)</li>
-<li>If tokenisers fail to generate tokens for a particular entry, they return NA consistently (#33)</li>
-<li>
-<code>tokenize_skip_ngrams</code> now supports stopwords (#31)</li>
-<li>
-<code>tokenize_skip_ngrams</code> has been improved to generate unigrams and bigrams, according to the skip definition (#24)</li>
-<li>Keyboard interrupt checks have been added to Rcpp-backed functions to enable users to terminate them before completion (#37)</li>
 <li>New functions to count words, characters, and sentences without tokenization (#36).</li>
-<li>New function <code><a href="reference/basic-tokenizers.html">tokenize_tweets()</a></code> preserves usernames, hashtags, and URLS (@kbenoit) (#44)</li>
-<li>
-<code><a href="reference/basic-tokenizers.html">tokenize_words()</a></code> gains arguments to preserve or strip punctuation and numbers (#48)</li>
-<li>
-<code><a href="reference/ngram-tokenizers.html">tokenize_skip_ngrams()</a></code> and <code><a href="reference/ngram-tokenizers.html">tokenize_ngrams()</a></code> to return properly marked UTF8 strings on Windows (@patperry) (#58).</li>
+<li>New function <code><a href="reference/basic-tokenizers.html">tokenize_tweets()</a></code> preserves usernames, hashtags, and URLS (@kbenoit) (#44).</li>
 <li>New stopword list from Matthew Jockers suitable for novels (#53).</li>
 </ul>
+</div>
+<div class="section level2">
+<h2>Bug fixes and performance improvements</h2>
+<ul>
+<li>
+<code>tokenize_skip_ngrams</code> has been improved to generate unigrams and bigrams, according to the skip definition (#24).</li>
+<li>C++98 has replaced the C++11 code used for n-gram generation, widening the range of compilers <code>tokenizers</code> supports (#26).</li>
+<li>
+<code>tokenize_skip_ngrams</code> now supports stopwords (#31).</li>
+<li>If tokenisers fail to generate tokens for a particular entry, they return <code>NA</code> consistently (#33).</li>
+<li>Keyboard interrupt checks have been added to Rcpp-backed functions to enable users to terminate them before completion (#37).</li>
+<li>
+<code><a href="reference/basic-tokenizers.html">tokenize_words()</a></code> gains arguments to preserve or strip punctuation and numbers (#48).</li>
+<li>
+<code><a href="reference/ngram-tokenizers.html">tokenize_skip_ngrams()</a></code> and <code><a href="reference/ngram-tokenizers.html">tokenize_ngrams()</a></code> to return properly marked UTF8 strings on Windows (@patperry) (#58).</li>
+</ul>
+</div>
 </div>
 <div class="section level1">
 <h1>tokenizers 0.1.4</h1>

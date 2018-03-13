@@ -1,17 +1,22 @@
-# tokenizers (development)
+# tokenizers 0.2.0
 
+## Features
+
+- Add the `tokenize_ptb()` function for Penn Treebank tokenizations (@jrnold) (#12).
 - Add a function `chunk_text()` to split long documents into pieces (#30).
-- Add the `tokenize_ptb()` function for Penn Tree Bank tokenizations (@jrnold).
-- C++98 has replaced the C++11 code used for ngram generation, widening the range of compilers `tokenizers` supports (#26)
-- If tokenisers fail to generate tokens for a particular entry, they return NA consistently (#33)
-- `tokenize_skip_ngrams` now supports stopwords (#31)
-- `tokenize_skip_ngrams` has been improved to generate unigrams and bigrams, according to the skip definition (#24)
-- Keyboard interrupt checks have been added to Rcpp-backed functions to enable users to terminate them before completion (#37)
 - New functions to count words, characters, and sentences without tokenization (#36).
-- New function `tokenize_tweets()` preserves usernames, hashtags, and URLS (@kbenoit) (#44)
-- `tokenize_words()` gains arguments to preserve or strip punctuation and numbers (#48)
-- `tokenize_skip_ngrams()` and `tokenize_ngrams()` to return properly marked UTF8 strings on Windows (@patperry) (#58).
+- New function `tokenize_tweets()` preserves usernames, hashtags, and URLS (@kbenoit) (#44).
 - New stopword list from Matthew Jockers suitable for novels (#53).
+
+## Bug fixes and performance improvements
+
+- `tokenize_skip_ngrams` has been improved to generate unigrams and bigrams, according to the skip definition (#24).
+- C++98 has replaced the C++11 code used for n-gram generation, widening the range of compilers `tokenizers` supports (#26).
+- `tokenize_skip_ngrams` now supports stopwords (#31).
+- If tokenisers fail to generate tokens for a particular entry, they return `NA` consistently (#33).
+- Keyboard interrupt checks have been added to Rcpp-backed functions to enable users to terminate them before completion (#37).
+- `tokenize_words()` gains arguments to preserve or strip punctuation and numbers (#48).
+- `tokenize_skip_ngrams()` and `tokenize_ngrams()` to return properly marked UTF8 strings on Windows (@patperry) (#58).
 
 # tokenizers 0.1.4
 

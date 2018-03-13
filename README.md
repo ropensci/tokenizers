@@ -44,6 +44,10 @@ devtools::install_github("ropensci/tokenizers")
 
 ## Examples
 
+See the [Introduction to the tokenizers
+Package](https://ropensci.github.io/tokenizers/articles/introduction-to-tokenizers.html)
+vignette for an overview of all the functions in this package.
+
 The tokenizers in this package have a consistent interface. They all
 take either a character vector of any length, or a list where each
 element is a character vector of length one. The idea is that each

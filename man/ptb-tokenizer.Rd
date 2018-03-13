@@ -2,7 +2,7 @@
 % Please edit documentation in R/ptb-tokenizer.R
 \name{tokenize_ptb}
 \alias{tokenize_ptb}
-\title{Penn Tree Bank Tokenizer}
+\title{Penn Treebank Tokenizer}
 \usage{
 tokenize_ptb(x, lowercase = FALSE, simplify = FALSE)
 }

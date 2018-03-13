@@ -1,4 +1,4 @@
-#' Penn Tree Bank Tokenizer
+#' Penn Treebank Tokenizer
 #'
 #' This function implements the Penn Treebank word tokenizer.
 #'

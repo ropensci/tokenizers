@@ -104,6 +104,42 @@
 
     <div class="contents">
     <div class="section level1">
+<h1>tokenizers 0.2.0</h1>
+<div class="section level2">
+<h2>Features</h2>
+<ul>
+<li>Add the <code><a href="../reference/ptb-tokenizer.html">tokenize_ptb()</a></code> function for Penn Treebank tokenizations (<a href='http://github.com/jrnold'>@jrnold</a>) (<a href='https://github.com/ropensci/tokenizers/issues/12'>#12</a>).</li>
+<li>Add a function <code><a href="../reference/chunk_text.html">chunk_text()</a></code> to split long documents into pieces (<a href='https://github.com/ropensci/tokenizers/issues/30'>#30</a>).</li>
+<li>New functions to count words, characters, and sentences without tokenization (<a href='https://github.com/ropensci/tokenizers/issues/36'>#36</a>).</li>
+<li>New function <code><a href="../reference/basic-tokenizers.html">tokenize_tweets()</a></code> preserves usernames, hashtags, and URLS (<a href='http://github.com/kbenoit'>@kbenoit</a>) (<a href='https://github.com/ropensci/tokenizers/issues/44'>#44</a>).</li>
+<li>New stopword list from Matthew Jockers suitable for novels (<a href='https://github.com/ropensci/tokenizers/issues/53'>#53</a>).</li>
+</ul>
+</div>
+<div class="section level2">
+<h2>Bug fixes and performance improvements</h2>
+<ul>
+<li>
+<code>tokenize_skip_ngrams</code> has been improved to generate unigrams and bigrams, according to the skip definition (<a href='https://github.com/ropensci/tokenizers/issues/24'>#24</a>).</li>
+<li>C++98 has replaced the C++11 code used for n-gram generation, widening the range of compilers <code>tokenizers</code> supports (<a href='https://github.com/ropensci/tokenizers/issues/26'>#26</a>).</li>
+<li>
+<code>tokenize_skip_ngrams</code> now supports stopwords (<a href='https://github.com/ropensci/tokenizers/issues/31'>#31</a>).</li>
+<li>If tokenisers fail to generate tokens for a particular entry, they return <code>NA</code> consistently (<a href='https://github.com/ropensci/tokenizers/issues/33'>#33</a>).</li>
+<li>Keyboard interrupt checks have been added to Rcpp-backed functions to enable users to terminate them before completion (<a href='https://github.com/ropensci/tokenizers/issues/37'>#37</a>).</li>
+<li>
+<code><a href="../reference/basic-tokenizers.html">tokenize_words()</a></code> gains arguments to preserve or strip punctuation and numbers (<a href='https://github.com/ropensci/tokenizers/issues/48'>#48</a>).</li>
+<li>
+<code><a href="../reference/ngram-tokenizers.html">tokenize_skip_ngrams()</a></code> and <code><a href="../reference/ngram-tokenizers.html">tokenize_ngrams()</a></code> to return properly marked UTF8 strings on Windows (<a href='http://github.com/patperry'>@patperry</a>) (<a href='https://github.com/ropensci/tokenizers/issues/58'>#58</a>).</li>
+</ul>
+</div>
+</div>
+    <div class="section level1">
+<h1>tokenizers 0.1.4</h1>
+<ul>
+<li>Add the <code><a href="../reference/shingle-tokenizers.html">tokenize_character_shingles()</a></code> tokenizer.</li>
+<li>Improvements to documentation.</li>
+</ul>
+</div>
+    <div class="section level1">
 <h1>tokenizers 0.1.3</h1>
 <ul>
 <li>Add vignette.</li>
@@ -129,7 +165,6 @@
 <li>Initial release with tokenizers for characters, words, word stems, sentences paragraphs, n-grams, skip n-grams, lines, and regular expressions.</li>
 </ul>
 </div>
-    NA
     </div>
   </div>
 
@@ -137,11 +172,12 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#NA">0.2.0</a></li>
+        <li><a href="#NA">0.1.4</a></li>
         <li><a href="#NA">0.1.3</a></li>
         <li><a href="#NA">0.1.2</a></li>
         <li><a href="#NA">0.1.1</a></li>
         <li><a href="#NA">0.1.0</a></li>
-        <li><a href="#NA">NA</a></li>
       </ul>
     </div>
   </div>
