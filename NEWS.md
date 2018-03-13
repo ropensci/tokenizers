@@ -6,7 +6,7 @@
 - Add a function `chunk_text()` to split long documents into pieces (#30).
 - New functions to count words, characters, and sentences without tokenization (#36).
 - New function `tokenize_tweets()` preserves usernames, hashtags, and URLS (@kbenoit) (#44).
-- New stopword list from Matthew Jockers suitable for novels (#53).
+- The `stopwords()` function has been removed in favor of using the stopwords package (#46).
 
 ## Bug fixes and performance improvements
 
