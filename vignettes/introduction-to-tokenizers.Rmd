@@ -39,20 +39,24 @@ james <- paste0(
 )
 ```
 
-### Characters
+### Character tokenizers
+
+The character tokenizer splits texts into individual characters. 
 
 ```{r}
 tokenize_characters(james)[[1]] 
 ```
 
-You can also tokenize character-based shingles.
+You can also tokenize into character-based shingles.
 
 ```{r}
-tokenize_character_shingles(james, strip_non_alphanum = FALSE)[[1]][1:20]
+tokenize_character_shingles(james, n = 3, n_min = 3, 
+                            strip_non_alphanum = FALSE)[[1]][1:20]
 ```
 
+### Word and word-stem tokenizers
 
-### Words and word stems
+The word tokenizer splits texts into words. 
 
 ```{r}
 tokenize_words(james)
@@ -64,7 +68,7 @@ Word stemming is provided by the [SnowballC](https://cran.r-project.org/package=
 tokenize_word_stems(james)
 ```
 
-You can also provide a vector of stopwords. A default is provided for several languages by the `stopwords()` function.
+You can also provide a vector of stopwords which will be omitted. A default is provided for several languages by the `stopwords()` function. This argument also works with the n-gram and skip n-gram tokenizers.
 
 ```{r}
 tokenize_words(james, stopwords = stopwords())
@@ -77,22 +81,55 @@ tokenize_ptb(james)
 ```
 
 
-### Sentences and paragraphs
+### N-gram and skip n-gram tokenizers
+
+An n-gram is a contiguous sequence of words containing at least `n_min` words and at most `n` words. This function will generate all such combinations of n-grams, omitting stopwords if desired.
 
 ```{r}
+tokenize_ngrams(james, n = 5, n_min = 2, stopwords = stopwords())
+```
+
+A skip n-gram is like an n-gram in that it takes the `n` and `n_min` parameters. But rather than returning contiguous sequences of words, it will also return sequences of n-grams skipping words with gaps between `0` and the value of `k`. This function generates all such sequences, again omitting stopwords if desired. Note that the number of tokens returned can be very large.
+
+```{r}
+tokenize_skip_ngrams(james, n = 5, n_min = 2, k = 2, stopwords = stopwords())
+```
+
+### Tweet tokenizer
+
+Tokenizing tweets requires special attention, since usernames (`@whoever`) and hashtags (`#hashtag`) use special characters that might otherwise be stripped away.
+
+```{r}
+tokenize_tweets("Welcome, @user, to the tokenizers package. #rstats #forever")
+```
+
+### Sentence and paragraph tokenizers
+
+Sometimes it is desirable to split texts into sentences or paragraphs prior to tokenizing into other forms.
+
+```{r, collapse=FALSE}
 tokenize_sentences(james) 
 tokenize_paragraphs(james)
 ```
 
-### N-grams and skip n-grams
+### Text chunking
+
+When one has a very long document, sometimes it is desirable to split the document into smaller chunks, each with the same length. This function chunks a document and gives it each of the chunks an ID to show their order. These chunks can then be further tokenized.
 
 ```{r}
-tokenize_ngrams(james, n = 5, n_min = 2)
-tokenize_skip_ngrams(james, n = 5, k = 2)
+chunks <- chunk_text(mobydick, chunk_size = 100, doc_id = "mobydick")
+length(chunks)
+chunks[5:6]
+tokenize_words(chunks[5:6])
 ```
 
-### Miscellaneous
+### Counting words, characters, sentences
+
+The package also offers functions for counting words, characters, and sentences in a format which works nicely with the rest of the functions.
 
 ```{r}
-tokenize_lines(james)
+count_words(mobydick)
+count_characters(mobydick)
+count_sentences(mobydick)
 ```
+

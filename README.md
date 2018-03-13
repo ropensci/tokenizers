@@ -1,14 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-## tokenizers
-
-An R package that collects functions with a consistent interface to
-convert natural language text into tokens.
-
-**Author:** [Lincoln Mullen](http://lincolnmullen.com) and [Dmitriy
-Selivanov](https://github.com/dselivanov)<br> **License:**
-[MIT](http://opensource.org/licenses/MIT)<br>
+# tokenizers
 
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/tokenizers)](http://cran.r-project.org/package=tokenizers)
 [![CRAN\_Downloads](http://cranlogs.r-pkg.org/badges/grand-total/tokenizers)](http://cran.r-project.org/package=tokenizers)
@@ -20,7 +13,16 @@ status](https://ci.appveyor.com/api/projects/status/qx3vh3ukjgo99iu4/branch/mast
 Status](https://img.shields.io/codecov/c/github/ropensci/tokenizers/master.svg)](https://codecov.io/github/ropensci/tokenizers?branch=master)
 [![](https://badges.ropensci.org/33_status.svg)](https://github.com/ropensci/onboarding/issues/33)
 
-### Installation
+## Overview
+
+An R package offering functions with a consistent interface to convert
+natural language text into tokens. Includes tokenizers for shingled
+n-grams, skip n-grams, words, word stems, sentences, paragraphs,
+characters, shingled characters, lines, tweets, Penn Treebank, and
+regular expressions, as well as functions for counting characters,
+words, and sentences.
+
+## Installation
 
 You can install this package from CRAN:
 
@@ -36,7 +38,7 @@ To get the development version from GitHub, use
 devtools::install_github("ropensci/tokenizers")
 ```
 
-### Examples
+## Examples
 
 The tokenizers in this package have a consistent interface. They all
 take either a character vector of any length, or a list where each
@@ -65,6 +67,7 @@ james <- paste0(
   "sense in which we take it, theologies, philosophies, and ecclesiastical\n",
   "organizations may secondarily grow.\n"
 )
+names(james) <- "varieties"
 
 tokenize_characters(james)[[1]] %>% head(50)
 #>  [1] "t" "h" "e" "q" "u" "e" "s" "t" "i" "o" "n" "t" "h" "u" "s" "b" "e"
@@ -80,12 +83,12 @@ tokenize_word_stems(james)[[1]] %>% head(10)
 #>  [1] "the"      "question" "thus"     "becom"    "a"        "verbal"  
 #>  [7] "one"      "again"    "and"      "our"
 tokenize_sentences(james) 
-#> [[1]]
+#> $varieties
 #> [1] "The question thus becomes a verbal one again; and our knowledge of all these early stages of thought and feeling is in any case so conjectural and imperfect that farther discussion would not be worth while."                                               
 #> [2] "Religion, therefore, as I now ask you arbitrarily to take it, shall mean for us _the feelings, acts, and experiences of individual men in their solitude, so far as they apprehend themselves to stand in relation to whatever they may consider the divine_."
 #> [3] "Since the relation may be either moral, physical, or ritual, it is evident that out of religion in the sense in which we take it, theologies, philosophies, and ecclesiastical organizations may secondarily grow."
 tokenize_paragraphs(james)
-#> [[1]]
+#> $varieties
 #> [1] "The question thus becomes a verbal one again; and our knowledge of all these early stages of thought and feeling is in any case so conjectural and imperfect that farther discussion would not be worth while."                                                                                                                                                                                                                                                                   
 #> [2] "Religion, therefore, as I now ask you arbitrarily to take it, shall mean for us _the feelings, acts, and experiences of individual men in their solitude, so far as they apprehend themselves to stand in relation to whatever they may consider the divine_. Since the relation may be either moral, physical, or ritual, it is evident that out of religion in the sense in which we take it, theologies, philosophies, and ecclesiastical organizations may secondarily grow. "
 tokenize_ngrams(james, n = 5, n_min = 2)[[1]] %>% head(10)
@@ -99,15 +102,38 @@ tokenize_skip_ngrams(james, n = 5, k = 2)[[1]] %>% head(10)
 #>  [4] "the becomes"          "the question thus"    "the question becomes"
 #>  [7] "the question a"       "the thus becomes"     "the thus a"          
 #> [10] "the thus verbal"
+tokenize_ptb(james)[[1]] %>% head(10)
+#>  [1] "The"      "question" "thus"     "becomes"  "a"        "verbal"  
+#>  [7] "one"      "again"    ";"        "and"
 tokenize_lines(james)[[1]] %>% head(5)
 #> [1] "The question thus becomes a verbal one"                                   
 #> [2] "again; and our knowledge of all these early stages of thought and feeling"
 #> [3] "is in any case so conjectural and imperfect that farther discussion would"
 #> [4] "not be worth while."                                                      
 #> [5] "Religion, therefore, as I now ask you arbitrarily to take it, shall mean"
+tokenize_tweets("Hey @handle, #rstats is awesome!")[[1]]
+#> [1] "hey"     "@handle" "#rstats" "is"      "awesome"
 ```
 
-### Contributing
+The package also contains functions to count words, characters, and
+sentences, and these functions follow the same consistent interface.
+
+``` r
+count_words(james)
+#> varieties 
+#>       112
+count_characters(james)
+#> varieties 
+#>       673
+count_sentences(james)
+#> varieties 
+#>        13
+```
+
+The `chunk_text()` function splits a document into smaller chunks, each
+with the same number of words.
+
+## Contributing
 
 Contributions to the package are more than welcome. One way that you can
 help is by using this package in your R package for natural language

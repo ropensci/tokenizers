@@ -5,8 +5,11 @@ Version: 0.1.4.9001
 Description: Convert natural language text into tokens. The tokenizers have a
     consistent interface and are compatible with Unicode, thanks to being built
     on the 'stringi' package. Includes tokenizers for shingled n-grams, skip
-    n-grams, words, word stems, sentences, paragraphs, characters, lines, and
-    regular expressions.
+    n-grams, words, word stems, sentences, paragraphs, characters, shingled 
+    characters, lines, tweets, Penn Treebank, regular expressions, as well
+    as functions for counting characters, words, and sentences, and a function
+    for splitting longer texts into separate documents, each with the same number
+    of words.
 License: MIT + file LICENSE
 LazyData: yes
 Authors@R: c(person("Lincoln", "Mullen", role = c("aut", "cre"),
