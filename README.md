@@ -44,8 +44,8 @@ devtools::install_github("ropensci/tokenizers")
 
 ## Examples
 
-See the [Introduction to the tokenizers
-Package](https://ropensci.github.io/tokenizers/articles/introduction-to-tokenizers.html)
+See the “[Introduction to the tokenizers
+Package](https://ropensci.github.io/tokenizers/articles/introduction-to-tokenizers.html)”
 vignette for an overview of all the functions in this package.
 
 The tokenizers in this package have a consistent interface. They all
