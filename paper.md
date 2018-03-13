@@ -23,6 +23,10 @@ A clear statement of need that illustrates the purpose of the software
 A list of key references including a link to the software archive
 Mentions (if applicable) of any ongoing research projects using the software or recent scholarly publications enabled by it
 
-The tokenizers package has research application in a wide array of fields. It was originally created for the authors' historical research into the use of the Bible in American newspapers [@mullen_americas_] and the borrowing of legal codes of civil procedure in the nineteenth century [@funk_spine_2018, @funk_servile_2016]. 
+Tokenization is a key step in text mining. [@]
+
+Important that it be fast and correct. 
+
+The `tokenizers` package has research application in a wide array of disciplines. It was originally created for the authors' historical research into the use of the Bible in American newspapers [@mullen_americas_] and the borrowing of legal codes of civil procedure in the nineteenth century [@funk_spine_2018, @funk_servile_2016]. The `tokenizers` package underlies the `tidytext` package described in @silge_text_2017. Via that package `tokenizers` has been used in disciplines such as political science [@sanger_2015_], social science [@warin_mapping_], communication studies [@xu_using_2018], English [@ballier_r-based_2017], and the digital humanities more generally.
 
 # References

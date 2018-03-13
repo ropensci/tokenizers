@@ -8,3 +8,5 @@
 ^data-raw$
 ^appveyor\.yml$
 ^docs$
+^paper.bib$
+^paper.md$
