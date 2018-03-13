@@ -42,13 +42,37 @@
 #' tokenize_word_stems(song)
 #' @export
 #' @rdname stem-tokenizers
-tokenize_word_stems <- function(x, language = "english", stopwords = NULL,
-                                simplify = FALSE) {
-  check_input(x)
-  named <- names(x)
-  language <- match.arg(language, getStemLanguages())
-  words <- tokenize_words(x, lowercase = TRUE, stopwords = stopwords)
-  out <- lapply(words, wordStem, language = language)
-  if (!is.null(named)) names(out) <- named
-  simplify_list(out, simplify)
-}
+tokenize_word_stems <-
+  function(x,
+           language = "english",
+           stopwords = NULL,
+           simplify = FALSE) {
+    UseMethod("tokenize_word_stems")
+  }
+
+#' @export
+tokenize_word_stems.data.frame <-
+  function(x,
+           language = "english",
+           stopwords = NULL,
+           simplify = FALSE) {
+    x <- corpus_df_as_corpus_vector(x)
+    tokenize_word_stems(x, language, stopwords, simplify)
+  }
+
+#' @export
+tokenize_word_stems.default <-
+  function(x,
+           language = "english",
+           stopwords = NULL,
+           simplify = FALSE) {
+    check_input(x)
+    named <- names(x)
+    language <- match.arg(language, getStemLanguages())
+    words <-
+      tokenize_words(x, lowercase = TRUE, stopwords = stopwords)
+    out <- lapply(words, wordStem, language = language)
+    if (!is.null(named))
+      names(out) <- named
+    simplify_list(out, simplify)
+  }

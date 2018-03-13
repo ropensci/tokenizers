@@ -5,6 +5,9 @@ docs_l <- lapply(docs_full, paste, collapse = "\n")
 docs_c <- unlist(docs_l)
 names(docs_l) <- basename(paths)
 names(docs_c) <- basename(paths)
+docs_df <- data.frame(doc_id = names(docs_c),
+                      text = unname(docs_c),
+                      stringsAsFactors = FALSE)
 
 bad_list <- list(a = paste(letters, collapse = " "), b = letters)
 
