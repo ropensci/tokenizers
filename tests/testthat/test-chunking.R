@@ -28,4 +28,8 @@ test_that("Document chunking splits documents apart correctly", {
   names(test_wc) <- c("test-1", "test-2", "test-3")
   expect_named(out, names(test_wc))
   expect_identical(out_wc, test_wc)
+
+  out_short <- chunk_text("This is a short text")
+  expect_equal(count_words(out_short[[1]]), 5)
+  expect_named(out_short, NULL)
 })

@@ -124,3 +124,7 @@ test_that("Skip n-gram tokenizers respects stopwords", {
                                 simplify = TRUE)
   expect_equal(length(grep("the", out_1)), 0)
 })
+
+test_that("Skip n-gram tokenizer warns about large combinations", {
+  expect_warning(get_valid_skips(n = 7, k = 2), "Input n and k will")
+})

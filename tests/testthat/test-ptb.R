@@ -33,4 +33,7 @@ test_that("Word tokenizer produces correct output", {
          c("They", "'ll", "save", "and", "invest", "more", "."),
          c("hi", ",", "my", "name", "ca", "n't", "hello", ","))
   expect_identical(tokenize_ptb(sents), expected)
+
+  expect_identical(tokenize_ptb("This can't work.", lowercase = TRUE, simplify = TRUE),
+                   c("this", "ca", "n't", "work", "."))
 })
