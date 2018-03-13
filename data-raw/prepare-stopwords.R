@@ -5,7 +5,7 @@ languages <- files %>% basename() %>% str_replace("\\.txt", "") %>%
   str_replace("stopwords_", "")
 stopwords_lucene <- lapply(files, readLines) %>%
   lapply(str_subset, pattern = regex("^[^#]"))
-names(stopword_lists) <- languages
+names(stopwords_lucene) <- languages
 
 stopwords_jockers <- readLines("data-raw/jockers-stopwords.txt", encoding = "UTF-8")
 
