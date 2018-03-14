@@ -15,14 +15,16 @@ LazyData: yes
 Authors@R: c(person("Lincoln", "Mullen", role = c("aut", "cre"),
         email = "lincoln@lincolnmullen.com",
         comment = c(ORCID = "0000-0001-5103-6917")),
-        person("Oliver", "Keyes", role = c("ctb"),
-        email = "ironholds@gmail.com"),
+        person("Os", "Keyes", role = c("ctb"),
+        email = "ironholds@gmail.com",
+        comment = c(ORCID = "0000-0001-5196-609X")),
         person("Dmitriy", "Selivanov", role = c("ctb"),
         email = "selivanov.dmitriy@gmail.com"),
         person("Jeffrey", "Arnold", role = c("ctb"),
         email = "jeffrey.arnold@gmail.com"),
         person("Kenneth", "Benoit", role = c("ctb"),
-        email = "kbenoit@lse.ac.uk"))
+        email = "kbenoit@lse.ac.uk",
+        comment = c(ORCID = "0000-0002-0797-564X")))
 URL: https://github.com/ropensci/tokenizers
 BugReports: https://github.com/ropensci/tokenizers/issues
 RoxygenNote: 6.0.1
