@@ -11,11 +11,16 @@ authors:
 - name: Kenneth Benoit
   orcid: 0000-0002-0797-564X
   affiliation: 2
+- name: Os Keyes
+  orcid: 0000-0001-5196-609X
+  affiliation: 3
 affiliations: 
 - name: "Department of History and Art History, George Mason University"
   index: 1
 - name: London School of Economics and Political Science
   index: 2
+- name: "Department of Human Centered Design & Engineering, University of Washington"
+  index: 3
 date: 12 March 2018
 bibliography: paper.bib
 ...
