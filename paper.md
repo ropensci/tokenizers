@@ -5,12 +5,17 @@ tags:
 - tokenization
 - natural language processing
 authors:
-- name: Lincoln Mullen
+- name: Lincoln A. Mullen
   orcid: 0000-0001-5103-6917
   affiliation: 1
+- name: Kenneth Benoit
+  orcid: 0000-0002-0797-564X
+  affiliation: 2
 affiliations: 
 - name: "Department of History and Art History, George Mason University"
   index: 1
+- name: London School of Economics and Political Science
+  index: 2
 date: 12 March 2018
 bibliography: paper.bib
 ...
