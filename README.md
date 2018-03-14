@@ -15,7 +15,7 @@ Status](https://img.shields.io/codecov/c/github/ropensci/tokenizers/master.svg)]
 
 ## Overview
 
-An R package offering functions with a consistent interface to convert
+This R package offers functions with a consistent interface to convert
 natural language text into tokens. Includes tokenizers for shingled
 n-grams, skip n-grams, words, word stems, sentences, paragraphs,
 characters, shingled characters, lines, tweets, Penn Treebank, and
@@ -25,6 +25,19 @@ separate documents, each with the same number of words. The package is
 built on the [stringi](http://www.gagolewski.com/software/stringi/) and
 [Rcpp](http://www.rcpp.org/) packages for lightening fast yet correct
 tokenization in UTF-8.
+
+See the “[Introduction to the tokenizers
+Package](https://ropensci.github.io/tokenizers/articles/introduction-to-tokenizers.html)”
+vignette for an overview of all the functions in this package.
+
+This package complies with the standards for input and output
+recommended by the Text Interchange Formats. The TIF initiative was
+created at an rOpenSci meeting in 2017, and its recommendations are
+available as part of the [tif package](https://github.com/ropensci/tif).
+See the “[The Text Interchange Formats and the tokenizers
+Package](https://ropensci.github.io/tokenizers/articles/tif-and-tokenizers.html)”
+vignette for an explanation of how this package fits into that
+ecosystem.
 
 ## Installation
 
@@ -43,10 +56,6 @@ devtools::install_github("ropensci/tokenizers")
 ```
 
 ## Examples
-
-See the “[Introduction to the tokenizers
-Package](https://ropensci.github.io/tokenizers/articles/introduction-to-tokenizers.html)”
-vignette for an overview of all the functions in this package.
 
 The tokenizers in this package have a consistent interface. They all
 take either a character vector of any length, or a list where each
