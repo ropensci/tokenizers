@@ -79,6 +79,9 @@ punctuation should be retained or discarded." />
     <li>
       <a href="../articles/introduction-to-tokenizers.html">Introduction to the tokenizers Package</a>
     </li>
+    <li>
+      <a href="../articles/tif-and-tokenizers.html">The Text Interchange Formats and the tokenizers Package</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -176,19 +179,13 @@ list.</p></td>
 #&gt; </div><div class='input'><span class='fu'>tokenize_character_shingles</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>strip_non_alphanum</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [[1]]
 #&gt;  [1] "now i" "ow is" "w is " " is t" "is th" "s the" " the " "the h" "he ho"
 #&gt; [10] "e hou" " hour" "hour " "our o" "ur of" "r of " " of o" "of ou" "f our"
-#&gt; [19] " our " "our d" "ur di" "r dis" " disc" "disco" "iscon" "scont" "conte"
-#&gt; [28] "onten" "ntent"
+#&gt; [19] " our " "our d" "ur di" "r dis" " disc" "disco" "iscon"
+#&gt;  [ reached getOption("max.print") -- omitted 4 entries ]
 #&gt; </div><div class='input'><span class='fu'>tokenize_character_shingles</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>n_min</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>strip_non_alphanum</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [[1]]
 #&gt;  [1] "now"   "now "  "now i" "ow "   "ow i"  "ow is" "w i"   "w is"  "w is "
 #&gt; [10] " is"   " is "  " is t" "is "   "is t"  "is th" "s t"   "s th"  "s the"
-#&gt; [19] " th"   " the"  " the " "the"   "the "  "the h" "he "   "he h"  "he ho"
-#&gt; [28] "e h"   "e ho"  "e hou" " ho"   " hou"  " hour" "hou"   "hour"  "hour "
-#&gt; [37] "our"   "our "  "our o" "ur "   "ur o"  "ur of" "r o"   "r of"  "r of "
-#&gt; [46] " of"   " of "  " of o" "of "   "of o"  "of ou" "f o"   "f ou"  "f our"
-#&gt; [55] " ou"   " our"  " our " "our"   "our "  "our d" "ur "   "ur d"  "ur di"
-#&gt; [64] "r d"   "r di"  "r dis" " di"   " dis"  " disc" "dis"   "disc"  "disco"
-#&gt; [73] "isc"   "isco"  "iscon" "sco"   "scon"  "scont" "con"   "cont"  "conte"
-#&gt; [82] "ont"   "onte"  "onten" "nte"   "nten"  "ntent" "ten"   "tent"  "ent"  
+#&gt; [19] " th"   " the"  " the " "the"   "the "  "the h" "he "  
+#&gt;  [ reached getOption("max.print") -- omitted 65 entries ]
 #&gt; </div><div class='input'>
 </div></pre>
   </div>

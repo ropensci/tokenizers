@@ -10,15 +10,14 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><meta property="og:title" content="Fast, Consistent Tokenization of Natural Language Text">
-<meta property="og:description" content="Convert natural language text into tokens. The tokenizers have a
-    consistent interface and are compatible with Unicode, thanks to being built
-    on the 'stringi' package. Includes tokenizers for shingled n-grams, skip
-    n-grams, words, word stems, sentences, paragraphs, characters, shingled 
-    characters, lines, tweets, Penn Treebank, regular expressions, as well
-    as functions for counting characters, words, and sentences, and a function
-    for splitting longer texts into separate documents, each with the same number
-    of words.  The package is built on the 'stringi' and 'Rcpp' packages for 
-    lightening fast yet correct tokenization in 'UTF-8'. ">
+<meta property="og:description" content="Convert natural language text into tokens. Includes tokenizers for
+    shingled n-grams, skip n-grams, words, word stems, sentences, paragraphs,
+    characters, shingled characters, lines, tweets, Penn Treebank, regular
+    expressions, as well as functions for counting characters, words, and sentences,
+    and a function for splitting longer texts into separate documents, each with
+    the same number of words.  The tokenizers have a consistent interface, and
+    the package is built on the 'stringi' and 'Rcpp' packages for  lightening fast
+    yet correct tokenization in 'UTF-8'. ">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -58,6 +57,9 @@
 <li>
       <a href="articles/introduction-to-tokenizers.html">Introduction to the tokenizers Package</a>
     </li>
+    <li>
+      <a href="articles/tif-and-tokenizers.html">The Text Interchange Formats and the tokenizers Package</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -95,7 +97,9 @@
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
-<p>An R package offering functions with a consistent interface to convert natural language text into tokens. Includes tokenizers for shingled n-grams, skip n-grams, words, word stems, sentences, paragraphs, characters, shingled characters, lines, tweets, Penn Treebank, and regular expressions, as well as functions for counting characters, words, and sentences, and a function for splitting longer texts into separate documents, each with the same number of words. The package is built on the <a href="http://www.gagolewski.com/software/stringi/">stringi</a> and <a href="http://www.rcpp.org/">Rcpp</a> packages for lightening fast yet correct tokenization in UTF-8.</p>
+<p>This R package offers functions with a consistent interface to convert natural language text into tokens. Includes tokenizers for shingled n-grams, skip n-grams, words, word stems, sentences, paragraphs, characters, shingled characters, lines, tweets, Penn Treebank, and regular expressions, as well as functions for counting characters, words, and sentences, and a function for splitting longer texts into separate documents, each with the same number of words. The package is built on the <a href="http://www.gagolewski.com/software/stringi/">stringi</a> and <a href="http://www.rcpp.org/">Rcpp</a> packages for lightening fast yet correct tokenization in UTF-8.</p>
+<p>See the “<a href="https://ropensci.github.io/tokenizers/articles/introduction-to-tokenizers.html">Introduction to the tokenizers Package</a>” vignette for an overview of all the functions in this package.</p>
+<p>This package complies with the standards for input and output recommended by the Text Interchange Formats. The TIF initiative was created at an rOpenSci meeting in 2017, and its recommendations are available as part of the <a href="https://github.com/ropensci/tif">tif package</a>. See the “<a href="https://ropensci.github.io/tokenizers/articles/tif-and-tokenizers.html">The Text Interchange Formats and the tokenizers Package</a>” vignette for an explanation of how this package fits into that ecosystem.</p>
 </div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
@@ -109,7 +113,6 @@
 <div id="examples" class="section level2">
 <h2 class="hasAnchor">
 <a href="#examples" class="anchor"></a>Examples</h2>
-<p>See the “<a href="https://ropensci.github.io/tokenizers/articles/introduction-to-tokenizers.html">Introduction to the tokenizers Package</a>” vignette for an overview of all the functions in this package.</p>
 <p>The tokenizers in this package have a consistent interface. They all take either a character vector of any length, or a list where each element is a character vector of length one. The idea is that each element comprises a text. Then each function returns a list with the same length as the input vector, where each element in the list contains the tokens generated by the function. If the input character vector or list is named, then the names are preserved, so that the names can serve as identifiers.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">library</span>(magrittr)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">library</span>(tokenizers)</a>

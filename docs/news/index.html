@@ -73,6 +73,9 @@
     <li>
       <a href="../articles/introduction-to-tokenizers.html">Introduction to the tokenizers Package</a>
     </li>
+    <li>
+      <a href="../articles/tif-and-tokenizers.html">The Text Interchange Formats and the tokenizers Package</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -113,6 +116,8 @@
 <li>New functions to count words, characters, and sentences without tokenization (<a href='https://github.com/ropensci/tokenizers/issues/36'>#36</a>).</li>
 <li>New function <code><a href="../reference/basic-tokenizers.html">tokenize_tweets()</a></code> preserves usernames, hashtags, and URLS (<a href='http://github.com/kbenoit'>@kbenoit</a>) (<a href='https://github.com/ropensci/tokenizers/issues/44'>#44</a>).</li>
 <li>The <code>stopwords()</code> function has been removed in favor of using the stopwords package (<a href='https://github.com/ropensci/tokenizers/issues/46'>#46</a>).</li>
+<li>The package now complies with the basic recommendations of the Text Interchange Format. All tokenization functions are now methods. This enables them to take corpus inputs as either TIF-compliant named character vectors, named lists, or data frames. All outputs are still named lists of tokens, but these can be easily coerced to data frames of tokens using the <code>tif</code> package. (<a href='https://github.com/ropensci/tokenizers/issues/49'>#49</a>)</li>
+<li>Add a new vignette “The Text Interchange Formats and the tokenizers Package” (<a href='https://github.com/ropensci/tokenizers/issues/49'>#49</a>).</li>
 </ul>
 </div>
 <div class="section level2">

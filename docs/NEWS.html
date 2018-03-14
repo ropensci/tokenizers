@@ -73,6 +73,9 @@
     <li>
       <a href="articles/introduction-to-tokenizers.html">Introduction to the tokenizers Package</a>
     </li>
+    <li>
+      <a href="articles/tif-and-tokenizers.html">The Text Interchange Formats and the tokenizers Package</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -112,6 +115,8 @@
 <li>New functions to count words, characters, and sentences without tokenization (#36).</li>
 <li>New function <code><a href="reference/basic-tokenizers.html">tokenize_tweets()</a></code> preserves usernames, hashtags, and URLS (@kbenoit) (#44).</li>
 <li>The <code>stopwords()</code> function has been removed in favor of using the stopwords package (#46).</li>
+<li>The package now complies with the basic recommendations of the Text Interchange Format. All tokenization functions are now methods. This enables them to take corpus inputs as either TIF-compliant named character vectors, named lists, or data frames. All outputs are still named lists of tokens, but these can be easily coerced to data frames of tokens using the <code>tif</code> package. (#49)</li>
+<li>Add a new vignette “The Text Interchange Formats and the tokenizers Package” (#49).</li>
 </ul>
 </div>
 <div class="section level2">
