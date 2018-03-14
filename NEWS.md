@@ -7,6 +7,8 @@
 - New functions to count words, characters, and sentences without tokenization (#36).
 - New function `tokenize_tweets()` preserves usernames, hashtags, and URLS (@kbenoit) (#44).
 - The `stopwords()` function has been removed in favor of using the stopwords package (#46).
+- The package now complies with the basic recommendations of the Text Interchange Format. All tokenization functions are now methods. This enables them to take corpus inputs as either TIF-compliant named character vectors, named lists, or data frames. All outputs are still named lists of tokens, but these can be easily coerced to data frames of tokens using the `tif` package. (#49)
+- Add a new vignette "The Text Interchange Formats and the tokenizers Package" (#49).
 
 ## Bug fixes and performance improvements
 
