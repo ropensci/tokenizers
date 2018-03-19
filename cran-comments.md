@@ -10,6 +10,6 @@ detailed in the NEWS.md file.
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
-
-The one note pertains to a new release of the package. 
+* One NOTE pertains to a new release of the package. 
+* One NOTE pertains to non-ASCII strings in test files only, which are
+  necessary to ensure the package's functionality on Windows.

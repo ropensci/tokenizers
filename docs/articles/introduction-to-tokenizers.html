@@ -150,14 +150,15 @@
 <a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; [25] "so"      </span></a>
 <a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt;  [ reached getOption("max.print") -- omitted 87 entries ]</span></a></code></pre></div>
 <p>You can also provide a vector of stopwords which will be omitted. The <a href="https://github.com/quanteda/stopwords">stopwords package</a>, which contains stopwords for many languages from several sources, is recommended. This argument also works with the n-gram and skip n-gram tokenizers.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="../reference/basic-tokenizers.html">tokenize_words</a></span>(james, <span class="dt">stopwords =</span> stopwords<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/stopwords/topics/stopwords">stopwords</a></span>(<span class="st">"en"</span>))</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; [[1]]</span></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt;  [1] "question"    "thus"        "becomes"     "verbal"      "one"        </span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt;  [6] "knowledge"   "early"       "stages"      "thought"     "feeling"    </span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; [11] "case"        "conjectural" "imperfect"   "farther"     "discussion" </span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; [16] "worth"       "religion"    "therefore"   "now"         "ask"        </span></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; [21] "arbitrarily" "take"        "shall"       "mean"        "us"         </span></a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt;  [ reached getOption("max.print") -- omitted 33 entries ]</span></a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">library</span>(stopwords)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw"><a href="../reference/basic-tokenizers.html">tokenize_words</a></span>(james, <span class="dt">stopwords =</span> stopwords<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/stopwords/topics/stopwords">stopwords</a></span>(<span class="st">"en"</span>))</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; [[1]]</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt;  [1] "question"    "thus"        "becomes"     "verbal"      "one"        </span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt;  [6] "knowledge"   "early"       "stages"      "thought"     "feeling"    </span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; [11] "case"        "conjectural" "imperfect"   "farther"     "discussion" </span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; [16] "worth"       "religion"    "therefore"   "now"         "ask"        </span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; [21] "arbitrarily" "take"        "shall"       "mean"        "us"         </span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt;  [ reached getOption("max.print") -- omitted 33 entries ]</span></a></code></pre></div>
 <p>An alternative word stemmer often used in NLP that preserves punctuation and separates common English contractions is the Penn Treebank tokenizer.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="../reference/ptb-tokenizer.html">tokenize_ptb</a></span>(james)</a>
 <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">#&gt; [[1]]</span></a>

@@ -76,6 +76,7 @@ tokenize_word_stems(james)
 You can also provide a vector of stopwords which will be omitted. The [stopwords package](https://github.com/quanteda/stopwords), which contains stopwords for many languages from several sources, is recommended. This argument also works with the n-gram and skip n-gram tokenizers.
 
 ```{r}
+library(stopwords)
 tokenize_words(james, stopwords = stopwords::stopwords("en"))
 ```
 

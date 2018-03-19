@@ -34,11 +34,12 @@ Depends:
 Imports:
   stringi (>= 1.0.1),
   Rcpp (>= 0.12.3),
-  stopwords (>= 0.9.0),
   SnowballC (>= 0.5.1)
 LinkingTo: Rcpp
-Suggests: testthat,
-    covr,
-    knitr,
-    rmarkdown
+Suggests:
+  covr,
+  knitr,
+  rmarkdown,
+  stopwords (>= 0.9.0),
+  testthat
 VignetteBuilder: knitr
