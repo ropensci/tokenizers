@@ -3,8 +3,8 @@
 
 # tokenizers
 
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/tokenizers)](http://cran.r-project.org/package=tokenizers)
-[![CRAN\_Downloads](http://cranlogs.r-pkg.org/badges/grand-total/tokenizers)](http://cran.r-project.org/package=tokenizers)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/tokenizers)](https://cran.r-project.org/package=tokenizers)
+[![CRAN\_Downloads](http://cranlogs.r-pkg.org/badges/grand-total/tokenizers)](https://cran.r-project.org/package=tokenizers)
 [![Travis-CI Build
 Status](https://travis-ci.org/ropensci/tokenizers.svg?branch=master)](https://travis-ci.org/ropensci/tokenizers)
 [![Appveyor Build
