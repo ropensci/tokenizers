@@ -23,11 +23,19 @@ knitr::opts_chunk$set(
 
 ## Overview
 
-This R package offers functions with a consistent interface to convert natural language text into tokens. Includes tokenizers for shingled n-grams, skip n-grams, words, word stems, sentences, paragraphs, characters, shingled characters, lines, tweets, Penn Treebank, and regular expressions, as well as functions for counting characters, words, and sentences, and a function for splitting longer texts into separate documents, each with the same number of words. The package is built on the [stringi](http://www.gagolewski.com/software/stringi/) and [Rcpp](http://www.rcpp.org/) packages for lightening fast yet correct tokenization in UTF-8. 
+This R package offers functions with a consistent interface to convert natural language text into tokens. Includes tokenizers for shingled n-grams, skip n-grams, words, word stems, sentences, paragraphs, characters, shingled characters, lines, tweets, Penn Treebank, and regular expressions, as well as functions for counting characters, words, and sentences, and a function for splitting longer texts into separate documents, each with the same number of words. The package is built on the [stringi](http://www.gagolewski.com/software/stringi/) and [Rcpp](http://www.rcpp.org/) packages for fast yet correct tokenization in UTF-8. 
 
 See the "[Introduction to the tokenizers Package](https://ropensci.github.io/tokenizers/articles/introduction-to-tokenizers.html)" vignette for an overview of all the functions in this package.
 
 This package complies with the standards for input and output recommended by the Text Interchange Formats. The TIF initiative was created at an rOpenSci meeting in 2017, and its recommendations are available as part of the [tif package](https://github.com/ropensci/tif). See the "[The Text Interchange Formats and the tokenizers Package](https://ropensci.github.io/tokenizers/articles/tif-and-tokenizers.html)" vignette for an explanation of how this package fits into that ecosystem.
+
+## Suggested citation
+
+If you use this package for your research, please cite it. We will submit a paper to the _Journal of Open Source Software_, but in the meantime you can use R's suggested citation.
+
+```{r}
+citation("tokenizers")
+```
 
 ## Installation
 

@@ -23,8 +23,8 @@ regular expressions, as well as functions for counting characters,
 words, and sentences, and a function for splitting longer texts into
 separate documents, each with the same number of words. The package is
 built on the [stringi](http://www.gagolewski.com/software/stringi/) and
-[Rcpp](http://www.rcpp.org/) packages for lightening fast yet correct
-tokenization in UTF-8.
+[Rcpp](http://www.rcpp.org/) packages for fast yet correct tokenization
+in UTF-8.
 
 See the “[Introduction to the tokenizers
 Package](https://ropensci.github.io/tokenizers/articles/introduction-to-tokenizers.html)”
@@ -38,6 +38,32 @@ See the “[The Text Interchange Formats and the tokenizers
 Package](https://ropensci.github.io/tokenizers/articles/tif-and-tokenizers.html)”
 vignette for an explanation of how this package fits into that
 ecosystem.
+
+## Suggested citation
+
+If you use this package for your research, please cite it. We will
+submit a paper to the *Journal of Open Source Software*, but in the
+meantime you can use R’s suggested citation.
+
+``` r
+citation("tokenizers")
+#> 
+#> To cite package 'tokenizers' in publications use:
+#> 
+#>   Lincoln Mullen (2018). tokenizers: Fast, Consistent Tokenization
+#>   of Natural Language Text. R package version 0.2.0.
+#>   https://github.com/ropensci/tokenizers
+#> 
+#> A BibTeX entry for LaTeX users is
+#> 
+#>   @Manual{,
+#>     title = {tokenizers: Fast, Consistent Tokenization of Natural Language Text},
+#>     author = {Lincoln Mullen},
+#>     year = {2018},
+#>     note = {R package version 0.2.0},
+#>     url = {https://github.com/ropensci/tokenizers},
+#>   }
+```
 
 ## Installation
 

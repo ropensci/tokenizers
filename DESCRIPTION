@@ -1,14 +1,15 @@
 Package: tokenizers
 Type: Package
 Title: Fast, Consistent Tokenization of Natural Language Text
-Version: 0.1.4.9001
+Version: 0.2.0
+Date: 2018-03-19
 Description: Convert natural language text into tokens. Includes tokenizers for
     shingled n-grams, skip n-grams, words, word stems, sentences, paragraphs,
     characters, shingled characters, lines, tweets, Penn Treebank, regular
     expressions, as well as functions for counting characters, words, and sentences,
     and a function for splitting longer texts into separate documents, each with
     the same number of words.  The tokenizers have a consistent interface, and
-    the package is built on the 'stringi' and 'Rcpp' packages for  lightening fast
+    the package is built on the 'stringi' and 'Rcpp' packages for  fast
     yet correct tokenization in 'UTF-8'. 
 License: MIT + file LICENSE
 LazyData: yes
