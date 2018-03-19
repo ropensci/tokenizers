@@ -58,7 +58,7 @@ paragraphs.}
 
 \item{pattern}{A regular expression that defines the split.}
 
-\item{strip_url}{Should URLs (starting with http(s)) be preserved intact, or
+\item{strip_url}{Should URLs (starting with \code{http(s)}) be preserved intact, or
 removed entirely?}
 }
 \value{

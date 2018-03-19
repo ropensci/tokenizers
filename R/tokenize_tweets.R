@@ -1,5 +1,5 @@
 #' @rdname basic-tokenizers
-#' @param strip_url Should URLs (starting with http(s)) be preserved intact, or
+#' @param strip_url Should URLs (starting with \code{http(s)}) be preserved intact, or
 #'   removed entirely?
 #' @importFrom stringi stri_split_charclass stri_detect_regex stri_sub
 #' @export
