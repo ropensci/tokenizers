@@ -25,8 +25,6 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
 <meta property="og:title" content="Basic tokenizers — basic-tokenizers" />
 
 <meta property="og:description" content="These functions perform basic tokenization into words, sentences, paragraphs,
@@ -85,7 +83,7 @@ paragraphs and then word tokens, or into sentences and then word tokens." />
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -108,6 +106,7 @@ paragraphs and then word tokens, or into sentences and then word tokens." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Basic tokenizers</h1>
+    <small>Source: <a href='https:/github.com/ropensci/tokenizers/blob/master/R/basic-tokenizers.R'><code>R/basic-tokenizers.R</code></a>, <a href='https:/github.com/ropensci/tokenizers/blob/master/R/tokenize_tweets.R'><code>R/tokenize_tweets.R</code></a></small>
     </div>
 
     
@@ -211,17 +210,31 @@ removed entirely?</p></td>
                 <span class='st'>"The answer is blowin' in the wind.\n"</span>)
 
 <span class='fu'>tokenize_words</span>(<span class='no'>song</span>)</div><div class='output co'>#&gt; [[1]]
-#&gt;  [1] "how"    "many"   "roads"  "must"   "a"      "man"    "walk"   "down"  
-#&gt;  [9] "before" "you"    "call"   "him"    "a"      "man"    "how"    "many"  
-#&gt; [17] "seas"   "must"   "a"      "white"  "dove"   "sail"   "before" "she"   
-#&gt; [25] "sleeps"
-#&gt;  [ reached getOption("max.print") -- omitted 30 entries ]
+#&gt;  [1] "how"         "many"        "roads"       "must"        "a"          
+#&gt;  [6] "man"         "walk"        "down"        "before"      "you"        
+#&gt; [11] "call"        "him"         "a"           "man"         "how"        
+#&gt; [16] "many"        "seas"        "must"        "a"           "white"      
+#&gt; [21] "dove"        "sail"        "before"      "she"         "sleeps"     
+#&gt; [26] "in"          "the"         "sand"        "how"         "many"       
+#&gt; [31] "times"       "must"        "the"         "cannonballs" "fly"        
+#&gt; [36] "before"      "they're"     "forever"     "banned"      "the"        
+#&gt; [41] "answer"      "my"          "friend"      "is"          "blowin"     
+#&gt; [46] "in"          "the"         "wind"        "the"         "answer"     
+#&gt; [51] "is"          "blowin"      "in"          "the"         "wind"       
 #&gt; </div><div class='input'><span class='fu'>tokenize_words</span>(<span class='no'>song</span>, <span class='kw'>strip_punct</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [[1]]
-#&gt;  [1] "how"    "many"   "roads"  "must"   "a"      "man"    "walk"   "down"  
-#&gt;  [9] "before" "you"    "call"   "him"    "a"      "man"    "?"      "how"   
-#&gt; [17] "many"   "seas"   "must"   "a"      "white"  "dove"   "sail"   "before"
-#&gt; [25] "she"   
-#&gt;  [ reached getOption("max.print") -- omitted 39 entries ]
+#&gt;  [1] "how"         "many"        "roads"       "must"        "a"          
+#&gt;  [6] "man"         "walk"        "down"        "before"      "you"        
+#&gt; [11] "call"        "him"         "a"           "man"         "?"          
+#&gt; [16] "how"         "many"        "seas"        "must"        "a"          
+#&gt; [21] "white"       "dove"        "sail"        "before"      "she"        
+#&gt; [26] "sleeps"      "in"          "the"         "sand"        "?"          
+#&gt; [31] "how"         "many"        "times"       "must"        "the"        
+#&gt; [36] "cannonballs" "fly"         "before"      "they're"     "forever"    
+#&gt; [41] "banned"      "?"           "the"         "answer"      ","          
+#&gt; [46] "my"          "friend"      ","           "is"          "blowin"     
+#&gt; [51] "'"           "in"          "the"         "wind"        "."          
+#&gt; [56] "the"         "answer"      "is"          "blowin"      "'"          
+#&gt; [61] "in"          "the"         "wind"        "."          
 #&gt; </div><div class='input'><span class='fu'>tokenize_sentences</span>(<span class='no'>song</span>)</div><div class='output co'>#&gt; [[1]]
 #&gt; [1] "How many roads must a man walk down Before you call him a man?"        
 #&gt; [2] "How many seas must a white dove sail Before she sleeps in the sand?"   
@@ -241,9 +254,13 @@ removed entirely?</p></td>
 #&gt; [7] "The answer, my friend, is blowin' in the wind."
 #&gt; [8] "The answer is blowin' in the wind."            
 #&gt; </div><div class='input'><span class='fu'>tokenize_characters</span>(<span class='no'>song</span>)</div><div class='output co'>#&gt; [[1]]
-#&gt;  [1] "h" "o" "w" "m" "a" "n" "y" "r" "o" "a" "d" "s" "m" "u" "s" "t" "a" "m" "a"
-#&gt; [20] "n" "w" "a" "l" "k" "d"
-#&gt;  [ reached getOption("max.print") -- omitted 194 entries ]
+#&gt;   [1] "h" "o" "w" "m" "a" "n" "y" "r" "o" "a" "d" "s" "m" "u" "s" "t" "a" "m"
+#&gt;  [19] "a" "n" "w" "a" "l" "k" "d" "o" "w" "n" "b" "e" "f" "o" "r" "e" "y" "o"
+#&gt;  [37] "u" "c" "a" "l" "l" "h" "i" "m" "a" "m" "a" "n" "h" "o" "w" "m" "a" "n"
+#&gt;  [55] "y" "s" "e" "a" "s" "m" "u" "s" "t" "a" "w" "h" "i" "t" "e" "d" "o" "v"
+#&gt;  [73] "e" "s" "a" "i" "l" "b" "e" "f" "o" "r" "e" "s" "h" "e" "s" "l" "e" "e"
+#&gt;  [91] "p" "s" "i" "n" "t" "h" "e" "s" "a" "n"
+#&gt;  [ reached getOption("max.print") -- omitted 119 entries ]
 #&gt; </div><div class='input'><span class='fu'>tokenize_tweets</span>(<span class='st'>"@rOpenSci and #rstats see: https://cran.r-project.org"</span>,
                 <span class='kw'>strip_punct</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [[1]]
 #&gt; [1] "@rOpenSci"                  "and"                       

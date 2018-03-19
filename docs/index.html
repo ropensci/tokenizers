@@ -16,7 +16,7 @@
     expressions, as well as functions for counting characters, words, and sentences,
     and a function for splitting longer texts into separate documents, each with
     the same number of words.  The tokenizers have a consistent interface, and
-    the package is built on the 'stringi' and 'Rcpp' packages for  lightening fast
+    the package is built on the 'stringi' and 'Rcpp' packages for  fast
     yet correct tokenization in 'UTF-8'. ">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
@@ -63,7 +63,7 @@
   </ul>
 </li>
 <li>
-  <a href="news/index.html">News</a>
+  <a href="news/index.html">Changelog</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -97,103 +97,125 @@
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
-<p>This R package offers functions with a consistent interface to convert natural language text into tokens. Includes tokenizers for shingled n-grams, skip n-grams, words, word stems, sentences, paragraphs, characters, shingled characters, lines, tweets, Penn Treebank, and regular expressions, as well as functions for counting characters, words, and sentences, and a function for splitting longer texts into separate documents, each with the same number of words. The package is built on the <a href="http://www.gagolewski.com/software/stringi/">stringi</a> and <a href="http://www.rcpp.org/">Rcpp</a> packages for lightening fast yet correct tokenization in UTF-8.</p>
+<p>This R package offers functions with a consistent interface to convert natural language text into tokens. Includes tokenizers for shingled n-grams, skip n-grams, words, word stems, sentences, paragraphs, characters, shingled characters, lines, tweets, Penn Treebank, and regular expressions, as well as functions for counting characters, words, and sentences, and a function for splitting longer texts into separate documents, each with the same number of words. The package is built on the <a href="http://www.gagolewski.com/software/stringi/">stringi</a> and <a href="http://www.rcpp.org/">Rcpp</a> packages for fast yet correct tokenization in UTF-8.</p>
 <p>See the “<a href="https://ropensci.github.io/tokenizers/articles/introduction-to-tokenizers.html">Introduction to the tokenizers Package</a>” vignette for an overview of all the functions in this package.</p>
 <p>This package complies with the standards for input and output recommended by the Text Interchange Formats. The TIF initiative was created at an rOpenSci meeting in 2017, and its recommendations are available as part of the <a href="https://github.com/ropensci/tif">tif package</a>. See the “<a href="https://ropensci.github.io/tokenizers/articles/tif-and-tokenizers.html">The Text Interchange Formats and the tokenizers Package</a>” vignette for an explanation of how this package fits into that ecosystem.</p>
+</div>
+<div id="suggested-citation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#suggested-citation" class="anchor"></a>Suggested citation</h2>
+<p>If you use this package for your research, please cite it. We will submit a paper to the <em>Journal of Open Source Software</em>, but in the meantime you can use R’s suggested citation.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">citation</span>(<span class="st">"tokenizers"</span>)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">#&gt; To cite package 'tokenizers' in publications use:</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co">#&gt;   Lincoln Mullen (2018). tokenizers: Fast, Consistent Tokenization</span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="co">#&gt;   of Natural Language Text. R package version 0.2.0.</span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co">#&gt;   https://github.com/ropensci/tokenizers</span></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></a>
+<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="co">#&gt;   @Manual{,</span></a>
+<a class="sourceLine" id="cb1-12" data-line-number="12"><span class="co">#&gt;     title = {tokenizers: Fast, Consistent Tokenization of Natural Language Text},</span></a>
+<a class="sourceLine" id="cb1-13" data-line-number="13"><span class="co">#&gt;     author = {Lincoln Mullen},</span></a>
+<a class="sourceLine" id="cb1-14" data-line-number="14"><span class="co">#&gt;     year = {2018},</span></a>
+<a class="sourceLine" id="cb1-15" data-line-number="15"><span class="co">#&gt;     note = {R package version 0.2.0},</span></a>
+<a class="sourceLine" id="cb1-16" data-line-number="16"><span class="co">#&gt;     url = {https://github.com/ropensci/tokenizers},</span></a>
+<a class="sourceLine" id="cb1-17" data-line-number="17"><span class="co">#&gt;   }</span></a></code></pre></div>
 </div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install this package from CRAN:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">"tokenizers"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">"tokenizers"</span>)</a></code></pre></div>
 <p>To get the development version from GitHub, use <a href="https://github.com/hadley/devtools">devtools</a>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"ropensci/tokenizers"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"ropensci/tokenizers"</span>)</a></code></pre></div>
 </div>
 <div id="examples" class="section level2">
 <h2 class="hasAnchor">
 <a href="#examples" class="anchor"></a>Examples</h2>
-<p>The tokenizers in this package have a consistent interface. They all take either a character vector of any length, or a list where each element is a character vector of length one. The idea is that each element comprises a text. Then each function returns a list with the same length as the input vector, where each element in the list contains the tokens generated by the function. If the input character vector or list is named, then the names are preserved, so that the names can serve as identifiers.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">library</span>(magrittr)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">library</span>(tokenizers)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">james &lt;-<span class="st"> </span><span class="kw">paste0</span>(</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">  <span class="st">"The question thus becomes a verbal one</span><span class="ch">\n</span><span class="st">"</span>,</a>
-<a class="sourceLine" id="cb3-6" data-line-number="6">  <span class="st">"again; and our knowledge of all these early stages of thought and feeling</span><span class="ch">\n</span><span class="st">"</span>,</a>
-<a class="sourceLine" id="cb3-7" data-line-number="7">  <span class="st">"is in any case so conjectural and imperfect that farther discussion would</span><span class="ch">\n</span><span class="st">"</span>,</a>
-<a class="sourceLine" id="cb3-8" data-line-number="8">  <span class="st">"not be worth while.</span><span class="ch">\n</span><span class="st">"</span>,</a>
-<a class="sourceLine" id="cb3-9" data-line-number="9">  <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>,</a>
-<a class="sourceLine" id="cb3-10" data-line-number="10">  <span class="st">"Religion, therefore, as I now ask you arbitrarily to take it, shall mean</span><span class="ch">\n</span><span class="st">"</span>,</a>
-<a class="sourceLine" id="cb3-11" data-line-number="11">  <span class="st">"for us _the feelings, acts, and experiences of individual men in their</span><span class="ch">\n</span><span class="st">"</span>,</a>
-<a class="sourceLine" id="cb3-12" data-line-number="12">  <span class="st">"solitude, so far as they apprehend themselves to stand in relation to</span><span class="ch">\n</span><span class="st">"</span>,</a>
-<a class="sourceLine" id="cb3-13" data-line-number="13">  <span class="st">"whatever they may consider the divine_. Since the relation may be either</span><span class="ch">\n</span><span class="st">"</span>,</a>
-<a class="sourceLine" id="cb3-14" data-line-number="14">  <span class="st">"moral, physical, or ritual, it is evident that out of religion in the</span><span class="ch">\n</span><span class="st">"</span>,</a>
-<a class="sourceLine" id="cb3-15" data-line-number="15">  <span class="st">"sense in which we take it, theologies, philosophies, and ecclesiastical</span><span class="ch">\n</span><span class="st">"</span>,</a>
-<a class="sourceLine" id="cb3-16" data-line-number="16">  <span class="st">"organizations may secondarily grow.</span><span class="ch">\n</span><span class="st">"</span></a>
-<a class="sourceLine" id="cb3-17" data-line-number="17">)</a>
-<a class="sourceLine" id="cb3-18" data-line-number="18"><span class="kw">names</span>(james) &lt;-<span class="st"> "varieties"</span></a>
-<a class="sourceLine" id="cb3-19" data-line-number="19"></a>
-<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="kw"><a href="reference/basic-tokenizers.html">tokenize_characters</a></span>(james)[[<span class="dv">1</span>]] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">50</span>)</a>
-<a class="sourceLine" id="cb3-21" data-line-number="21"><span class="co">#&gt;  [1] "t" "h" "e" "q" "u" "e" "s" "t" "i" "o" "n" "t" "h" "u" "s" "b" "e"</span></a>
-<a class="sourceLine" id="cb3-22" data-line-number="22"><span class="co">#&gt; [18] "c" "o" "m" "e" "s" "a" "v" "e" "r" "b" "a" "l" "o" "n" "e" "a" "g"</span></a>
-<a class="sourceLine" id="cb3-23" data-line-number="23"><span class="co">#&gt; [35] "a" "i" "n" "a" "n" "d" "o" "u" "r" "k" "n" "o" "w" "l" "e" "d"</span></a>
-<a class="sourceLine" id="cb3-24" data-line-number="24"><span class="kw"><a href="reference/shingle-tokenizers.html">tokenize_character_shingles</a></span>(james)[[<span class="dv">1</span>]] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">20</span>)</a>
-<a class="sourceLine" id="cb3-25" data-line-number="25"><span class="co">#&gt;  [1] "the" "heq" "equ" "que" "ues" "est" "sti" "tio" "ion" "ont" "nth"</span></a>
-<a class="sourceLine" id="cb3-26" data-line-number="26"><span class="co">#&gt; [12] "thu" "hus" "usb" "sbe" "bec" "eco" "com" "ome" "mes"</span></a>
-<a class="sourceLine" id="cb3-27" data-line-number="27"><span class="kw"><a href="reference/basic-tokenizers.html">tokenize_words</a></span>(james)[[<span class="dv">1</span>]] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb3-28" data-line-number="28"><span class="co">#&gt;  [1] "the"      "question" "thus"     "becomes"  "a"        "verbal"  </span></a>
-<a class="sourceLine" id="cb3-29" data-line-number="29"><span class="co">#&gt;  [7] "one"      "again"    "and"      "our"</span></a>
-<a class="sourceLine" id="cb3-30" data-line-number="30"><span class="kw"><a href="reference/stem-tokenizers.html">tokenize_word_stems</a></span>(james)[[<span class="dv">1</span>]] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb3-31" data-line-number="31"><span class="co">#&gt;  [1] "the"      "question" "thus"     "becom"    "a"        "verbal"  </span></a>
-<a class="sourceLine" id="cb3-32" data-line-number="32"><span class="co">#&gt;  [7] "one"      "again"    "and"      "our"</span></a>
-<a class="sourceLine" id="cb3-33" data-line-number="33"><span class="kw"><a href="reference/basic-tokenizers.html">tokenize_sentences</a></span>(james) </a>
-<a class="sourceLine" id="cb3-34" data-line-number="34"><span class="co">#&gt; $varieties</span></a>
-<a class="sourceLine" id="cb3-35" data-line-number="35"><span class="co">#&gt; [1] "The question thus becomes a verbal one again; and our knowledge of all these early stages of thought and feeling is in any case so conjectural and imperfect that farther discussion would not be worth while."                                               </span></a>
-<a class="sourceLine" id="cb3-36" data-line-number="36"><span class="co">#&gt; [2] "Religion, therefore, as I now ask you arbitrarily to take it, shall mean for us _the feelings, acts, and experiences of individual men in their solitude, so far as they apprehend themselves to stand in relation to whatever they may consider the divine_."</span></a>
-<a class="sourceLine" id="cb3-37" data-line-number="37"><span class="co">#&gt; [3] "Since the relation may be either moral, physical, or ritual, it is evident that out of religion in the sense in which we take it, theologies, philosophies, and ecclesiastical organizations may secondarily grow."</span></a>
-<a class="sourceLine" id="cb3-38" data-line-number="38"><span class="kw"><a href="reference/basic-tokenizers.html">tokenize_paragraphs</a></span>(james)</a>
-<a class="sourceLine" id="cb3-39" data-line-number="39"><span class="co">#&gt; $varieties</span></a>
-<a class="sourceLine" id="cb3-40" data-line-number="40"><span class="co">#&gt; [1] "The question thus becomes a verbal one again; and our knowledge of all these early stages of thought and feeling is in any case so conjectural and imperfect that farther discussion would not be worth while."                                                                                                                                                                                                                                                                   </span></a>
-<a class="sourceLine" id="cb3-41" data-line-number="41"><span class="co">#&gt; [2] "Religion, therefore, as I now ask you arbitrarily to take it, shall mean for us _the feelings, acts, and experiences of individual men in their solitude, so far as they apprehend themselves to stand in relation to whatever they may consider the divine_. Since the relation may be either moral, physical, or ritual, it is evident that out of religion in the sense in which we take it, theologies, philosophies, and ecclesiastical organizations may secondarily grow. "</span></a>
-<a class="sourceLine" id="cb3-42" data-line-number="42"><span class="kw"><a href="reference/ngram-tokenizers.html">tokenize_ngrams</a></span>(james, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">n_min =</span> <span class="dv">2</span>)[[<span class="dv">1</span>]] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb3-43" data-line-number="43"><span class="co">#&gt;  [1] "the question"                   "the question thus"             </span></a>
-<a class="sourceLine" id="cb3-44" data-line-number="44"><span class="co">#&gt;  [3] "the question thus becomes"      "the question thus becomes a"   </span></a>
-<a class="sourceLine" id="cb3-45" data-line-number="45"><span class="co">#&gt;  [5] "question thus"                  "question thus becomes"         </span></a>
-<a class="sourceLine" id="cb3-46" data-line-number="46"><span class="co">#&gt;  [7] "question thus becomes a"        "question thus becomes a verbal"</span></a>
-<a class="sourceLine" id="cb3-47" data-line-number="47"><span class="co">#&gt;  [9] "thus becomes"                   "thus becomes a"</span></a>
-<a class="sourceLine" id="cb3-48" data-line-number="48"><span class="kw"><a href="reference/ngram-tokenizers.html">tokenize_skip_ngrams</a></span>(james, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">k =</span> <span class="dv">2</span>)[[<span class="dv">1</span>]] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb3-49" data-line-number="49"><span class="co">#&gt;  [1] "the"                  "the question"         "the thus"            </span></a>
-<a class="sourceLine" id="cb3-50" data-line-number="50"><span class="co">#&gt;  [4] "the becomes"          "the question thus"    "the question becomes"</span></a>
-<a class="sourceLine" id="cb3-51" data-line-number="51"><span class="co">#&gt;  [7] "the question a"       "the thus becomes"     "the thus a"          </span></a>
-<a class="sourceLine" id="cb3-52" data-line-number="52"><span class="co">#&gt; [10] "the thus verbal"</span></a>
-<a class="sourceLine" id="cb3-53" data-line-number="53"><span class="kw"><a href="reference/ptb-tokenizer.html">tokenize_ptb</a></span>(james)[[<span class="dv">1</span>]] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb3-54" data-line-number="54"><span class="co">#&gt;  [1] "The"      "question" "thus"     "becomes"  "a"        "verbal"  </span></a>
-<a class="sourceLine" id="cb3-55" data-line-number="55"><span class="co">#&gt;  [7] "one"      "again"    ";"        "and"</span></a>
-<a class="sourceLine" id="cb3-56" data-line-number="56"><span class="kw"><a href="reference/basic-tokenizers.html">tokenize_lines</a></span>(james)[[<span class="dv">1</span>]] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb3-57" data-line-number="57"><span class="co">#&gt; [1] "The question thus becomes a verbal one"                                   </span></a>
-<a class="sourceLine" id="cb3-58" data-line-number="58"><span class="co">#&gt; [2] "again; and our knowledge of all these early stages of thought and feeling"</span></a>
-<a class="sourceLine" id="cb3-59" data-line-number="59"><span class="co">#&gt; [3] "is in any case so conjectural and imperfect that farther discussion would"</span></a>
-<a class="sourceLine" id="cb3-60" data-line-number="60"><span class="co">#&gt; [4] "not be worth while."                                                      </span></a>
-<a class="sourceLine" id="cb3-61" data-line-number="61"><span class="co">#&gt; [5] "Religion, therefore, as I now ask you arbitrarily to take it, shall mean"</span></a>
-<a class="sourceLine" id="cb3-62" data-line-number="62"><span class="kw"><a href="reference/basic-tokenizers.html">tokenize_tweets</a></span>(<span class="st">"Hey @handle, #rstats is awesome!"</span>)[[<span class="dv">1</span>]]</a>
-<a class="sourceLine" id="cb3-63" data-line-number="63"><span class="co">#&gt; [1] "hey"     "@handle" "#rstats" "is"      "awesome"</span></a></code></pre></div>
+<p>The tokenizers in this package have a consistent interface. They all take either a character vector of any length, or a list where each element is a character vector of length one, or a data.frame that adheres to the <a href="https://github.com/ropensci/tif">tif corpus format</a>. The idea is that each element (or row) comprises a text. Then each function returns a list with the same length as the input vector, where each element in the list contains the tokens generated by the function. If the input character vector or list is named, then the names are preserved, so that the names can serve as identifiers. For a tif-formatted data.frame, the <code>doc_id</code> field is used as the element names in the returned token list.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">library</span>(magrittr)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">library</span>(tokenizers)</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">james &lt;-<span class="st"> </span><span class="kw">paste0</span>(</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">  <span class="st">"The question thus becomes a verbal one</span><span class="ch">\n</span><span class="st">"</span>,</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6">  <span class="st">"again; and our knowledge of all these early stages of thought and feeling</span><span class="ch">\n</span><span class="st">"</span>,</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">  <span class="st">"is in any case so conjectural and imperfect that farther discussion would</span><span class="ch">\n</span><span class="st">"</span>,</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8">  <span class="st">"not be worth while.</span><span class="ch">\n</span><span class="st">"</span>,</a>
+<a class="sourceLine" id="cb4-9" data-line-number="9">  <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>,</a>
+<a class="sourceLine" id="cb4-10" data-line-number="10">  <span class="st">"Religion, therefore, as I now ask you arbitrarily to take it, shall mean</span><span class="ch">\n</span><span class="st">"</span>,</a>
+<a class="sourceLine" id="cb4-11" data-line-number="11">  <span class="st">"for us _the feelings, acts, and experiences of individual men in their</span><span class="ch">\n</span><span class="st">"</span>,</a>
+<a class="sourceLine" id="cb4-12" data-line-number="12">  <span class="st">"solitude, so far as they apprehend themselves to stand in relation to</span><span class="ch">\n</span><span class="st">"</span>,</a>
+<a class="sourceLine" id="cb4-13" data-line-number="13">  <span class="st">"whatever they may consider the divine_. Since the relation may be either</span><span class="ch">\n</span><span class="st">"</span>,</a>
+<a class="sourceLine" id="cb4-14" data-line-number="14">  <span class="st">"moral, physical, or ritual, it is evident that out of religion in the</span><span class="ch">\n</span><span class="st">"</span>,</a>
+<a class="sourceLine" id="cb4-15" data-line-number="15">  <span class="st">"sense in which we take it, theologies, philosophies, and ecclesiastical</span><span class="ch">\n</span><span class="st">"</span>,</a>
+<a class="sourceLine" id="cb4-16" data-line-number="16">  <span class="st">"organizations may secondarily grow.</span><span class="ch">\n</span><span class="st">"</span></a>
+<a class="sourceLine" id="cb4-17" data-line-number="17">)</a>
+<a class="sourceLine" id="cb4-18" data-line-number="18"><span class="kw">names</span>(james) &lt;-<span class="st"> "varieties"</span></a>
+<a class="sourceLine" id="cb4-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb4-20" data-line-number="20"><span class="kw"><a href="reference/basic-tokenizers.html">tokenize_characters</a></span>(james)[[<span class="dv">1</span>]] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">50</span>)</a>
+<a class="sourceLine" id="cb4-21" data-line-number="21"><span class="co">#&gt;  [1] "t" "h" "e" "q" "u" "e" "s" "t" "i" "o" "n" "t" "h" "u" "s" "b" "e"</span></a>
+<a class="sourceLine" id="cb4-22" data-line-number="22"><span class="co">#&gt; [18] "c" "o" "m" "e" "s" "a" "v" "e" "r" "b" "a" "l" "o" "n" "e" "a" "g"</span></a>
+<a class="sourceLine" id="cb4-23" data-line-number="23"><span class="co">#&gt; [35] "a" "i" "n" "a" "n" "d" "o" "u" "r" "k" "n" "o" "w" "l" "e" "d"</span></a>
+<a class="sourceLine" id="cb4-24" data-line-number="24"><span class="kw"><a href="reference/shingle-tokenizers.html">tokenize_character_shingles</a></span>(james)[[<span class="dv">1</span>]] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb4-25" data-line-number="25"><span class="co">#&gt;  [1] "the" "heq" "equ" "que" "ues" "est" "sti" "tio" "ion" "ont" "nth"</span></a>
+<a class="sourceLine" id="cb4-26" data-line-number="26"><span class="co">#&gt; [12] "thu" "hus" "usb" "sbe" "bec" "eco" "com" "ome" "mes"</span></a>
+<a class="sourceLine" id="cb4-27" data-line-number="27"><span class="kw"><a href="reference/basic-tokenizers.html">tokenize_words</a></span>(james)[[<span class="dv">1</span>]] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb4-28" data-line-number="28"><span class="co">#&gt;  [1] "the"      "question" "thus"     "becomes"  "a"        "verbal"  </span></a>
+<a class="sourceLine" id="cb4-29" data-line-number="29"><span class="co">#&gt;  [7] "one"      "again"    "and"      "our"</span></a>
+<a class="sourceLine" id="cb4-30" data-line-number="30"><span class="kw"><a href="reference/stem-tokenizers.html">tokenize_word_stems</a></span>(james)[[<span class="dv">1</span>]] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb4-31" data-line-number="31"><span class="co">#&gt;  [1] "the"      "question" "thus"     "becom"    "a"        "verbal"  </span></a>
+<a class="sourceLine" id="cb4-32" data-line-number="32"><span class="co">#&gt;  [7] "one"      "again"    "and"      "our"</span></a>
+<a class="sourceLine" id="cb4-33" data-line-number="33"><span class="kw"><a href="reference/basic-tokenizers.html">tokenize_sentences</a></span>(james) </a>
+<a class="sourceLine" id="cb4-34" data-line-number="34"><span class="co">#&gt; $varieties</span></a>
+<a class="sourceLine" id="cb4-35" data-line-number="35"><span class="co">#&gt; [1] "The question thus becomes a verbal one again; and our knowledge of all these early stages of thought and feeling is in any case so conjectural and imperfect that farther discussion would not be worth while."                                               </span></a>
+<a class="sourceLine" id="cb4-36" data-line-number="36"><span class="co">#&gt; [2] "Religion, therefore, as I now ask you arbitrarily to take it, shall mean for us _the feelings, acts, and experiences of individual men in their solitude, so far as they apprehend themselves to stand in relation to whatever they may consider the divine_."</span></a>
+<a class="sourceLine" id="cb4-37" data-line-number="37"><span class="co">#&gt; [3] "Since the relation may be either moral, physical, or ritual, it is evident that out of religion in the sense in which we take it, theologies, philosophies, and ecclesiastical organizations may secondarily grow."</span></a>
+<a class="sourceLine" id="cb4-38" data-line-number="38"><span class="kw"><a href="reference/basic-tokenizers.html">tokenize_paragraphs</a></span>(james)</a>
+<a class="sourceLine" id="cb4-39" data-line-number="39"><span class="co">#&gt; $varieties</span></a>
+<a class="sourceLine" id="cb4-40" data-line-number="40"><span class="co">#&gt; [1] "The question thus becomes a verbal one again; and our knowledge of all these early stages of thought and feeling is in any case so conjectural and imperfect that farther discussion would not be worth while."                                                                                                                                                                                                                                                                   </span></a>
+<a class="sourceLine" id="cb4-41" data-line-number="41"><span class="co">#&gt; [2] "Religion, therefore, as I now ask you arbitrarily to take it, shall mean for us _the feelings, acts, and experiences of individual men in their solitude, so far as they apprehend themselves to stand in relation to whatever they may consider the divine_. Since the relation may be either moral, physical, or ritual, it is evident that out of religion in the sense in which we take it, theologies, philosophies, and ecclesiastical organizations may secondarily grow. "</span></a>
+<a class="sourceLine" id="cb4-42" data-line-number="42"><span class="kw"><a href="reference/ngram-tokenizers.html">tokenize_ngrams</a></span>(james, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">n_min =</span> <span class="dv">2</span>)[[<span class="dv">1</span>]] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb4-43" data-line-number="43"><span class="co">#&gt;  [1] "the question"                   "the question thus"             </span></a>
+<a class="sourceLine" id="cb4-44" data-line-number="44"><span class="co">#&gt;  [3] "the question thus becomes"      "the question thus becomes a"   </span></a>
+<a class="sourceLine" id="cb4-45" data-line-number="45"><span class="co">#&gt;  [5] "question thus"                  "question thus becomes"         </span></a>
+<a class="sourceLine" id="cb4-46" data-line-number="46"><span class="co">#&gt;  [7] "question thus becomes a"        "question thus becomes a verbal"</span></a>
+<a class="sourceLine" id="cb4-47" data-line-number="47"><span class="co">#&gt;  [9] "thus becomes"                   "thus becomes a"</span></a>
+<a class="sourceLine" id="cb4-48" data-line-number="48"><span class="kw"><a href="reference/ngram-tokenizers.html">tokenize_skip_ngrams</a></span>(james, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">k =</span> <span class="dv">2</span>)[[<span class="dv">1</span>]] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb4-49" data-line-number="49"><span class="co">#&gt;  [1] "the"                  "the question"         "the thus"            </span></a>
+<a class="sourceLine" id="cb4-50" data-line-number="50"><span class="co">#&gt;  [4] "the becomes"          "the question thus"    "the question becomes"</span></a>
+<a class="sourceLine" id="cb4-51" data-line-number="51"><span class="co">#&gt;  [7] "the question a"       "the thus becomes"     "the thus a"          </span></a>
+<a class="sourceLine" id="cb4-52" data-line-number="52"><span class="co">#&gt; [10] "the thus verbal"</span></a>
+<a class="sourceLine" id="cb4-53" data-line-number="53"><span class="kw"><a href="reference/ptb-tokenizer.html">tokenize_ptb</a></span>(james)[[<span class="dv">1</span>]] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb4-54" data-line-number="54"><span class="co">#&gt;  [1] "The"      "question" "thus"     "becomes"  "a"        "verbal"  </span></a>
+<a class="sourceLine" id="cb4-55" data-line-number="55"><span class="co">#&gt;  [7] "one"      "again"    ";"        "and"</span></a>
+<a class="sourceLine" id="cb4-56" data-line-number="56"><span class="kw"><a href="reference/basic-tokenizers.html">tokenize_lines</a></span>(james)[[<span class="dv">1</span>]] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb4-57" data-line-number="57"><span class="co">#&gt; [1] "The question thus becomes a verbal one"                                   </span></a>
+<a class="sourceLine" id="cb4-58" data-line-number="58"><span class="co">#&gt; [2] "again; and our knowledge of all these early stages of thought and feeling"</span></a>
+<a class="sourceLine" id="cb4-59" data-line-number="59"><span class="co">#&gt; [3] "is in any case so conjectural and imperfect that farther discussion would"</span></a>
+<a class="sourceLine" id="cb4-60" data-line-number="60"><span class="co">#&gt; [4] "not be worth while."                                                      </span></a>
+<a class="sourceLine" id="cb4-61" data-line-number="61"><span class="co">#&gt; [5] "Religion, therefore, as I now ask you arbitrarily to take it, shall mean"</span></a>
+<a class="sourceLine" id="cb4-62" data-line-number="62"><span class="kw"><a href="reference/basic-tokenizers.html">tokenize_tweets</a></span>(<span class="st">"Hey @handle, #rstats is awesome!"</span>)[[<span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb4-63" data-line-number="63"><span class="co">#&gt; [1] "hey"     "@handle" "#rstats" "is"      "awesome"</span></a></code></pre></div>
 <p>The package also contains functions to count words, characters, and sentences, and these functions follow the same consistent interface.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="reference/word-counting.html">count_words</a></span>(james)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; varieties </span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt;       112</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="kw"><a href="reference/word-counting.html">count_characters</a></span>(james)</a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; varieties </span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt;       673</span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="kw"><a href="reference/word-counting.html">count_sentences</a></span>(james)</a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; varieties </span></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt;        13</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="reference/word-counting.html">count_words</a></span>(james)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt; varieties </span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt;       112</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="kw"><a href="reference/word-counting.html">count_characters</a></span>(james)</a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt; varieties </span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt;       673</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="kw"><a href="reference/word-counting.html">count_sentences</a></span>(james)</a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; varieties </span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt;        13</span></a></code></pre></div>
 <p>The <code><a href="reference/chunk_text.html">chunk_text()</a></code> function splits a document into smaller chunks, each with the same number of words.</p>
 </div>
 <div id="contributing" class="section level2">
 <h2 class="hasAnchor">
 <a href="#contributing" class="anchor"></a>Contributing</h2>
 <p>Contributions to the package are more than welcome. One way that you can help is by using this package in your R package for natural language processing. If you want to contribute a tokenization function to this package, it should follow the same conventions as the rest of the functions whenever it makes sense to do so.</p>
-<p>Please note that this project is released with a <a href="CONDUCT.md">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
+<p>Please note that this project is released with a <a href="CONDUCT.html">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
 <hr>
 <p><a href="http://ropensci.org"><img src="http://ropensci.org/public_images/github_footer.png" alt="rOpenSCi logo"></a></p>
 </div>
@@ -213,7 +235,7 @@
 </li>
 </ul>
 <h2>License</h2>
-<p><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE.html">LICENSE</a></p>
+<p><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></p>
 <h2>Developers</h2>
 <ul class="list-unstyled">
 <li>Lincoln Mullen <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-5103-6917" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid"></a> </li>
