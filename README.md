@@ -52,7 +52,7 @@ citation("tokenizers")
 #> 
 #>   Lincoln Mullen (2018). tokenizers: Fast, Consistent Tokenization
 #>   of Natural Language Text. R package version 0.2.0.
-#>   https://github.com/ropensci/tokenizers
+#>   http://lincolnmullen.com/software/tokenizers/
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
@@ -61,7 +61,7 @@ citation("tokenizers")
 #>     author = {Lincoln Mullen},
 #>     year = {2018},
 #>     note = {R package version 0.2.0},
-#>     url = {https://github.com/ropensci/tokenizers},
+#>     url = {http://lincolnmullen.com/software/tokenizers/},
 #>   }
 ```
 
