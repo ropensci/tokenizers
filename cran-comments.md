@@ -1,6 +1,10 @@
 This update adds new functionality and bug fixes to the tokenizers package as
 detailed in the NEWS.md file.
 
+As requested by CRAN maintainers, I have changed the URL to Project Gutenberg to
+its base URL. CRAN automated tests likely receive a 403 error because the site
+prevents scraping.
+
 ## Test environments
 
 * Local OS X install: R-Release
