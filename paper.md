@@ -16,15 +16,20 @@ authors:
   affiliation: 3
 - name: Dmitry Selivanov
   affiliation: 4
+- name: Jeffrey Arnold
+  orcid: 0000-0001-9953-3904
+  affiliation: 5
 affiliations: 
 - name: "Department of History and Art History, George Mason University"
   index: 1
-- name: London School of Economics and Political Science
+- name: "London School of Economics and Political Science"
   index: 2
 - name: "Department of Human Centered Design & Engineering, University of Washington"
   index: 3
 - name: "Open Data Science"
   index: 4
+- name: "Political Science, University of Washington"
+  index: 5
 date: 12 March 2018
 bibliography: paper.bib
 ...
