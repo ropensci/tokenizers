@@ -27,7 +27,7 @@ built on the [stringi](http://www.gagolewski.com/software/stringi/) and
 in UTF-8.
 
 See the “[Introduction to the tokenizers
-Package](https://ropensci.github.io/tokenizers/articles/introduction-to-tokenizers.html)”
+Package](http://lincolnmullen.com/software/tokenizers/articles/introduction-to-tokenizers.html)”
 vignette for an overview of all the functions in this package.
 
 This package complies with the standards for input and output
@@ -35,7 +35,7 @@ recommended by the Text Interchange Formats. The TIF initiative was
 created at an rOpenSci meeting in 2017, and its recommendations are
 available as part of the [tif package](https://github.com/ropensci/tif).
 See the “[The Text Interchange Formats and the tokenizers
-Package](https://ropensci.github.io/tokenizers/articles/tif-and-tokenizers.html)”
+Package](http://lincolnmullen.com/software/tokenizers/articles/tif-and-tokenizers.html)”
 vignette for an explanation of how this package fits into that
 ecosystem.
 
@@ -47,15 +47,11 @@ meantime you can use R’s suggested citation.
 
 ``` r
 citation("tokenizers")
-#> Warning in citation("tokenizers"): no date field in DESCRIPTION file of
-#> package 'tokenizers'
-#> Warning in citation("tokenizers"): could not determine year for
-#> 'tokenizers' from package DESCRIPTION file
 #> 
 #> To cite package 'tokenizers' in publications use:
 #> 
-#>   Lincoln Mullen (NA). tokenizers: Fast, Consistent Tokenization
-#>   of Natural Language Text. R package version 0.1.4.9001.
+#>   Lincoln Mullen (2018). tokenizers: Fast, Consistent Tokenization
+#>   of Natural Language Text. R package version 0.2.0.
 #>   https://github.com/ropensci/tokenizers
 #> 
 #> A BibTeX entry for LaTeX users is
@@ -63,7 +59,8 @@ citation("tokenizers")
 #>   @Manual{,
 #>     title = {tokenizers: Fast, Consistent Tokenization of Natural Language Text},
 #>     author = {Lincoln Mullen},
-#>     note = {R package version 0.1.4.9001},
+#>     year = {2018},
+#>     note = {R package version 0.2.0},
 #>     url = {https://github.com/ropensci/tokenizers},
 #>   }
 ```
