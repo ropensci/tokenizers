@@ -1,0 +1,10 @@
+url: http://lincolnmullen.com/software/tokenizers
+
+template:
+  ganalytics: "UA-25121492-1"
+  params:
+    bootswatch: united
+
+authors:
+  Lincoln Mullen:
+    href: "http://lincolnmullen.com"

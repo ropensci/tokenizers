@@ -1,5 +1,6 @@
 ---
 output: github_document
+pagetitle: "tokenizers: Fast, Consistent Tokenization of Natural Language Text"
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->

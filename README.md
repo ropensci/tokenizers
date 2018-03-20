@@ -47,11 +47,15 @@ meantime you can use R’s suggested citation.
 
 ``` r
 citation("tokenizers")
+#> Warning in citation("tokenizers"): no date field in DESCRIPTION file of
+#> package 'tokenizers'
+#> Warning in citation("tokenizers"): could not determine year for
+#> 'tokenizers' from package DESCRIPTION file
 #> 
 #> To cite package 'tokenizers' in publications use:
 #> 
-#>   Lincoln Mullen (2018). tokenizers: Fast, Consistent Tokenization
-#>   of Natural Language Text. R package version 0.2.0.
+#>   Lincoln Mullen (NA). tokenizers: Fast, Consistent Tokenization
+#>   of Natural Language Text. R package version 0.1.4.9001.
 #>   https://github.com/ropensci/tokenizers
 #> 
 #> A BibTeX entry for LaTeX users is
@@ -59,8 +63,7 @@ citation("tokenizers")
 #>   @Manual{,
 #>     title = {tokenizers: Fast, Consistent Tokenization of Natural Language Text},
 #>     author = {Lincoln Mullen},
-#>     year = {2018},
-#>     note = {R package version 0.2.0},
+#>     note = {R package version 0.1.4.9001},
 #>     url = {https://github.com/ropensci/tokenizers},
 #>   }
 ```
