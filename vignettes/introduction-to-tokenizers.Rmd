@@ -1,7 +1,6 @@
 ---
 title: "Introduction to the tokenizers Package"
 author: "Lincoln Mullen"
-date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Introduction to the tokenizers Package}
