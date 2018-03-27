@@ -48,78 +48,110 @@
 #'   "Hi, I can't say hello."))
 #' @export
 #' @rdname ptb-tokenizer
-tokenize_ptb <- function(x, lowercase = FALSE, simplify = FALSE) {
-
-  check_input(x)
-  named <- names(x)
-
-  CONTRACTIONS2 <-
-    c("\\b(can)(not)\\b",
-      "\\b(d)('ye)\\b",
-      "\\b(gon)(na)\\b",
-      "\\b(got)(ta)\\b",
-      "\\b(lem)(me)\\b",
-      "\\b(mor)('n)\\b",
-      "\\b(wan)(na) "
-    )
-  CONTRACTIONS3 <- c(" ('t)(is)\\b", " ('t)(was)\\b")
-
-  CONTRACTIONS4 <- c("\\b(whad)(dd)(ya)\\b", "\\b(wha)(t)(cha)\\b")
-
-  # Starting quotes
-  x <- stri_replace_all_regex(x, '^\\"', '``')
-  x <- stri_replace_all_regex(x, '(``)', '$1')
-  x <- stri_replace_all_regex(x, '([ (\\[{<])"', '$1 `` ')
-
-  # Punctuation
-  x <- stri_replace_all_regex(x, '([:,])([^\\d])', ' $1 $2')
-  x <- stri_replace_all_regex(x, '\\.{3}', ' ... ')
-  x <- stri_replace_all_regex(x, '([,;@#$%&])', ' $1 ')
-  x <- stri_replace_all_regex(x,
-                              '([^\\.])(\\.)([\\]\\)}>"\\\']*)?\\s*$',
-                              '$1 $2$3 ')
-  x <- stri_replace_all_regex(x, '([?!])', ' $1 ')
-
-  x <- stri_replace_all_regex(x, "([^'])' ", "$1 ' ")
-
-  # parens, brackets, etc
-  x <- stri_replace_all_regex(x, '([\\]\\[\\(\\)\\{\\}\\<\\>])', ' $1 ')
-  x <- stri_replace_all_regex(x, '--', ' -- ')
-
-  # add extra space
-  x <- stri_c(" ", x, " ")
-
-  # ending quotes
-  x <- stri_replace_all_regex(x, '"', " '' ")
-  x <- stri_replace_all_regex(x, "(\\S)('')", "\\1 \\2 ")
-  x <- stri_replace_all_regex(x, "([^' ])('[sS]|'[mM]|'[dD]|') ",
-                              "$1 $2 ")
-  x <- stri_replace_all_regex(x,
-                              "([^' ])('ll|'LL|'re|'RE|'ve|'VE|n't|N'T) ",
-                              "$1 $2 ")
-
-  x <- stri_replace_all_regex(x, CONTRACTIONS2, " $1 $2 ",
-                              opts_regex =
-                              stri_opts_regex(case_insensitive = TRUE),
-                              vectorize_all = FALSE)
-  x <- stri_replace_all_regex(x, CONTRACTIONS3, " $1 $2 ",
-                              opts_regex = stri_opts_regex(case_insensitive = TRUE),
-                              vectorize_all = FALSE)
-  x <- stri_replace_all_regex(x, CONTRACTIONS4, " $1 $2 $3 ",
-                              opts_regex = stri_opts_regex(case_insensitive = TRUE),
-                              vectorize_all = FALSE)
-
-  # return
-  x <- stri_split_regex(stri_trim_both(x), '\\s+')
-
-  if (lowercase) {
-    x <- lapply(x, stri_trans_tolower)
-  }
-
-  if (!is.null(named)) {
-    names(x) <- named
-  }
-
-  simplify_list(x, simplify)
-
+tokenize_ptb <- function(x,
+                         lowercase = FALSE,
+                         simplify = FALSE) {
+  UseMethod("tokenize_ptb")
 }
+
+#' @export
+tokenize_ptb.data.frame <-
+  function(x,
+           lowercase = FALSE,
+           simplify = FALSE) {
+    x <- corpus_df_as_corpus_vector(x)
+    tokenize_ptb(x, lowercase, simplify)
+  }
+
+#' @export
+tokenize_ptb.default <-
+  function(x,
+           lowercase = FALSE,
+           simplify = FALSE) {
+    check_input(x)
+    named <- names(x)
+
+    CONTRACTIONS2 <-
+      c(
+        "\\b(can)(not)\\b",
+        "\\b(d)('ye)\\b",
+        "\\b(gon)(na)\\b",
+        "\\b(got)(ta)\\b",
+        "\\b(lem)(me)\\b",
+        "\\b(mor)('n)\\b",
+        "\\b(wan)(na) "
+      )
+    CONTRACTIONS3 <- c(" ('t)(is)\\b", " ('t)(was)\\b")
+
+    CONTRACTIONS4 <- c("\\b(whad)(dd)(ya)\\b", "\\b(wha)(t)(cha)\\b")
+
+    # Starting quotes
+    x <- stri_replace_all_regex(x, '^\\"', '``')
+    x <- stri_replace_all_regex(x, '(``)', '$1')
+    x <- stri_replace_all_regex(x, '([ (\\[{<])"', '$1 `` ')
+
+    # Punctuation
+    x <- stri_replace_all_regex(x, '([:,])([^\\d])', ' $1 $2')
+    x <- stri_replace_all_regex(x, '\\.{3}', ' ... ')
+    x <- stri_replace_all_regex(x, '([,;@#$%&])', ' $1 ')
+    x <- stri_replace_all_regex(x,
+                                '([^\\.])(\\.)([\\]\\)}>"\\\']*)?\\s*$',
+                                '$1 $2$3 ')
+    x <- stri_replace_all_regex(x, '([?!])', ' $1 ')
+
+    x <- stri_replace_all_regex(x, "([^'])' ", "$1 ' ")
+
+    # parens, brackets, etc
+    x <-
+      stri_replace_all_regex(x, '([\\]\\[\\(\\)\\{\\}\\<\\>])', ' $1 ')
+    x <- stri_replace_all_regex(x, '--', ' -- ')
+
+    # add extra space
+    x <- stri_c(" ", x, " ")
+
+    # ending quotes
+    x <- stri_replace_all_regex(x, '"', " '' ")
+    x <- stri_replace_all_regex(x, "(\\S)('')", "\\1 \\2 ")
+    x <- stri_replace_all_regex(x, "([^' ])('[sS]|'[mM]|'[dD]|') ",
+                                "$1 $2 ")
+    x <- stri_replace_all_regex(x,
+                                "([^' ])('ll|'LL|'re|'RE|'ve|'VE|n't|N'T) ",
+                                "$1 $2 ")
+
+    x <- stri_replace_all_regex(
+      x,
+      CONTRACTIONS2,
+      " $1 $2 ",
+      opts_regex =
+        stri_opts_regex(case_insensitive = TRUE),
+      vectorize_all = FALSE
+    )
+    x <- stri_replace_all_regex(
+      x,
+      CONTRACTIONS3,
+      " $1 $2 ",
+      opts_regex = stri_opts_regex(case_insensitive = TRUE),
+      vectorize_all = FALSE
+    )
+    x <- stri_replace_all_regex(
+      x,
+      CONTRACTIONS4,
+      " $1 $2 $3 ",
+      opts_regex = stri_opts_regex(case_insensitive = TRUE),
+      vectorize_all = FALSE
+    )
+
+    # return
+    x <- stri_split_regex(stri_trim_both(x), '\\s+')
+
+    if (lowercase) {
+      x <- lapply(x, stri_trans_tolower)
+    }
+
+    if (!is.null(named)) {
+      names(x) <- named
+    }
+
+    simplify_list(x, simplify)
+
+  }

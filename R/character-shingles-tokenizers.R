@@ -35,19 +35,51 @@
 #'
 #' @export
 #' @rdname shingle-tokenizers
-tokenize_character_shingles <- function(x, n = 3L, n_min = n,
+tokenize_character_shingles <- function(x,
+                                        n = 3L,
+                                        n_min = n,
                                         lowercase = TRUE,
                                         strip_non_alphanum = TRUE,
                                         simplify = FALSE) {
-  check_input(x)
-  named <- names(x)
-  if (n < n_min || n_min <= 0)
-    stop("n and n_min must be integers, and n_min must be less than ",
-         "n and greater than 1.")
-  chars <- tokenize_characters(x, lowercase = lowercase,
-                               strip_non_alphanum = strip_non_alphanum)
-  out <- generate_ngrams_batch(chars, ngram_min = n_min, ngram_max = n,
-                               stopwords = "", ngram_delim = "")
-  if (!is.null(named)) names(out) <- named
-  simplify_list(out, simplify)
+  UseMethod("tokenize_character_shingles")
 }
+
+#' @export
+tokenize_character_shingles.data.frame <-
+  function(x,
+           n = 3L,
+           n_min = n,
+           lowercase = TRUE,
+           strip_non_alphanum = TRUE,
+           simplify = FALSE) {
+    x <- corpus_df_as_corpus_vector(x)
+    tokenize_character_shingles(x, n, n_min, lowercase, strip_non_alphanum, simplify)
+  }
+
+#' @export
+tokenize_character_shingles.default <-
+  function(x,
+           n = 3L,
+           n_min = n,
+           lowercase = TRUE,
+           strip_non_alphanum = TRUE,
+           simplify = FALSE) {
+    check_input(x)
+    named <- names(x)
+    if (n < n_min || n_min <= 0)
+      stop("n and n_min must be integers, and n_min must be less than ",
+           "n and greater than 1.")
+    chars <- tokenize_characters(x, lowercase = lowercase,
+                                 strip_non_alphanum = strip_non_alphanum)
+    out <-
+      generate_ngrams_batch(
+        chars,
+        ngram_min = n_min,
+        ngram_max = n,
+        stopwords = "",
+        ngram_delim = ""
+      )
+    if (!is.null(named))
+      names(out) <- named
+    simplify_list(out, simplify)
+  }

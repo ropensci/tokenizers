@@ -10,3 +10,5 @@
 ^docs$
 ^paper.bib$
 ^paper.md$
+^Makefile$
+^_pkgdown\.yml$

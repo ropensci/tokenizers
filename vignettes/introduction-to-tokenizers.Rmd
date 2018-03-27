@@ -1,13 +1,19 @@
 ---
 title: "Introduction to the tokenizers Package"
 author: "Lincoln Mullen"
-date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Introduction to the tokenizers Package}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
 
 ## Package overview
 
@@ -66,10 +72,11 @@ Word stemming is provided by the [SnowballC](https://cran.r-project.org/package=
 tokenize_word_stems(james)
 ```
 
-You can also provide a vector of stopwords which will be omitted. A default is provided for several languages by the `stopwords()` function. This argument also works with the n-gram and skip n-gram tokenizers.
+You can also provide a vector of stopwords which will be omitted. The [stopwords package](https://github.com/quanteda/stopwords), which contains stopwords for many languages from several sources, is recommended. This argument also works with the n-gram and skip n-gram tokenizers.
 
 ```{r}
-tokenize_words(james, stopwords = stopwords())
+library(stopwords)
+tokenize_words(james, stopwords = stopwords::stopwords("en"))
 ```
 
 An alternative word stemmer often used in NLP that preserves punctuation and separates common English contractions is the Penn Treebank tokenizer.
@@ -83,13 +90,15 @@ tokenize_ptb(james)
 An n-gram is a contiguous sequence of words containing at least `n_min` words and at most `n` words. This function will generate all such combinations of n-grams, omitting stopwords if desired.
 
 ```{r}
-tokenize_ngrams(james, n = 5, n_min = 2, stopwords = stopwords())
+tokenize_ngrams(james, n = 5, n_min = 2,
+                stopwords = stopwords::stopwords("en"))
 ```
 
 A skip n-gram is like an n-gram in that it takes the `n` and `n_min` parameters. But rather than returning contiguous sequences of words, it will also return sequences of n-grams skipping words with gaps between `0` and the value of `k`. This function generates all such sequences, again omitting stopwords if desired. Note that the number of tokens returned can be very large.
 
 ```{r}
-tokenize_skip_ngrams(james, n = 5, n_min = 2, k = 2, stopwords = stopwords())
+tokenize_skip_ngrams(james, n = 5, n_min = 2, k = 2,
+                     stopwords = stopwords::stopwords("en"))
 ```
 
 ## Tweet tokenizer

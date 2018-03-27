@@ -1,32 +1,33 @@
 Package: tokenizers
 Type: Package
-Title: A Consistent Interface to Tokenize Natural Language Text
-Version: 0.1.4.9001
-Description: Convert natural language text into tokens. The tokenizers have a
-    consistent interface and are compatible with Unicode, thanks to being built
-    on the 'stringi' package. Includes tokenizers for shingled n-grams, skip
-    n-grams, words, word stems, sentences, paragraphs, characters, shingled 
-    characters, lines, tweets, Penn Treebank, regular expressions, as well
-    as functions for counting characters, words, and sentences, and a function
-    for splitting longer texts into separate documents, each with the same number
-    of words.  The package is built on the 'stringi' and 'Rcpp' packages for 
-    lightening fast yet correct tokenization in 'UTF-8'. 
+Title: Fast, Consistent Tokenization of Natural Language Text
+Version: 0.2.0
+Date: 2018-03-19
+Description: Convert natural language text into tokens. Includes tokenizers for
+    shingled n-grams, skip n-grams, words, word stems, sentences, paragraphs,
+    characters, shingled characters, lines, tweets, Penn Treebank, regular
+    expressions, as well as functions for counting characters, words, and sentences,
+    and a function for splitting longer texts into separate documents, each with
+    the same number of words.  The tokenizers have a consistent interface, and
+    the package is built on the 'stringi' and 'Rcpp' packages for  fast
+    yet correct tokenization in 'UTF-8'. 
 License: MIT + file LICENSE
 LazyData: yes
 Authors@R: c(person("Lincoln", "Mullen", role = c("aut", "cre"),
         email = "lincoln@lincolnmullen.com",
         comment = c(ORCID = "0000-0001-5103-6917")),
-        person("Oliver", "Keyes", role = c("ctb"),
-        email = "ironholds@gmail.com"),
+        person("Os", "Keyes", role = c("ctb"),
+        email = "ironholds@gmail.com",
+        comment = c(ORCID = "0000-0001-5196-609X")),
         person("Dmitriy", "Selivanov", role = c("ctb"),
         email = "selivanov.dmitriy@gmail.com"),
         person("Jeffrey", "Arnold", role = c("ctb"),
-        email = "jeffrey.arnold@gmail.com"),
+        email = "jeffrey.arnold@gmail.com",
+        comment = c(ORCID = "0000-0001-9953-3904")),
         person("Kenneth", "Benoit", role = c("ctb"),
-        email = "kbenoit@lse.ac.uk"),
-        person("Matthew", "Jockers", role = c("ctb"),
-        comment = "Jockers stopwords list"))
-URL: https://github.com/ropensci/tokenizers
+        email = "kbenoit@lse.ac.uk",
+        comment = c(ORCID = "0000-0002-0797-564X")))
+URL: http://lincolnmullen.com/software/tokenizers/
 BugReports: https://github.com/ropensci/tokenizers/issues
 RoxygenNote: 6.0.1
 Depends:
@@ -36,8 +37,10 @@ Imports:
   Rcpp (>= 0.12.3),
   SnowballC (>= 0.5.1)
 LinkingTo: Rcpp
-Suggests: testthat,
-    covr,
-    knitr,
-    rmarkdown
+Suggests:
+  covr,
+  knitr,
+  rmarkdown,
+  stopwords (>= 0.9.0),
+  testthat
 VignetteBuilder: knitr
