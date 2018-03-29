@@ -1,3 +1,7 @@
+# tokenizers 0.2.1
+
+- Add citation information to JOSS paper.
+
 # tokenizers 0.2.0
 
 ## Features
@@ -22,7 +26,7 @@
 
 # tokenizers 0.1.4
 
-- Add the `tokenize_character_shingles()` tokenizer. 
+- Add the `tokenize_character_shingles()` tokenizer.
 - Improvements to documentation.
 
 # tokenizers 0.1.3

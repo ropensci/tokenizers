@@ -1,8 +1,8 @@
 Package: tokenizers
 Type: Package
 Title: Fast, Consistent Tokenization of Natural Language Text
-Version: 0.2.0.9000
-Date: 2018-03-19
+Version: 0.2.1
+Date: 2018-03-29
 Description: Convert natural language text into tokens. Includes tokenizers for
     shingled n-grams, skip n-grams, words, word stems, sentences, paragraphs,
     characters, shingled characters, lines, tweets, Penn Treebank, regular
@@ -27,7 +27,7 @@ Authors@R: c(person("Lincoln", "Mullen", role = c("aut", "cre"),
         person("Kenneth", "Benoit", role = c("ctb"),
         email = "kbenoit@lse.ac.uk",
         comment = c(ORCID = "0000-0002-0797-564X")))
-URL: http://lincolnmullen.com/software/tokenizers/
+URL: https://lincolnmullen.com/software/tokenizers/
 BugReports: https://github.com/ropensci/tokenizers/issues
 RoxygenNote: 6.0.1
 Depends:
