@@ -4,6 +4,9 @@
 # tokenizers
 
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/tokenizers)](https://cran.r-project.org/package=tokenizers)
+[![DOI](http://joss.theoj.org/papers/10.21105/joss.00655/status.svg)](https://doi.org/10.21105/joss.00655)
+[![rOpenSci peer
+review](https://badges.ropensci.org/33_status.svg)](https://github.com/ropensci/onboarding/issues/33)
 [![CRAN\_Downloads](http://cranlogs.r-pkg.org/badges/grand-total/tokenizers)](https://cran.r-project.org/package=tokenizers)
 [![Travis-CI Build
 Status](https://travis-ci.org/ropensci/tokenizers.svg?branch=master)](https://travis-ci.org/ropensci/tokenizers)
@@ -11,12 +14,11 @@ Status](https://travis-ci.org/ropensci/tokenizers.svg?branch=master)](https://tr
 status](https://ci.appveyor.com/api/projects/status/qx3vh3ukjgo99iu4/branch/master?svg=true)](https://ci.appveyor.com/project/lmullen/tokenizers-dkf3v/branch/master)
 [![Coverage
 Status](https://img.shields.io/codecov/c/github/ropensci/tokenizers/master.svg)](https://codecov.io/github/ropensci/tokenizers?branch=master)
-[![](https://badges.ropensci.org/33_status.svg)](https://github.com/ropensci/onboarding/issues/33)
 
 ## Overview
 
 This R package offers functions with a consistent interface to convert
-natural language text into tokens. Includes tokenizers for shingled
+natural language text into tokens. It includes tokenizers for shingled
 n-grams, skip n-grams, words, word stems, sentences, paragraphs,
 characters, shingled characters, lines, tweets, Penn Treebank, and
 regular expressions, as well as functions for counting characters,
@@ -41,27 +43,31 @@ ecosystem.
 
 ## Suggested citation
 
-If you use this package for your research, please cite it. We will
-submit a paper to the *Journal of Open Source Software*, but in the
-meantime you can use R’s suggested citation.
+If you use this package for your research, we would appreciate a
+citation.
 
 ``` r
 citation("tokenizers")
 #> 
-#> To cite package 'tokenizers' in publications use:
+#> To cite the tokenizers package in publications, please cite the
+#> paper in the Journal of Open Source Software:
 #> 
-#>   Lincoln Mullen (2018). tokenizers: Fast, Consistent Tokenization
-#>   of Natural Language Text. R package version 0.2.0.
-#>   http://lincolnmullen.com/software/tokenizers/
+#>   Lincoln A. Mullen et al., "Fast, Consistent Tokenization of
+#>   Natural Language Text," Journal of Open Source Software 3, no.
+#>   23 (2018): 655, https://doi.org/10.21105/joss.00655.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
-#>   @Manual{,
-#>     title = {tokenizers: Fast, Consistent Tokenization of Natural Language Text},
-#>     author = {Lincoln Mullen},
+#>   @Article{,
+#>     title = {Fast, Consistent Tokenization of Natural Language Text},
+#>     author = {Lincoln A. Mullen and Kenneth Benoit and Os Keyes and Dmitry Selivanov and Jeffrey Arnold},
+#>     journal = {Journal of Open Source Software},
 #>     year = {2018},
-#>     note = {R package version 0.2.0},
-#>     url = {http://lincolnmullen.com/software/tokenizers/},
+#>     volume = {3},
+#>     issue = {23},
+#>     pages = {655},
+#>     url = {https://doi.org/10.21105/joss.00655},
+#>     doi = {10.21105/joss.00655},
 #>   }
 ```
 

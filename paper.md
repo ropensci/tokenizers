@@ -24,7 +24,7 @@ affiliations:
   index: 1
 - name: "Department of Methodology, London School of Economics and Political Science"
   index: 2
-- name: "Department of Human Centered Design & Engineering, University of Washington"
+- name: "Department of Human Centered Design and Engineering, University of Washington"
   index: 3
 - name: "Open Data Science"
   index: 4
@@ -49,9 +49,9 @@ for large corpora, tokenization can be computationally expensive, and
 tokenization is highly language dependent.  Efficiency and correctness are 
 therefore paramount concerns for tokenization.
 
-The [**tokenizers**](http://lincolnmullen.com/software/tokenizers/) package for 
+The [tokenizers](http://lincolnmullen.com/software/tokenizers/) package for 
 R provides fast, consistent tokenization for natural language text 
-[@tokenizers, @rbase]. (The package is available on 
+[@tokenizers; @rbase]. (The package is available on 
 [GitHub](https://github.com/ropensci/tokenizers) and archived on 
 [Zenodo](https://doi.org/10.5281/zenodo.1205017).) Each of the tokenizers 
 expects a consistent input and returns a consistent output, so that the 
@@ -60,7 +60,7 @@ packages. To ensure the correctness of output, the package depends on the
 stringi package, which implements Unicode support for R [@gagolewski_2018]. 
 To ensure the speed of tokenization, key components such as the _n_-gram and 
 skip _n_-gram tokenizers are written using the Rcpp package 
-[@eddelbuettel_2013, @eddelbuettel_2017]. The tokenizers package is part of 
+[@eddelbuettel_2013; @eddelbuettel_2017]. The tokenizers package is part of 
 the [rOpenSci project](https://ropensci.org/).
 
 The most important tokenizers in the current version of the package can be 
@@ -68,7 +68,7 @@ grouped as follows:
 
 - tokenizers for characters and shingled characters
 - tokenizers for words and word stems, as well as for Penn Treebank tokens 
-- tokenizers n-grams and skip n-grams
+- tokenizers _n_-grams and skip _n_-grams
 - tokenizers for tweets, which preserve formatting of usernames and hashtags
 
 In addition the package provides functions for splitting longer documents into 
@@ -91,7 +91,7 @@ uses computational text analysis. The package was originally created for
 historical research into the use of the Bible in American newspapers 
 [@mullen_americas] and into the borrowing of legal codes of civil procedure in 
 the nineteenth-century United States [@funkmullen_spine_2018, 
-@funkmullen_servile_2016]. The `tokenizers` package underlies the tidytext 
+@funkmullen_servile_2016]. The tokenizers package underlies the tidytext 
 package [@silge_text_2017], and via that package tokenizers has been used 
 in disciplines such as political science [@sanger_2015_], social science 
 [@warin_mapping], communication studies [@xu_using_2018], English 
