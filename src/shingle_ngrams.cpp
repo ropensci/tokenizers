@@ -79,7 +79,6 @@ ListOf<CharacterVector> generate_ngrams_batch(const ListOf<const CharacterVector
   const std::string std_string_delim = ngram_delim.get_cstring();
   size_t n_docs = documents_list.size();
   List result(n_docs);
-  CharacterVector terms;
 
   std::set<std::string> stopwords_set;
   for(size_t i = 0; i < stopwords.size(); i++){
@@ -92,7 +91,6 @@ ListOf<CharacterVector> generate_ngrams_batch(const ListOf<const CharacterVector
     if(i_document % 10000 == 0){
       Rcpp::checkUserInterrupt();
     }
-    terms = documents_list[i_document];
     result[i_document] = generate_ngrams_internal(documents_list[i_document],
                                                   ngram_min, ngram_max,
                                                   stopwords_set,
