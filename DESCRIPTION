@@ -27,7 +27,7 @@ Authors@R: c(person("Lincoln", "Mullen", role = c("aut", "cre"),
         person("Kenneth", "Benoit", role = c("ctb"),
         email = "kbenoit@lse.ac.uk",
         comment = c(ORCID = "0000-0002-0797-564X")))
-URL: https://lincolnmullen.com/software/tokenizers/
+URL: https://lincolnmullen.com/software/tokenizers/, https://github.com/ropensci/tokenizers
 BugReports: https://github.com/ropensci/tokenizers/issues
 RoxygenNote: 6.0.1
 Depends:
