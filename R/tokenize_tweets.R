@@ -44,7 +44,8 @@ tokenize_tweets.default <-
     out <- stri_split_charclass(x, "\\p{WHITE_SPACE}")
 
     # get document indexes to vectorize tokens
-    docindex <- c(1, cumsum(lengths(out)))
+    doc_lengths <- cumsum(lengths(out))
+    docindex <- c(0, doc_lengths)
     # convert the list into a vector - avoids all those mapplys
     out <- unlist(out)
 
@@ -85,7 +86,7 @@ tokenize_tweets.default <-
                  cut(
                    seq_along(out),
                    docindex,
-                   include.lowest = TRUE,
+                   include.lowest = FALSE,
                    labels = named
                  ))
     # in case !strip_punct, otherwise has no effect
