@@ -9,7 +9,7 @@ tokenize_word_stems(x, language = "english", stopwords = NULL,
 }
 \arguments{
 \item{x}{A character vector or a list of character vectors to be tokenized
-into n-grams. If \code{x} is a character vector, it can be of any length,
+into word stems. If \code{x} is a character vector, it can be of any length,
 and each element will be tokenized separately. If \code{x} is a list of
 character vectors, where each element of the list should have a length of
 1.}
