@@ -14,8 +14,8 @@
 tokenize_characters(x, lowercase = TRUE, strip_non_alphanum = TRUE,
   simplify = FALSE)
 
-tokenize_words(x, lowercase = TRUE, stopwords = NULL, strip_punct = TRUE,
-  strip_numeric = FALSE, simplify = FALSE)
+tokenize_words(x, lowercase = TRUE, stopwords = NULL,
+  strip_punct = TRUE, strip_numeric = FALSE, simplify = FALSE)
 
 tokenize_sentences(x, lowercase = FALSE, strip_punct = FALSE,
   simplify = FALSE)
@@ -26,8 +26,8 @@ tokenize_paragraphs(x, paragraph_break = "\\n\\n", simplify = FALSE)
 
 tokenize_regex(x, pattern = "\\\\s+", simplify = FALSE)
 
-tokenize_tweets(x, lowercase = TRUE, stopwords = NULL, strip_punct = TRUE,
-  strip_url = FALSE, simplify = FALSE)
+tokenize_tweets(x, lowercase = TRUE, stopwords = NULL,
+  strip_punct = TRUE, strip_url = FALSE, simplify = FALSE)
 }
 \arguments{
 \item{x}{A character vector or a list of character vectors to be tokenized
