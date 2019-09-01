@@ -23,8 +23,8 @@ character vectors, each element of the list should have a length of 1.}
 \item{n}{The number of words in the n-gram. This must be an integer greater
 than or equal to 1.}
 
-\item{n_min}{This must be an integer greater than or equal to 1, and less
-than or equal to \code{n}.}
+\item{n_min}{The minimum number of words in the n-gram. This must be an
+integer greater than or equal to 1, and less than or equal to \code{n}.}
 
 \item{stopwords}{A character vector of stop words to be excluded from the
 n-grams.}
