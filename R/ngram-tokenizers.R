@@ -121,7 +121,7 @@ check_width <- function(v, k) {
 get_valid_skips <- function(n, k) {
   max_dist <- k * (n - 1) + (n - 1)
   total_combinations <- choose(max_dist, n - 1)
-  if (total_combinations > 5e3){
+  if (total_combinations > 5e3) {
     warning("Input n and k will produce a very large number of skip n-grams")
   }
 

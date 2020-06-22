@@ -4,8 +4,14 @@
 \alias{tokenize_character_shingles}
 \title{Character shingle tokenizers}
 \usage{
-tokenize_character_shingles(x, n = 3L, n_min = n, lowercase = TRUE,
-  strip_non_alphanum = TRUE, simplify = FALSE)
+tokenize_character_shingles(
+  x,
+  n = 3L,
+  n_min = n,
+  lowercase = TRUE,
+  strip_non_alphanum = TRUE,
+  simplify = FALSE
+)
 }
 \arguments{
 \item{x}{A character vector or a list of character vectors to be tokenized

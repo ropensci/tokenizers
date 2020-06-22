@@ -4,8 +4,12 @@
 \alias{tokenize_word_stems}
 \title{Word stem tokenizer}
 \usage{
-tokenize_word_stems(x, language = "english", stopwords = NULL,
-  simplify = FALSE)
+tokenize_word_stems(
+  x,
+  language = "english",
+  stopwords = NULL,
+  simplify = FALSE
+)
 }
 \arguments{
 \item{x}{A character vector or a list of character vectors to be tokenized
@@ -44,15 +48,15 @@ This function will strip all white space and punctuation and make
   all word stems lowercase.
 }
 \examples{
-song <-  paste0("How many roads must a man walk down\\n",
-                "Before you call him a man?\\n",
-                "How many seas must a white dove sail\\n",
-                "Before she sleeps in the sand?\\n",
-                "\\n",
-                "How many times must the cannonballs fly\\n",
-                "Before they're forever banned?\\n",
-                "The answer, my friend, is blowin' in the wind.\\n",
-                "The answer is blowin' in the wind.\\n")
+song <-  paste0("How many roads must a man walk down\n",
+                "Before you call him a man?\n",
+                "How many seas must a white dove sail\n",
+                "Before she sleeps in the sand?\n",
+                "\n",
+                "How many times must the cannonballs fly\n",
+                "Before they're forever banned?\n",
+                "The answer, my friend, is blowin' in the wind.\n",
+                "The answer is blowin' in the wind.\n")
 
 tokenize_word_stems(song)
 }

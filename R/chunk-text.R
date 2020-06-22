@@ -43,11 +43,11 @@ chunk_individual_text <- function(x, chunk_size, doc_id, ...) {
             length(x) == 1)
   words <- tokenize_words(x, simplify = TRUE, ...)
 
-  if(length(words) <= chunk_size) {
+  if (length(words) <= chunk_size) {
     chunks <- x
   }
 
-  chunks <- split(words, ceiling(seq_along(words)/chunk_size))
+  chunks <- split(words, ceiling(seq_along(words) / chunk_size))
 
   if (!is.null(doc_id)) {
     num_chars <- stringi::stri_length(length(chunks))
