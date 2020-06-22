@@ -3,31 +3,33 @@
 
 # tokenizers
 
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/tokenizers)](http://cran.r-project.org/package=tokenizers)
-[![CRAN\_Downloads](http://cranlogs.r-pkg.org/badges/grand-total/tokenizers)](http://cran.r-project.org/package=tokenizers)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/tokenizers)](https://cran.r-project.org/package=tokenizers)
+[![DOI](http://joss.theoj.org/papers/10.21105/joss.00655/status.svg)](https://doi.org/10.21105/joss.00655)
+[![rOpenSci peer
+review](https://badges.ropensci.org/33_status.svg)](https://github.com/ropensci/onboarding/issues/33)
+[![CRAN\_Downloads](http://cranlogs.r-pkg.org/badges/grand-total/tokenizers)](https://cran.r-project.org/package=tokenizers)
 [![Travis-CI Build
 Status](https://travis-ci.org/ropensci/tokenizers.svg?branch=master)](https://travis-ci.org/ropensci/tokenizers)
 [![Appveyor Build
 status](https://ci.appveyor.com/api/projects/status/qx3vh3ukjgo99iu4/branch/master?svg=true)](https://ci.appveyor.com/project/lmullen/tokenizers-dkf3v/branch/master)
 [![Coverage
 Status](https://img.shields.io/codecov/c/github/ropensci/tokenizers/master.svg)](https://codecov.io/github/ropensci/tokenizers?branch=master)
-[![](https://badges.ropensci.org/33_status.svg)](https://github.com/ropensci/onboarding/issues/33)
 
 ## Overview
 
 This R package offers functions with a consistent interface to convert
-natural language text into tokens. Includes tokenizers for shingled
+natural language text into tokens. It includes tokenizers for shingled
 n-grams, skip n-grams, words, word stems, sentences, paragraphs,
 characters, shingled characters, lines, tweets, Penn Treebank, and
 regular expressions, as well as functions for counting characters,
 words, and sentences, and a function for splitting longer texts into
 separate documents, each with the same number of words. The package is
 built on the [stringi](http://www.gagolewski.com/software/stringi/) and
-[Rcpp](http://www.rcpp.org/) packages for lightening fast yet correct
-tokenization in UTF-8.
+[Rcpp](http://www.rcpp.org/) packages for fast yet correct tokenization
+in UTF-8.
 
 See the “[Introduction to the tokenizers
-Package](https://ropensci.github.io/tokenizers/articles/introduction-to-tokenizers.html)”
+Package](http://lincolnmullen.com/software/tokenizers/articles/introduction-to-tokenizers.html)”
 vignette for an overview of all the functions in this package.
 
 This package complies with the standards for input and output
@@ -35,9 +37,39 @@ recommended by the Text Interchange Formats. The TIF initiative was
 created at an rOpenSci meeting in 2017, and its recommendations are
 available as part of the [tif package](https://github.com/ropensci/tif).
 See the “[The Text Interchange Formats and the tokenizers
-Package](https://ropensci.github.io/tokenizers/articles/tif-and-tokenizers.html)”
+Package](http://lincolnmullen.com/software/tokenizers/articles/tif-and-tokenizers.html)”
 vignette for an explanation of how this package fits into that
 ecosystem.
+
+## Suggested citation
+
+If you use this package for your research, we would appreciate a
+citation.
+
+``` r
+citation("tokenizers")
+#> 
+#> To cite the tokenizers package in publications, please cite the
+#> paper in the Journal of Open Source Software:
+#> 
+#>   Lincoln A. Mullen et al., "Fast, Consistent Tokenization of
+#>   Natural Language Text," Journal of Open Source Software 3, no.
+#>   23 (2018): 655, https://doi.org/10.21105/joss.00655.
+#> 
+#> A BibTeX entry for LaTeX users is
+#> 
+#>   @Article{,
+#>     title = {Fast, Consistent Tokenization of Natural Language Text},
+#>     author = {Lincoln A. Mullen and Kenneth Benoit and Os Keyes and Dmitry Selivanov and Jeffrey Arnold},
+#>     journal = {Journal of Open Source Software},
+#>     year = {2018},
+#>     volume = {3},
+#>     issue = {23},
+#>     pages = {655},
+#>     url = {https://doi.org/10.21105/joss.00655},
+#>     doi = {10.21105/joss.00655},
+#>   }
+```
 
 ## Installation
 

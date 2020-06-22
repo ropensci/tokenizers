@@ -17,9 +17,11 @@
 #'   the names of the \code{x} vector if available. \code{NULL} is acceptable.
 #' @param ... Arguments passed on to \code{\link{tokenize_words}}.
 #' @examples
+#' \dontrun{
 #' chunked <- chunk_text(mobydick, chunk_size = 100)
 #' length(chunked)
 #' chunked[1:3]
+#' }
 #' @export
 chunk_text <- function(x, chunk_size = 100, doc_id = names(x), ...) {
   check_input(x)

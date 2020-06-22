@@ -6,11 +6,10 @@
 #' paragraphs and then word tokens, or into sentences and then word tokens.
 #'
 #' @name basic-tokenizers
-#' @param x A character vector or a list of character vectors to be tokenized
-#'   into n-grams. If \code{x} is a character vector, it can be of any length,
-#'   and each element will be tokenized separately. If \code{x} is a list of
-#'   character vectors, where each element of the list should have a length of
-#'   1.
+#' @param x A character vector or a list of character vectors to be tokenized.
+#'   If \code{x} is a character vector, it can be of any length, and each element
+#'   will be tokenized separately. If \code{x} is a list of character vectors,
+#'   where each element of the list should have a length of 1.
 #' @param lowercase Should the tokens be made lower case? The default value
 #'   varies by tokenizer; it is only \code{TRUE} by default for the tokenizers
 #'   that you are likely to use last.

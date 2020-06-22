@@ -73,6 +73,7 @@ test_that("punctuation as part of tweets can preserved", {
   )
 })
 
+<<<<<<< HEAD
 test_that("stopwords removal works the same as with tokenize_words", {
   txt <- c(d1 = "i'm happy!")
   stopwords <- "i'm"
@@ -84,4 +85,12 @@ test_that("stopwords removal works the same as with tokenize_words", {
     tokenize_words(txt, stopwords = c("i'm"), strip_punct = FALSE),
     tokenize_tweets(txt, stopwords = c("i'm"), strip_punct = FALSE)
   )
+=======
+test_that("tokenizing a single word works", {
+  expect_equal(tokenize_tweets("Word!", simplify = TRUE), c("word"))
+  expect_equal(tokenize_tweets(list(a = "Hello!", b = "Good day!")),
+               list(a = "hello", b = c("good", "day")))
+  expect_equal(tokenize_tweets(list(a = "Good day!", b = "Hello!")),
+               list(a = c("good", "day"), b = "hello"))
+>>>>>>> master
 })

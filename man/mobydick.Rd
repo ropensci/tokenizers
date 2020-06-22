@@ -8,7 +8,7 @@
 A named character vector with length 1.
 }
 \source{
-\url{http://www.gutenberg.org/ebooks/2701}
+\url{http://www.gutenberg.org/}
 }
 \usage{
 mobydick

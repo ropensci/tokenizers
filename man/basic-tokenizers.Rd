@@ -45,11 +45,10 @@ tokenize_tweets(
 )
 }
 \arguments{
-\item{x}{A character vector or a list of character vectors to be tokenized
-into n-grams. If \code{x} is a character vector, it can be of any length,
-and each element will be tokenized separately. If \code{x} is a list of
-character vectors, where each element of the list should have a length of
-1.}
+\item{x}{A character vector or a list of character vectors to be tokenized.
+If \code{x} is a character vector, it can be of any length, and each element
+will be tokenized separately. If \code{x} is a list of character vectors,
+where each element of the list should have a length of 1.}
 
 \item{lowercase}{Should the tokens be made lower case? The default value
 varies by tokenizer; it is only \code{TRUE} by default for the tokenizers
@@ -73,7 +72,7 @@ paragraphs.}
 
 \item{pattern}{A regular expression that defines the split.}
 
-\item{strip_url}{Should URLs (starting with http(s)) be preserved intact, or
+\item{strip_url}{Should URLs (starting with \code{http(s)}) be preserved intact, or
 removed entirely?}
 }
 \value{

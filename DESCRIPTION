@@ -1,14 +1,15 @@
 Package: tokenizers
 Type: Package
 Title: Fast, Consistent Tokenization of Natural Language Text
-Version: 0.1.4.9002
+Version: 0.2.2
+Date: 2018-06-23
 Description: Convert natural language text into tokens. Includes tokenizers for
     shingled n-grams, skip n-grams, words, word stems, sentences, paragraphs,
     characters, shingled characters, lines, tweets, Penn Treebank, regular
     expressions, as well as functions for counting characters, words, and sentences,
     and a function for splitting longer texts into separate documents, each with
     the same number of words.  The tokenizers have a consistent interface, and
-    the package is built on the 'stringi' and 'Rcpp' packages for  lightening fast
+    the package is built on the 'stringi' and 'Rcpp' packages for  fast
     yet correct tokenization in 'UTF-8'. 
 License: MIT + file LICENSE
 LazyData: yes
@@ -21,11 +22,12 @@ Authors@R: c(person("Lincoln", "Mullen", role = c("aut", "cre"),
         person("Dmitriy", "Selivanov", role = c("ctb"),
         email = "selivanov.dmitriy@gmail.com"),
         person("Jeffrey", "Arnold", role = c("ctb"),
-        email = "jeffrey.arnold@gmail.com"),
+        email = "jeffrey.arnold@gmail.com",
+        comment = c(ORCID = "0000-0001-9953-3904")),
         person("Kenneth", "Benoit", role = c("ctb"),
         email = "kbenoit@lse.ac.uk",
         comment = c(ORCID = "0000-0002-0797-564X")))
-URL: https://github.com/ropensci/tokenizers
+URL: https://docs.ropensci.org/tokenizers/, https://github.com/ropensci/tokenizers
 BugReports: https://github.com/ropensci/tokenizers/issues
 RoxygenNote: 7.1.0
 Depends:
@@ -33,12 +35,13 @@ Depends:
 Imports:
   stringi (>= 1.0.1),
   Rcpp (>= 0.12.3),
-  stopwords (>= 0.9.0),
   SnowballC (>= 0.5.1)
 LinkingTo: Rcpp
-Suggests: testthat,
-    covr,
-    knitr,
-    rmarkdown
 Encoding: UTF-8
+Suggests:
+  covr,
+  knitr,
+  rmarkdown,
+  stopwords (>= 0.9.0),
+  testthat
 VignetteBuilder: knitr

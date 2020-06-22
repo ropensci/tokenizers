@@ -1,5 +1,5 @@
 #' @rdname basic-tokenizers
-#' @param strip_url Should URLs (starting with http(s)) be preserved intact, or
+#' @param strip_url Should URLs (starting with \code{http(s)}) be preserved intact, or
 #'   removed entirely?
 #' @importFrom stringi stri_split_charclass stri_detect_regex stri_sub
 #' @export
@@ -42,7 +42,8 @@ tokenize_tweets.default <- function(x,
   out <- stri_split_charclass(x, "\\p{WHITE_SPACE}")
 
   # get document indexes to vectorize tokens
-  docindex <- c(1, cumsum(lengths(out)))
+  doc_lengths <- cumsum(lengths(out))
+  docindex <- c(0, doc_lengths)
   # convert the list into a vector - avoids all those mapplys
   out <- unlist(out)
 
@@ -60,7 +61,6 @@ tokenize_tweets.default <- function(x,
       stri_trans_tolower(out[!(index_twitter | index_url)])
   }
 
-  # remove stopwords
   if (!is.null(stopwords))
     out <- sapply(out, remove_stopwords, stopwords, USE.NAMES = FALSE)
 
@@ -68,7 +68,6 @@ tokenize_tweets.default <- function(x,
     twitter_chars <- stri_sub(out[index_twitter], 1, 1)
     out[!index_url] <-
       stri_replace_all_charclass(out[!index_url], "\\p{P}", "")
-      # stri_replace_all_regex(out[!index_url], "^(\\p{P})*(\\P{P}+)(\\p{P})$", "$2")
     out[index_twitter] <- paste0(twitter_chars, out[index_twitter])
   } else {
     # all except URLs
