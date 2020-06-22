@@ -30,7 +30,9 @@ Chunking the text passes it through \code{\link{tokenize_words}},
   arguments to pass along to that function.
 }
 \examples{
+\dontrun{
 chunked <- chunk_text(mobydick, chunk_size = 100)
 length(chunked)
 chunked[1:3]
+}
 }

@@ -1,7 +1,6 @@
 ---
 title: "The Text Interchange Formats and the tokenizers Package"
 author: "Lincoln Mullen"
-date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{The Text Interchange Formats and the tokenizers Package}

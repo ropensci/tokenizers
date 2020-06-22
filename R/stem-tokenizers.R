@@ -9,11 +9,10 @@
 #'
 #' @details This function will strip all white space and punctuation and make
 #'   all word stems lowercase.
-#' @param x A character vector or a list of character vectors to be tokenized
-#'   into n-grams. If \code{x} is a character vector, it can be of any length,
-#'   and each element will be tokenized separately. If \code{x} is a list of
-#'   character vectors, where each element of the list should have a length of
-#'   1.
+#' @param x A character vector or a list of character vectors to be tokenized.
+#'   If \code{x} is a character vector, it can be of any length, and each
+#'   element will be tokenized separately. If \code{x} is a list of character
+#'   vectors, where each element of the list should have a length of 1.
 #' @param language The language to use for word stemming. This must be one of
 #'   the languages available in the SnowballC package. A list is provided by
 #'   \code{\link[SnowballC]{getStemLanguages}}.

@@ -72,3 +72,11 @@ test_that("punctuation as part of tweets can preserved", {
          t2 = c("@rOpenSci", "See", "you", "at", "UseR"))
   )
 })
+
+test_that("tokenizing a single word works", {
+  expect_equal(tokenize_tweets("Word!", simplify = TRUE), c("word"))
+  expect_equal(tokenize_tweets(list(a = "Hello!", b = "Good day!")),
+               list(a = "hello", b = c("good", "day")))
+  expect_equal(tokenize_tweets(list(a = "Good day!", b = "Hello!")),
+               list(a = c("good", "day"), b = "hello"))
+})
