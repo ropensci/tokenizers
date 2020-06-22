@@ -37,6 +37,7 @@ tokenize_words(james)
 tokenize_word_stems(james)
 
 ## -----------------------------------------------------------------------------
+library(stopwords)
 tokenize_words(james, stopwords = stopwords::stopwords("en"))
 
 ## -----------------------------------------------------------------------------

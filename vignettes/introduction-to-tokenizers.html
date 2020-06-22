@@ -12,7 +12,6 @@
 
 <meta name="author" content="Lincoln Mullen" />
 
-<meta name="date" content="2020-06-22" />
 
 <title>Introduction to the tokenizers Package</title>
 
@@ -315,7 +314,6 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Introduction to the tokenizers Package</h1>
 <h4 class="author">Lincoln Mullen</h4>
-<h4 class="date">2020-06-22</h4>
 
 
 
@@ -376,14 +374,15 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <span id="cb5-7"><a href="#cb5-7"></a><span class="co">#&gt; [25] &quot;so&quot;      </span></span>
 <span id="cb5-8"><a href="#cb5-8"></a><span class="co">#&gt;  [ reached getOption(&quot;max.print&quot;) -- omitted 87 entries ]</span></span></code></pre></div>
 <p>You can also provide a vector of stopwords which will be omitted. The <a href="https://github.com/quanteda/stopwords">stopwords package</a>, which contains stopwords for many languages from several sources, is recommended. This argument also works with the n-gram and skip n-gram tokenizers.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">tokenize_words</span>(james, <span class="dt">stopwords =</span> stopwords<span class="op">::</span><span class="kw">stopwords</span>(<span class="st">&quot;en&quot;</span>))</span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="co">#&gt;  [1] &quot;question&quot;    &quot;thus&quot;        &quot;becomes&quot;     &quot;verbal&quot;      &quot;one&quot;        </span></span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="co">#&gt;  [6] &quot;knowledge&quot;   &quot;early&quot;       &quot;stages&quot;      &quot;thought&quot;     &quot;feeling&quot;    </span></span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="co">#&gt; [11] &quot;case&quot;        &quot;conjectural&quot; &quot;imperfect&quot;   &quot;farther&quot;     &quot;discussion&quot; </span></span>
-<span id="cb6-6"><a href="#cb6-6"></a><span class="co">#&gt; [16] &quot;worth&quot;       &quot;religion&quot;    &quot;therefore&quot;   &quot;now&quot;         &quot;ask&quot;        </span></span>
-<span id="cb6-7"><a href="#cb6-7"></a><span class="co">#&gt; [21] &quot;arbitrarily&quot; &quot;take&quot;        &quot;shall&quot;       &quot;mean&quot;        &quot;us&quot;         </span></span>
-<span id="cb6-8"><a href="#cb6-8"></a><span class="co">#&gt;  [ reached getOption(&quot;max.print&quot;) -- omitted 33 entries ]</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">library</span>(stopwords)</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="kw">tokenize_words</span>(james, <span class="dt">stopwords =</span> stopwords<span class="op">::</span><span class="kw">stopwords</span>(<span class="st">&quot;en&quot;</span>))</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co">#&gt;  [1] &quot;question&quot;    &quot;thus&quot;        &quot;becomes&quot;     &quot;verbal&quot;      &quot;one&quot;        </span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="co">#&gt;  [6] &quot;knowledge&quot;   &quot;early&quot;       &quot;stages&quot;      &quot;thought&quot;     &quot;feeling&quot;    </span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="co">#&gt; [11] &quot;case&quot;        &quot;conjectural&quot; &quot;imperfect&quot;   &quot;farther&quot;     &quot;discussion&quot; </span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="co">#&gt; [16] &quot;worth&quot;       &quot;religion&quot;    &quot;therefore&quot;   &quot;now&quot;         &quot;ask&quot;        </span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="co">#&gt; [21] &quot;arbitrarily&quot; &quot;take&quot;        &quot;shall&quot;       &quot;mean&quot;        &quot;us&quot;         </span></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="co">#&gt;  [ reached getOption(&quot;max.print&quot;) -- omitted 33 entries ]</span></span></code></pre></div>
 <p>An alternative word stemmer often used in NLP that preserves punctuation and separates common English contractions is the Penn Treebank tokenizer.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">tokenize_ptb</span>(james)</span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="co">#&gt; [[1]]</span></span>
@@ -451,7 +450,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">tokenize_tweets</span>(<span class="st">&quot;Welcome, @user, to the tokenizers package. #rstats #forever&quot;</span>)</span>
 <span id="cb10-2"><a href="#cb10-2"></a><span class="co">#&gt; [[1]]</span></span>
 <span id="cb10-3"><a href="#cb10-3"></a><span class="co">#&gt; [1] &quot;welcome&quot;    &quot;@user&quot;      &quot;to&quot;         &quot;the&quot;        &quot;tokenizers&quot;</span></span>
-<span id="cb10-4"><a href="#cb10-4"></a><span class="co">#&gt; [6] &quot;package&quot;    &quot;##rstats&quot;   &quot;##forever&quot;</span></span></code></pre></div>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="co">#&gt; [6] &quot;package&quot;    &quot;#rstats&quot;    &quot;#forever&quot;</span></span></code></pre></div>
 </div>
 <div id="sentence-and-paragraph-tokenizers" class="section level2">
 <h2>Sentence and paragraph tokenizers</h2>
