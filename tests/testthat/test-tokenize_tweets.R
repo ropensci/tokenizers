@@ -72,3 +72,16 @@ test_that("punctuation as part of tweets can preserved", {
          t2 = c("@rOpenSci", "See", "you", "at", "UseR"))
   )
 })
+
+test_that("stopwords removal works the same as with tokenize_words", {
+  txt <- c(d1 = "i'm happy!")
+  stopwords <- "i'm"
+  expect_identical(
+    tokenize_words(txt, stopwords = c("i'm"), strip_punct = TRUE),
+    tokenize_tweets(txt, stopwords = c("i'm"), strip_punct = TRUE)
+  )
+  expect_identical(
+    tokenize_words(txt, stopwords = c("i'm"), strip_punct = FALSE),
+    tokenize_tweets(txt, stopwords = c("i'm"), strip_punct = FALSE)
+  )
+})
