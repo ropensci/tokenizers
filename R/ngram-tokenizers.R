@@ -23,8 +23,8 @@
 #'   character vectors, each element of the list should have a length of 1.
 #' @param n The number of words in the n-gram. This must be an integer greater
 #'   than or equal to 1.
-#' @param n_min This must be an integer greater than or equal to 1, and less
-#'   than or equal to \code{n}.
+#' @param n_min The minimum number of words in the n-gram. This must be an
+#'   integer greater than or equal to 1, and less than or equal to \code{n}.
 #' @param k For the skip n-gram tokenizer, the maximum skip distance between
 #'   words. The function will compute all skip n-grams between \code{0} and
 #'   \code{k}.
