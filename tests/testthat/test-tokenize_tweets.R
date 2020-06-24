@@ -80,3 +80,17 @@ test_that("tokenizing a single word works", {
   expect_equal(tokenize_tweets(list(a = "Good day!", b = "Hello!")),
                list(a = c("good", "day"), b = "hello"))
 })
+
+
+test_that("stopwords removal works the same as with tokenize_words", {
+  txt <- c(d1 = "i'm happy!")
+  stopwords <- "i'm"
+  expect_identical(
+    tokenize_words(txt, stopwords = c("i'm"), strip_punct = TRUE),
+    tokenize_tweets(txt, stopwords = c("i'm"), strip_punct = TRUE)
+  )
+  expect_identical(
+    tokenize_words(txt, stopwords = c("i'm"), strip_punct = FALSE),
+    tokenize_tweets(txt, stopwords = c("i'm"), strip_punct = FALSE)
+  )
+})

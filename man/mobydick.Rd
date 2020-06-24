@@ -4,7 +4,9 @@
 \name{mobydick}
 \alias{mobydick}
 \title{The text of Moby Dick}
-\format{A named character vector with length 1.}
+\format{
+A named character vector with length 1.
+}
 \source{
 \url{http://www.gutenberg.org/}
 }

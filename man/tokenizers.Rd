@@ -3,7 +3,6 @@
 \docType{package}
 \name{tokenizers}
 \alias{tokenizers}
-\alias{tokenizers-package}
 \title{Tokenizers}
 \description{
 A collection of functions with a consistent interface to convert natural

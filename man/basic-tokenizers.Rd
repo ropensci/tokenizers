@@ -11,14 +11,23 @@
 \alias{tokenize_tweets}
 \title{Basic tokenizers}
 \usage{
-tokenize_characters(x, lowercase = TRUE, strip_non_alphanum = TRUE,
-  simplify = FALSE)
+tokenize_characters(
+  x,
+  lowercase = TRUE,
+  strip_non_alphanum = TRUE,
+  simplify = FALSE
+)
 
-tokenize_words(x, lowercase = TRUE, stopwords = NULL, strip_punct = TRUE,
-  strip_numeric = FALSE, simplify = FALSE)
+tokenize_words(
+  x,
+  lowercase = TRUE,
+  stopwords = NULL,
+  strip_punct = TRUE,
+  strip_numeric = FALSE,
+  simplify = FALSE
+)
 
-tokenize_sentences(x, lowercase = FALSE, strip_punct = FALSE,
-  simplify = FALSE)
+tokenize_sentences(x, lowercase = FALSE, strip_punct = FALSE, simplify = FALSE)
 
 tokenize_lines(x, simplify = FALSE)
 
@@ -26,8 +35,14 @@ tokenize_paragraphs(x, paragraph_break = "\\n\\n", simplify = FALSE)
 
 tokenize_regex(x, pattern = "\\\\s+", simplify = FALSE)
 
-tokenize_tweets(x, lowercase = TRUE, stopwords = NULL, strip_punct = TRUE,
-  strip_url = FALSE, simplify = FALSE)
+tokenize_tweets(
+  x,
+  lowercase = TRUE,
+  stopwords = NULL,
+  strip_punct = TRUE,
+  strip_url = FALSE,
+  simplify = FALSE
+)
 }
 \arguments{
 \item{x}{A character vector or a list of character vectors to be tokenized.
@@ -73,15 +88,15 @@ at most two levels of tokenization. For instance, one might split a text into
 paragraphs and then word tokens, or into sentences and then word tokens.
 }
 \examples{
-song <-  paste0("How many roads must a man walk down\\n",
-                "Before you call him a man?\\n",
-                "How many seas must a white dove sail\\n",
-                "Before she sleeps in the sand?\\n",
-                "\\n",
-                "How many times must the cannonballs fly\\n",
-                "Before they're forever banned?\\n",
-                "The answer, my friend, is blowin' in the wind.\\n",
-                "The answer is blowin' in the wind.\\n")
+song <-  paste0("How many roads must a man walk down\n",
+                "Before you call him a man?\n",
+                "How many seas must a white dove sail\n",
+                "Before she sleeps in the sand?\n",
+                "\n",
+                "How many times must the cannonballs fly\n",
+                "Before they're forever banned?\n",
+                "The answer, my friend, is blowin' in the wind.\n",
+                "The answer is blowin' in the wind.\n")
 
 tokenize_words(song)
 tokenize_words(song, strip_punct = FALSE)

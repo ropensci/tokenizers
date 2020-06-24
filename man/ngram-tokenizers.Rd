@@ -6,11 +6,25 @@
 \alias{tokenize_skip_ngrams}
 \title{N-gram tokenizers}
 \usage{
-tokenize_ngrams(x, lowercase = TRUE, n = 3L, n_min = n,
-  stopwords = character(), ngram_delim = " ", simplify = FALSE)
+tokenize_ngrams(
+  x,
+  lowercase = TRUE,
+  n = 3L,
+  n_min = n,
+  stopwords = character(),
+  ngram_delim = " ",
+  simplify = FALSE
+)
 
-tokenize_skip_ngrams(x, lowercase = TRUE, n_min = 1, n = 3, k = 1,
-  stopwords = character(), simplify = FALSE)
+tokenize_skip_ngrams(
+  x,
+  lowercase = TRUE,
+  n_min = 1,
+  n = 3,
+  k = 1,
+  stopwords = character(),
+  simplify = FALSE
+)
 }
 \arguments{
 \item{x}{A character vector or a list of character vectors to be tokenized
@@ -64,15 +78,15 @@ These functions will strip all punctuation and normalize all whitespace to a
 single space character.
 }
 \examples{
-song <-  paste0("How many roads must a man walk down\\n",
-                "Before you call him a man?\\n",
-                "How many seas must a white dove sail\\n",
-                "Before she sleeps in the sand?\\n",
-                "\\n",
-                "How many times must the cannonballs fly\\n",
-                "Before they're forever banned?\\n",
-                "The answer, my friend, is blowin' in the wind.\\n",
-                "The answer is blowin' in the wind.\\n")
+song <-  paste0("How many roads must a man walk down\n",
+                "Before you call him a man?\n",
+                "How many seas must a white dove sail\n",
+                "Before she sleeps in the sand?\n",
+                "\n",
+                "How many times must the cannonballs fly\n",
+                "Before they're forever banned?\n",
+                "The answer, my friend, is blowin' in the wind.\n",
+                "The answer is blowin' in the wind.\n")
 
 tokenize_ngrams(song, n = 4)
 tokenize_ngrams(song, n = 4, n_min = 1)

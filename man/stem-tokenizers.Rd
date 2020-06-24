@@ -4,15 +4,18 @@
 \alias{tokenize_word_stems}
 \title{Word stem tokenizer}
 \usage{
-tokenize_word_stems(x, language = "english", stopwords = NULL,
-  simplify = FALSE)
+tokenize_word_stems(
+  x,
+  language = "english",
+  stopwords = NULL,
+  simplify = FALSE
+)
 }
 \arguments{
 \item{x}{A character vector or a list of character vectors to be tokenized.
-If \code{x} is a character vector, it can be of any length,
-and each element will be tokenized separately. If \code{x} is a list of
-character vectors, where each element of the list should have a length of
-1.}
+If \code{x} is a character vector, it can be of any length, and each
+element will be tokenized separately. If \code{x} is a list of character
+vectors, where each element of the list should have a length of 1.}
 
 \item{language}{The language to use for word stemming. This must be one of
 the languages available in the SnowballC package. A list is provided by
@@ -44,15 +47,15 @@ This function will strip all white space and punctuation and make
   all word stems lowercase.
 }
 \examples{
-song <-  paste0("How many roads must a man walk down\\n",
-                "Before you call him a man?\\n",
-                "How many seas must a white dove sail\\n",
-                "Before she sleeps in the sand?\\n",
-                "\\n",
-                "How many times must the cannonballs fly\\n",
-                "Before they're forever banned?\\n",
-                "The answer, my friend, is blowin' in the wind.\\n",
-                "The answer is blowin' in the wind.\\n")
+song <-  paste0("How many roads must a man walk down\n",
+                "Before you call him a man?\n",
+                "How many seas must a white dove sail\n",
+                "Before she sleeps in the sand?\n",
+                "\n",
+                "How many times must the cannonballs fly\n",
+                "Before they're forever banned?\n",
+                "The answer, my friend, is blowin' in the wind.\n",
+                "The answer is blowin' in the wind.\n")
 
 tokenize_word_stems(song)
 }

@@ -25,7 +25,7 @@ test_that("Word tokenizer produces correct output", {
   sents <-
     c(paste0("Good muffins cost $3.88\nin New York. ",
              "Please buy me\\ntwo of them.\\nThanks."),
-      "They'll save and invest more." ,
+      "They'll save and invest more.",
       "hi, my name can't hello,")
   expected <-
     list(c("Good", "muffins", "cost", "$", "3.88", "in", "New", "York.",

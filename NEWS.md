@@ -23,6 +23,7 @@
 - Keyboard interrupt checks have been added to Rcpp-backed functions to enable users to terminate them before completion (#37).
 - `tokenize_words()` gains arguments to preserve or strip punctuation and numbers (#48).
 - `tokenize_skip_ngrams()` and `tokenize_ngrams()` to return properly marked UTF8 strings on Windows (@patperry) (#58).
+- `tokenize_tweets()` now removes stopwords prior to stripping punctuation, making its behavior more consistent with `tokenize_words()` (#76).
 
 # tokenizers 0.1.4
 
