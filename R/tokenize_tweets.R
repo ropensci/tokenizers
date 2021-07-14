@@ -65,12 +65,23 @@ tokenize_tweets.default <- function(x,
     out <- sapply(out, remove_stopwords, stopwords, USE.NAMES = FALSE)
 
   if (strip_punct) {
+    # split all except URLs, twitter hashtags, and usernames into words.
+    out[!index_url & !index_twitter] <-
+      stri_split_boundaries(out[!index_url & !index_twitter], type = "word")
+    out[!index_url & !index_twitter] <-
+      lapply(out[!index_url & !index_twitter], function(toks) {
+        stri_replace_all_charclass(toks, "\\p{P}", "")
+      })
+
+    # preserve twitter characters, strip all punctuations,
+    # then put back the twitter characters.
     twitter_chars <- stri_sub(out[index_twitter], 1, 1)
-    out[!index_url] <-
-      stri_replace_all_charclass(out[!index_url], "\\p{P}", "")
+    out[index_twitter] <-
+      stri_replace_all_charclass(out[index_twitter], "\\p{P}", "")
     out[index_twitter] <- paste0(twitter_chars, out[index_twitter])
-  } else {
-    # all except URLs
+  }
+  else {
+    # split all except URLs.
     out[!index_url] <-
       stri_split_boundaries(out[!index_url], type = "word")
     # rejoin the hashtags and usernames
