@@ -94,3 +94,10 @@ test_that("stopwords removal works the same as with tokenize_words", {
     tokenize_tweets(txt, stopwords = c("i'm"), strip_punct = FALSE)
   )
 })
+
+test_that("tokenizing non-space-separated language works", {
+  expect_equal(
+    tokenize_tweets("\u4ECA\u65E5\u3082\u3088\u3044\u5929\u6C17\u3002", simplify = TRUE),
+    c("\u4ECA\u65E5", "\u3082", "\u3088\u3044", "\u5929\u6C17")
+  )
+})
