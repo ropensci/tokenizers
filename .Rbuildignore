@@ -12,3 +12,4 @@
 ^paper.md$
 ^Makefile$
 ^_pkgdown\.yml$
+^CRAN-SUBMISSION$

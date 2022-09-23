@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-The [Text Interchange Formats](https://github.com/ropensci/tif) are a set of standards defined at an [rOpenSci](https://ropensci.org/) sponsored [meeting in London](https://textworkshop17.ropensci.org/) in 2017. The formats allow R text analysis packages to target defined inputs and outputs for corpora, tokens, and document-term matrices. By adhering to these recommendations, R packages can buy into an interoperable ecosystem.
+The [Text Interchange Formats](https://github.com/ropenscilabs/tif) are a set of standards defined at an [rOpenSci](https://ropensci.org/) sponsored [meeting in London](https://textworkshop17.ropensci.org/) in 2017. The formats allow R text analysis packages to target defined inputs and outputs for corpora, tokens, and document-term matrices. By adhering to these recommendations, R packages can buy into an interoperable ecosystem.
 
 The TIF recommendations are still a draft, but the tokenizers package implements its recommendation to accept both of the corpora formats and to output one of its recommended tokens formats. 
 
