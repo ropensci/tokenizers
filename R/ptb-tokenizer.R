@@ -28,7 +28,7 @@
 #'   TRUE} and only a single element was passed as input, then the output is a
 #'   character vector of tokens.
 #' @references
-#' \href{http://www.nltk.org/_modules/nltk/tokenize/treebank.html#TreebankWordTokenizer}{NLTK
+#' \href{https://www.nltk.org/_modules/nltk/tokenize/treebank.html#TreebankWordTokenizer}{NLTK
 #' TreebankWordTokenizer}
 #' @importFrom stringi stri_c stri_replace_all_regex stri_trim_both
 #'   stri_split_regex stri_opts_regex

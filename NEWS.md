@@ -1,3 +1,7 @@
+# tokenizers 0.2.3
+
+- Bug fixes and performance enhancements.
+
 # tokenizers 0.2.1
 
 - Add citation information to JOSS paper.

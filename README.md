@@ -3,15 +3,13 @@
 
 # tokenizers
 
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/tokenizers)](https://cran.r-project.org/package=tokenizers)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/tokenizers)](https://cran.r-project.org/package=tokenizers)
 [![DOI](http://joss.theoj.org/papers/10.21105/joss.00655/status.svg)](https://doi.org/10.21105/joss.00655)
 [![rOpenSci peer
-review](https://badges.ropensci.org/33_status.svg)](https://github.com/ropensci/onboarding/issues/33)
-[![CRAN\_Downloads](http://cranlogs.r-pkg.org/badges/grand-total/tokenizers)](https://cran.r-project.org/package=tokenizers)
+review](https://badges.ropensci.org/33_status.svg)](https://github.com/ropensci/software-review/issues/33)
+[![CRAN_Downloads](http://cranlogs.r-pkg.org/badges/grand-total/tokenizers)](https://cran.r-project.org/package=tokenizers)
 [![Travis-CI Build
 Status](https://travis-ci.org/ropensci/tokenizers.svg?branch=master)](https://travis-ci.org/ropensci/tokenizers)
-[![Appveyor Build
-status](https://ci.appveyor.com/api/projects/status/qx3vh3ukjgo99iu4/branch/master?svg=true)](https://ci.appveyor.com/project/lmullen/tokenizers-dkf3v/branch/master)
 [![Coverage
 Status](https://img.shields.io/codecov/c/github/ropensci/tokenizers/master.svg)](https://codecov.io/github/ropensci/tokenizers?branch=master)
 
@@ -25,19 +23,20 @@ regular expressions, as well as functions for counting characters,
 words, and sentences, and a function for splitting longer texts into
 separate documents, each with the same number of words. The package is
 built on the [stringi](http://www.gagolewski.com/software/stringi/) and
-[Rcpp](http://www.rcpp.org/) packages for fast yet correct tokenization
+[Rcpp](https://www.rcpp.org/) packages for fast yet correct tokenization
 in UTF-8.
 
 See the “[Introduction to the tokenizers
-Package](http://lincolnmullen.com/software/tokenizers/articles/introduction-to-tokenizers.html)”
+Package](https://docs.ropensci.org/tokenizers/articles/introduction-to-tokenizers.html)”
 vignette for an overview of all the functions in this package.
 
 This package complies with the standards for input and output
 recommended by the Text Interchange Formats. The TIF initiative was
 created at an rOpenSci meeting in 2017, and its recommendations are
-available as part of the [tif package](https://github.com/ropensci/tif).
-See the “[The Text Interchange Formats and the tokenizers
-Package](http://lincolnmullen.com/software/tokenizers/articles/tif-and-tokenizers.html)”
+available as part of the [tif
+package](https://github.com/ropenscilabs/tif). See the “[The Text
+Interchange Formats and the tokenizers
+Package](https://docs.ropensci.org/tokenizers/articles/tif-and-tokenizers.html)”
 vignette for an explanation of how this package fits into that
 ecosystem.
 
@@ -49,12 +48,12 @@ citation.
 ``` r
 citation("tokenizers")
 #> 
-#> To cite the tokenizers package in publications, please cite the
-#> paper in the Journal of Open Source Software:
+#> To cite the tokenizers package in publications, please cite the paper
+#> in the Journal of Open Source Software:
 #> 
-#>   Lincoln A. Mullen et al., "Fast, Consistent Tokenization of
-#>   Natural Language Text," Journal of Open Source Software 3, no.
-#>   23 (2018): 655, https://doi.org/10.21105/joss.00655.
+#>   Lincoln A. Mullen et al., "Fast, Consistent Tokenization of Natural
+#>   Language Text," Journal of Open Source Software 3, no. 23 (2018):
+#>   655, https://doi.org/10.21105/joss.00655.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
@@ -69,22 +68,6 @@ citation("tokenizers")
 #>     url = {https://doi.org/10.21105/joss.00655},
 #>     doi = {10.21105/joss.00655},
 #>   }
-```
-
-## Installation
-
-You can install this package from CRAN:
-
-``` r
-install.packages("tokenizers")
-```
-
-To get the development version from GitHub, use
-[devtools](https://github.com/hadley/devtools).
-
-``` r
-# install.packages("devtools")
-devtools::install_github("ropensci/tokenizers")
 ```
 
 ## Examples
@@ -122,12 +105,12 @@ james <- paste0(
 names(james) <- "varieties"
 
 tokenize_characters(james)[[1]] %>% head(50)
-#>  [1] "t" "h" "e" "q" "u" "e" "s" "t" "i" "o" "n" "t" "h" "u" "s" "b" "e"
-#> [18] "c" "o" "m" "e" "s" "a" "v" "e" "r" "b" "a" "l" "o" "n" "e" "a" "g"
-#> [35] "a" "i" "n" "a" "n" "d" "o" "u" "r" "k" "n" "o" "w" "l" "e" "d"
+#>  [1] "t" "h" "e" "q" "u" "e" "s" "t" "i" "o" "n" "t" "h" "u" "s" "b" "e" "c" "o"
+#> [20] "m" "e" "s" "a" "v" "e" "r" "b" "a" "l" "o" "n" "e" "a" "g" "a" "i" "n" "a"
+#> [39] "n" "d" "o" "u" "r" "k" "n" "o" "w" "l" "e" "d"
 tokenize_character_shingles(james)[[1]] %>% head(20)
-#>  [1] "the" "heq" "equ" "que" "ues" "est" "sti" "tio" "ion" "ont" "nth"
-#> [12] "thu" "hus" "usb" "sbe" "bec" "eco" "com" "ome" "mes"
+#>  [1] "the" "heq" "equ" "que" "ues" "est" "sti" "tio" "ion" "ont" "nth" "thu"
+#> [13] "hus" "usb" "sbe" "bec" "eco" "com" "ome" "mes"
 tokenize_words(james)[[1]] %>% head(10)
 #>  [1] "the"      "question" "thus"     "becomes"  "a"        "verbal"  
 #>  [7] "one"      "again"    "and"      "our"
@@ -197,7 +180,7 @@ Please note that this project is released with a [Contributor Code of
 Conduct](CONDUCT.md). By participating in this project you agree to
 abide by its terms.
 
------
+------------------------------------------------------------------------
 
 [![rOpenSCi
-logo](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
+logo](https://ropensci.org/public_images/github_footer.png)](https://ropensci.org)

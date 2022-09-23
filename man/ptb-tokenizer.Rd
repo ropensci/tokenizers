@@ -58,6 +58,6 @@ tokenize_ptb(c("Good muffins cost $3.88\nin New York. Please buy me\ntwo of them
   "Hi, I can't say hello."))
 }
 \references{
-\href{http://www.nltk.org/_modules/nltk/tokenize/treebank.html#TreebankWordTokenizer}{NLTK
+\href{https://www.nltk.org/_modules/nltk/tokenize/treebank.html#TreebankWordTokenizer}{NLTK
 TreebankWordTokenizer}
 }

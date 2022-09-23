@@ -49,7 +49,7 @@ for large corpora, tokenization can be computationally expensive, and
 tokenization is highly language dependent.  Efficiency and correctness are 
 therefore paramount concerns for tokenization.
 
-The [tokenizers](http://lincolnmullen.com/software/tokenizers/) package for 
+The [tokenizers](https://docs.ropensci.org/tokenizers/index.html) package for 
 R provides fast, consistent tokenization for natural language text 
 [@tokenizers; @rbase]. (The package is available on 
 [GitHub](https://github.com/ropensci/tokenizers) and archived on 

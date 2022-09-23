@@ -17,19 +17,18 @@ knitr::opts_chunk$set(
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/tokenizers)](https://cran.r-project.org/package=tokenizers)
 [![DOI](http://joss.theoj.org/papers/10.21105/joss.00655/status.svg)](https://doi.org/10.21105/joss.00655)
-[![rOpenSci peer review](https://badges.ropensci.org/33_status.svg)](https://github.com/ropensci/onboarding/issues/33)
+[![rOpenSci peer review](https://badges.ropensci.org/33_status.svg)](https://github.com/ropensci/software-review/issues/33)
 [![CRAN_Downloads](http://cranlogs.r-pkg.org/badges/grand-total/tokenizers)](https://cran.r-project.org/package=tokenizers)
 [![Travis-CI Build Status](https://travis-ci.org/ropensci/tokenizers.svg?branch=master)](https://travis-ci.org/ropensci/tokenizers)
-[![Appveyor Build status](https://ci.appveyor.com/api/projects/status/qx3vh3ukjgo99iu4/branch/master?svg=true)](https://ci.appveyor.com/project/lmullen/tokenizers-dkf3v/branch/master)
 [![Coverage Status](https://img.shields.io/codecov/c/github/ropensci/tokenizers/master.svg)](https://codecov.io/github/ropensci/tokenizers?branch=master)
 
 ## Overview
 
-This R package offers functions with a consistent interface to convert natural language text into tokens. It includes tokenizers for shingled n-grams, skip n-grams, words, word stems, sentences, paragraphs, characters, shingled characters, lines, tweets, Penn Treebank, and regular expressions, as well as functions for counting characters, words, and sentences, and a function for splitting longer texts into separate documents, each with the same number of words. The package is built on the [stringi](http://www.gagolewski.com/software/stringi/) and [Rcpp](http://www.rcpp.org/) packages for fast yet correct tokenization in UTF-8. 
+This R package offers functions with a consistent interface to convert natural language text into tokens. It includes tokenizers for shingled n-grams, skip n-grams, words, word stems, sentences, paragraphs, characters, shingled characters, lines, tweets, Penn Treebank, and regular expressions, as well as functions for counting characters, words, and sentences, and a function for splitting longer texts into separate documents, each with the same number of words. The package is built on the [stringi](http://www.gagolewski.com/software/stringi/) and [Rcpp](https://www.rcpp.org/) packages for fast yet correct tokenization in UTF-8. 
 
-See the "[Introduction to the tokenizers Package](http://lincolnmullen.com/software/tokenizers/articles/introduction-to-tokenizers.html)" vignette for an overview of all the functions in this package.
+See the "[Introduction to the tokenizers Package](https://docs.ropensci.org/tokenizers/articles/introduction-to-tokenizers.html)" vignette for an overview of all the functions in this package.
 
-This package complies with the standards for input and output recommended by the Text Interchange Formats. The TIF initiative was created at an rOpenSci meeting in 2017, and its recommendations are available as part of the [tif package](https://github.com/ropensci/tif). See the "[The Text Interchange Formats and the tokenizers Package](http://lincolnmullen.com/software/tokenizers/articles/tif-and-tokenizers.html)" vignette for an explanation of how this package fits into that ecosystem.
+This package complies with the standards for input and output recommended by the Text Interchange Formats. The TIF initiative was created at an rOpenSci meeting in 2017, and its recommendations are available as part of the [tif package](https://github.com/ropenscilabs/tif). See the "[The Text Interchange Formats and the tokenizers Package](https://docs.ropensci.org/tokenizers/articles/tif-and-tokenizers.html)" vignette for an explanation of how this package fits into that ecosystem.
 
 ## Suggested citation
 
@@ -37,21 +36,6 @@ If you use this package for your research, we would appreciate a citation.
 
 ```{r}
 citation("tokenizers")
-```
-
-## Installation
-
-You can install this package from CRAN:
-
-```{r eval=FALSE}
-install.packages("tokenizers")
-```
-
-To get the development version from GitHub, use  [devtools](https://github.com/hadley/devtools).
-
-```{r eval=FALSE}
-# install.packages("devtools")
-devtools::install_github("ropensci/tokenizers")
 ```
 
 ## Examples
@@ -109,4 +93,4 @@ Please note that this project is released with a [Contributor Code of Conduct](C
 
 ------------------------------------------------------------------------
 
-[![rOpenSCi logo](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
+[![rOpenSCi logo](https://ropensci.org/public_images/github_footer.png)](https://ropensci.org)

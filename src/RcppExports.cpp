@@ -5,6 +5,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // generate_ngrams_batch
 ListOf<CharacterVector> generate_ngrams_batch(const ListOf<const CharacterVector> documents_list, const int ngram_min, const int ngram_max, CharacterVector stopwords, const String ngram_delim);
 RcppExport SEXP _tokenizers_generate_ngrams_batch(SEXP documents_listSEXP, SEXP ngram_minSEXP, SEXP ngram_maxSEXP, SEXP stopwordsSEXP, SEXP ngram_delimSEXP) {
