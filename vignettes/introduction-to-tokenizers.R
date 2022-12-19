@@ -51,9 +51,6 @@ tokenize_ngrams(james, n = 5, n_min = 2,
 tokenize_skip_ngrams(james, n = 5, n_min = 2, k = 2,
                      stopwords = stopwords::stopwords("en"))
 
-## -----------------------------------------------------------------------------
-tokenize_tweets("Welcome, @user, to the tokenizers package. #rstats #forever")
-
 ## ---- collapse=FALSE----------------------------------------------------------
 tokenize_sentences(james) 
 tokenize_paragraphs(james)

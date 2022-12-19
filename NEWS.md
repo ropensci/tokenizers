@@ -1,3 +1,7 @@
+# tokenizers 0.3.0
+
+- Remove the `tokenize_tweets()` function, which is no longer supported.
+
 # tokenizers 0.2.3
 
 - Bug fixes and performance enhancements.
