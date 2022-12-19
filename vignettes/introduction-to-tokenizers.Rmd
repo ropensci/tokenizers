@@ -101,14 +101,6 @@ tokenize_skip_ngrams(james, n = 5, n_min = 2, k = 2,
                      stopwords = stopwords::stopwords("en"))
 ```
 
-## Tweet tokenizer
-
-Tokenizing tweets requires special attention, since usernames (`@whoever`) and hashtags (`#hashtag`) use special characters that might otherwise be stripped away.
-
-```{r}
-tokenize_tweets("Welcome, @user, to the tokenizers package. #rstats #forever")
-```
-
 ## Sentence and paragraph tokenizers
 
 Sometimes it is desirable to split texts into sentences or paragraphs prior to tokenizing into other forms.

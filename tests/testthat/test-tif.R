@@ -32,9 +32,6 @@ test_that("Different methods produce identical output", {
   expect_identical(tokenize_regex(docs_c), tokenize_regex(docs_df))
   expect_identical(tokenize_regex(docs_l), tokenize_regex(docs_df))
 
-  expect_identical(tokenize_tweets(docs_c), tokenize_tweets(docs_df))
-  expect_identical(tokenize_tweets(docs_l), tokenize_tweets(docs_df))
-
   expect_identical(tokenize_ngrams(docs_c), tokenize_ngrams(docs_df))
   expect_identical(tokenize_ngrams(docs_l), tokenize_ngrams(docs_df))
 
