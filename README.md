@@ -18,11 +18,11 @@ Status](https://img.shields.io/codecov/c/github/ropensci/tokenizers/master.svg)]
 This R package offers functions with a consistent interface to convert
 natural language text into tokens. It includes tokenizers for shingled
 n-grams, skip n-grams, words, word stems, sentences, paragraphs,
-characters, shingled characters, lines, tweets, Penn Treebank, and
-regular expressions, as well as functions for counting characters,
-words, and sentences, and a function for splitting longer texts into
-separate documents, each with the same number of words. The package is
-built on the [stringi](http://www.gagolewski.com/software/stringi/) and
+characters, shingled characters, lines, Penn Treebank, and regular
+expressions, as well as functions for counting characters, words, and
+sentences, and a function for splitting longer texts into separate
+documents, each with the same number of words. The package is built on
+the [stringi](https://www.gagolewski.com/software/stringi/) and
 [Rcpp](https://www.rcpp.org/) packages for fast yet correct tokenization
 in UTF-8.
 
