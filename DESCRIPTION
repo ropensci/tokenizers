@@ -1,8 +1,8 @@
 Package: tokenizers
 Type: Package
 Title: Fast, Consistent Tokenization of Natural Language Text
-Version: 0.3.0
-Date: 2022-12-19
+Version: 0.3.1
+Date: 2024-03-27
 Description: Convert natural language text into tokens. Includes tokenizers for
     shingled n-grams, skip n-grams, words, word stems, sentences, paragraphs,
     characters, shingled characters, lines, Penn Treebank, regular
@@ -13,7 +13,10 @@ Description: Convert natural language text into tokens. Includes tokenizers for
     yet correct tokenization in 'UTF-8'. 
 License: MIT + file LICENSE
 LazyData: yes
-Authors@R: c(person("Lincoln", "Mullen", role = c("aut", "cre"),
+Authors@R: c(person("Thomas", "Charlon", role = c("aut", "cre"),
+        email = "charlon@protonmail.com",
+        comment = c(ORCID = "0000-0001-7497-0470")),
+        person("Lincoln", "Mullen", role = c("aut"),
         email = "lincoln@lincolnmullen.com",
         comment = c(ORCID = "0000-0001-5103-6917")),
         person("Os", "Keyes", role = c("ctb"),
@@ -29,7 +32,7 @@ Authors@R: c(person("Lincoln", "Mullen", role = c("aut", "cre"),
         comment = c(ORCID = "0000-0002-0797-564X")))
 URL: https://docs.ropensci.org/tokenizers/, https://github.com/ropensci/tokenizers
 BugReports: https://github.com/ropensci/tokenizers/issues
-RoxygenNote: 7.2.1
+RoxygenNote: 7.3.1
 Depends:
   R (>= 3.1.3)
 Imports:

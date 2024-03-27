@@ -13,3 +13,5 @@
 ^Makefile$
 ^_pkgdown\.yml$
 ^CRAN-SUBMISSION$
+^Dockerfile$
+^docker-compose.yml$

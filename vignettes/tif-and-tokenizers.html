@@ -29,12 +29,30 @@ document.addEventListener('DOMContentLoaded', function(e) {
 });
 </script>
 
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
 
-<style type="text/css">code{white-space: pre;}</style>
+
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -43,58 +61,57 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
-  { counter-reset: source-line 0; }
+{ counter-reset: source-line 0; }
 pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
+{ position: relative; left: -4em; counter-increment: source-line; }
 pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
 div.sourceCode
-  {   }
+{ }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
 </style>
 <script>
 // apply pandoc div.sourceCode style to pre.sourceCode instead
@@ -103,13 +120,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -117,6 +141,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 })();
 </script>
+
 
 
 
@@ -312,68 +337,91 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 
 
-<h1 class="title toc-ignore">The Text Interchange Formats and the tokenizers Package</h1>
+<h1 class="title toc-ignore">The Text Interchange Formats and the
+tokenizers Package</h1>
 <h4 class="author">Lincoln Mullen</h4>
 
 
 
-<p>The <a href="https://github.com/ropenscilabs/tif">Text Interchange Formats</a> are a set of standards defined at an <a href="https://ropensci.org/">rOpenSci</a> sponsored <a href="http://textworkshop17.ropensci.org/">meeting in London</a> in 2017. The formats allow R text analysis packages to target defined inputs and outputs for corpora, tokens, and document-term matrices. By adhering to these recommendations, R packages can buy into an interoperable ecosystem.</p>
-<p>The TIF recommendations are still a draft, but the tokenizers package implements its recommendation to accept both of the corpora formats and to output one of its recommended tokens formats.</p>
-<p>Consider these two recommended forms of a corpus. One (<code>corpus_c</code>) is a named character vector; the other (<code>corpus_d</code>) is a data frame. They both include a document ID and the full text for each item. The data frame format obviously allows for the use of other metadata fields besides the document ID, whereas the other format does not. Using the coercion functions in the tif package, one could switch back and forth between these formats. Tokenizers also supports a corpus formatted as a named list where each element is a character vector of length one (<code>corpus_l</code>), though this is not a part of the draft TIF standards.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Named list</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>(corpus_l &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">man_comes_around =</span> <span class="st">&quot;There&#39;s a man goin&#39; &#39;round takin&#39; names&quot;</span>,</span>
-<span id="cb1-3"><a href="#cb1-3"></a>                  <span class="dt">wont_back_down =</span> <span class="st">&quot;Well I won&#39;t back down, no I won&#39;t back down&quot;</span>,</span>
-<span id="cb1-4"><a href="#cb1-4"></a>                  <span class="dt">bird_on_a_wire =</span> <span class="st">&quot;Like a bird on a wire&quot;</span>))</span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="co">#&gt; $man_comes_around</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="co">#&gt; [1] &quot;There&#39;s a man goin&#39; &#39;round takin&#39; names&quot;</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="co">#&gt; </span></span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="co">#&gt; $wont_back_down</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="co">#&gt; [1] &quot;Well I won&#39;t back down, no I won&#39;t back down&quot;</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a><span class="co">#&gt; </span></span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="co">#&gt; $bird_on_a_wire</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="co">#&gt; [1] &quot;Like a bird on a wire&quot;</span></span>
-<span id="cb1-13"><a href="#cb1-13"></a></span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="co"># Named character vector</span></span>
-<span id="cb1-15"><a href="#cb1-15"></a>(corpus_c &lt;-<span class="st"> </span><span class="kw">unlist</span>(corpus_l))</span>
-<span id="cb1-16"><a href="#cb1-16"></a><span class="co">#&gt;                               man_comes_around </span></span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="co">#&gt;      &quot;There&#39;s a man goin&#39; &#39;round takin&#39; names&quot; </span></span>
-<span id="cb1-18"><a href="#cb1-18"></a><span class="co">#&gt;                                 wont_back_down </span></span>
-<span id="cb1-19"><a href="#cb1-19"></a><span class="co">#&gt; &quot;Well I won&#39;t back down, no I won&#39;t back down&quot; </span></span>
-<span id="cb1-20"><a href="#cb1-20"></a><span class="co">#&gt;                                 bird_on_a_wire </span></span>
-<span id="cb1-21"><a href="#cb1-21"></a><span class="co">#&gt;                        &quot;Like a bird on a wire&quot;</span></span>
-<span id="cb1-22"><a href="#cb1-22"></a></span>
-<span id="cb1-23"><a href="#cb1-23"></a><span class="co"># Data frame</span></span>
-<span id="cb1-24"><a href="#cb1-24"></a>(corpus_d &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">doc_id =</span> <span class="kw">names</span>(corpus_c), <span class="dt">text =</span> <span class="kw">unname</span>(corpus_c),</span>
-<span id="cb1-25"><a href="#cb1-25"></a>                        <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>))</span>
-<span id="cb1-26"><a href="#cb1-26"></a><span class="co">#&gt;             doc_id                                         text</span></span>
-<span id="cb1-27"><a href="#cb1-27"></a><span class="co">#&gt; 1 man_comes_around      There&#39;s a man goin&#39; &#39;round takin&#39; names</span></span>
-<span id="cb1-28"><a href="#cb1-28"></a><span class="co">#&gt; 2   wont_back_down Well I won&#39;t back down, no I won&#39;t back down</span></span>
-<span id="cb1-29"><a href="#cb1-29"></a><span class="co">#&gt; 3   bird_on_a_wire                        Like a bird on a wire</span></span></code></pre></div>
-<p>All of the tokenizers in this package can accept any of those formats and will return an identical output for each.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">library</span>(tokenizers)</span>
-<span id="cb2-2"><a href="#cb2-2"></a></span>
-<span id="cb2-3"><a href="#cb2-3"></a>tokens_l &lt;-<span class="st"> </span><span class="kw">tokenize_ngrams</span>(corpus_l, <span class="dt">n =</span> <span class="dv">2</span>)</span>
-<span id="cb2-4"><a href="#cb2-4"></a>tokens_c &lt;-<span class="st"> </span><span class="kw">tokenize_ngrams</span>(corpus_c, <span class="dt">n =</span> <span class="dv">2</span>)</span>
-<span id="cb2-5"><a href="#cb2-5"></a>tokens_d &lt;-<span class="st"> </span><span class="kw">tokenize_ngrams</span>(corpus_c, <span class="dt">n =</span> <span class="dv">2</span>)</span>
-<span id="cb2-6"><a href="#cb2-6"></a></span>
-<span id="cb2-7"><a href="#cb2-7"></a><span class="co"># Are all these identical?</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="kw">all</span>(<span class="kw">identical</span>(tokens_l, tokens_c),</span>
-<span id="cb2-9"><a href="#cb2-9"></a>    <span class="kw">identical</span>(tokens_c, tokens_d),</span>
-<span id="cb2-10"><a href="#cb2-10"></a>    <span class="kw">identical</span>(tokens_l, tokens_d))</span>
-<span id="cb2-11"><a href="#cb2-11"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
-<p>The output of all of the tokenizers is a named list, where each element of the list corresponds to a document in the corpus. The names of the list are the document IDs, and the elements are character vectors containing the tokens.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>tokens_l</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="co">#&gt; $man_comes_around</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="co">#&gt; [1] &quot;there&#39;s a&quot;   &quot;a man&quot;       &quot;man goin&quot;    &quot;goin round&quot;  &quot;round takin&quot;</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="co">#&gt; [6] &quot;takin names&quot;</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#&gt; </span></span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="co">#&gt; $wont_back_down</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="co">#&gt; [1] &quot;well i&quot;     &quot;i won&#39;t&quot;    &quot;won&#39;t back&quot; &quot;back down&quot;  &quot;down no&quot;   </span></span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="co">#&gt; [6] &quot;no i&quot;       &quot;i won&#39;t&quot;    &quot;won&#39;t back&quot; &quot;back down&quot; </span></span>
-<span id="cb3-9"><a href="#cb3-9"></a><span class="co">#&gt; </span></span>
-<span id="cb3-10"><a href="#cb3-10"></a><span class="co">#&gt; $bird_on_a_wire</span></span>
-<span id="cb3-11"><a href="#cb3-11"></a><span class="co">#&gt; [1] &quot;like a&quot;  &quot;a bird&quot;  &quot;bird on&quot; &quot;on a&quot;    &quot;a wire&quot;</span></span></code></pre></div>
-<p>This format can be coerced to a data frame of document IDs and tokens, one row per token, using the coercion functions in the tif package. That tokens data frame would look like this.</p>
+<p>The <a href="https://github.com/ropenscilabs/tif">Text Interchange
+Formats</a> are a set of standards defined at an <a href="https://ropensci.org/">rOpenSci</a> sponsored <a href="https://textworkshop17.ropensci.org/">meeting in London</a> in
+2017. The formats allow R text analysis packages to target defined
+inputs and outputs for corpora, tokens, and document-term matrices. By
+adhering to these recommendations, R packages can buy into an
+interoperable ecosystem.</p>
+<p>The TIF recommendations are still a draft, but the tokenizers package
+implements its recommendation to accept both of the corpora formats and
+to output one of its recommended tokens formats.</p>
+<p>Consider these two recommended forms of a corpus. One
+(<code>corpus_c</code>) is a named character vector; the other
+(<code>corpus_d</code>) is a data frame. They both include a document ID
+and the full text for each item. The data frame format obviously allows
+for the use of other metadata fields besides the document ID, whereas
+the other format does not. Using the coercion functions in the tif
+package, one could switch back and forth between these formats.
+Tokenizers also supports a corpus formatted as a named list where each
+element is a character vector of length one (<code>corpus_l</code>),
+though this is not a part of the draft TIF standards.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co"># Named list</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>(corpus_l <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">man_comes_around =</span> <span class="st">&quot;There&#39;s a man goin&#39; &#39;round takin&#39; names&quot;</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>                  <span class="at">wont_back_down =</span> <span class="st">&quot;Well I won&#39;t back down, no I won&#39;t back down&quot;</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>                  <span class="at">bird_on_a_wire =</span> <span class="st">&quot;Like a bird on a wire&quot;</span>))</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="co">#&gt; $man_comes_around</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="co">#&gt; [1] &quot;There&#39;s a man goin&#39; &#39;round takin&#39; names&quot;</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="co">#&gt; $wont_back_down</span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Well I won&#39;t back down, no I won&#39;t back down&quot;</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="co">#&gt; $bird_on_a_wire</span></span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Like a bird on a wire&quot;</span></span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a><span class="co"># Named character vector</span></span>
+<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a>(corpus_c <span class="ot">&lt;-</span> <span class="fu">unlist</span>(corpus_l))</span>
+<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a><span class="co">#&gt;                               man_comes_around </span></span>
+<span id="cb1-17"><a href="#cb1-17" tabindex="-1"></a><span class="co">#&gt;      &quot;There&#39;s a man goin&#39; &#39;round takin&#39; names&quot; </span></span>
+<span id="cb1-18"><a href="#cb1-18" tabindex="-1"></a><span class="co">#&gt;                                 wont_back_down </span></span>
+<span id="cb1-19"><a href="#cb1-19" tabindex="-1"></a><span class="co">#&gt; &quot;Well I won&#39;t back down, no I won&#39;t back down&quot; </span></span>
+<span id="cb1-20"><a href="#cb1-20" tabindex="-1"></a><span class="co">#&gt;                                 bird_on_a_wire </span></span>
+<span id="cb1-21"><a href="#cb1-21" tabindex="-1"></a><span class="co">#&gt;                        &quot;Like a bird on a wire&quot;</span></span>
+<span id="cb1-22"><a href="#cb1-22" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" tabindex="-1"></a><span class="co"># Data frame</span></span>
+<span id="cb1-24"><a href="#cb1-24" tabindex="-1"></a>(corpus_d <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">doc_id =</span> <span class="fu">names</span>(corpus_c), <span class="at">text =</span> <span class="fu">unname</span>(corpus_c),</span>
+<span id="cb1-25"><a href="#cb1-25" tabindex="-1"></a>                        <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb1-26"><a href="#cb1-26" tabindex="-1"></a><span class="co">#&gt;             doc_id                                         text</span></span>
+<span id="cb1-27"><a href="#cb1-27" tabindex="-1"></a><span class="co">#&gt; 1 man_comes_around      There&#39;s a man goin&#39; &#39;round takin&#39; names</span></span>
+<span id="cb1-28"><a href="#cb1-28" tabindex="-1"></a><span class="co">#&gt; 2   wont_back_down Well I won&#39;t back down, no I won&#39;t back down</span></span>
+<span id="cb1-29"><a href="#cb1-29" tabindex="-1"></a><span class="co">#&gt; 3   bird_on_a_wire                        Like a bird on a wire</span></span></code></pre></div>
+<p>All of the tokenizers in this package can accept any of those formats
+and will return an identical output for each.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">library</span>(tokenizers)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>tokens_l <span class="ot">&lt;-</span> <span class="fu">tokenize_ngrams</span>(corpus_l, <span class="at">n =</span> <span class="dv">2</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>tokens_c <span class="ot">&lt;-</span> <span class="fu">tokenize_ngrams</span>(corpus_c, <span class="at">n =</span> <span class="dv">2</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>tokens_d <span class="ot">&lt;-</span> <span class="fu">tokenize_ngrams</span>(corpus_c, <span class="at">n =</span> <span class="dv">2</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a><span class="co"># Are all these identical?</span></span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">identical</span>(tokens_l, tokens_c),</span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>    <span class="fu">identical</span>(tokens_c, tokens_d),</span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>    <span class="fu">identical</span>(tokens_l, tokens_d))</span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+<p>The output of all of the tokenizers is a named list, where each
+element of the list corresponds to a document in the corpus. The names
+of the list are the document IDs, and the elements are character vectors
+containing the tokens.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>tokens_l</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="co">#&gt; $man_comes_around</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="co">#&gt; [1] &quot;there&#39;s a&quot;   &quot;a man&quot;       &quot;man goin&quot;    &quot;goin round&quot;  &quot;round takin&quot;</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co">#&gt; [6] &quot;takin names&quot;</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="co">#&gt; $wont_back_down</span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="co">#&gt; [1] &quot;well i&quot;     &quot;i won&#39;t&quot;    &quot;won&#39;t back&quot; &quot;back down&quot;  &quot;down no&quot;   </span></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="co">#&gt; [6] &quot;no i&quot;       &quot;i won&#39;t&quot;    &quot;won&#39;t back&quot; &quot;back down&quot; </span></span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="co">#&gt; $bird_on_a_wire</span></span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="co">#&gt; [1] &quot;like a&quot;  &quot;a bird&quot;  &quot;bird on&quot; &quot;on a&quot;    &quot;a wire&quot;</span></span></code></pre></div>
+<p>This format can be coerced to a data frame of document IDs and
+tokens, one row per token, using the coercion functions in the tif
+package. That tokens data frame would look like this.</p>
 <pre><code>#&gt;              doc_id       token
 #&gt; 1  man_comes_around   there&#39;s a
 #&gt; 2  man_comes_around       a man

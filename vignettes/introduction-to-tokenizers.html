@@ -50,7 +50,7 @@ overflow: visible;
 </style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -61,7 +61,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
 { counter-reset: source-line 0; }
@@ -359,83 +359,83 @@ list is named, then the names are preserved, so that the names can serve
 as identifiers.</p>
 <p>Using the following sample text, the rest of this vignette
 demonstrates the different kinds of tokenizers in this package.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tokenizers)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">max.print =</span> <span class="dv">25</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>james <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;The question thus becomes a verbal one</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;again; and our knowledge of all these early stages of thought and feeling</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;is in any case so conjectural and imperfect that farther discussion would</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;not be worth while.</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Religion, therefore, as I now ask you arbitrarily to take it, shall mean</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;for us _the feelings, acts, and experiences of individual men in their</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;solitude, so far as they apprehend themselves to stand in relation to</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;whatever they may consider the divine_. Since the relation may be either</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;moral, physical, or ritual, it is evident that out of religion in the</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;sense in which we take it, theologies, philosophies, and ecclesiastical</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;organizations may secondarily grow.</span><span class="sc">\n</span><span class="st">&quot;</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(tokenizers)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">options</span>(<span class="at">max.print =</span> <span class="dv">25</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>james <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>  <span class="st">&quot;The question thus becomes a verbal one</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>  <span class="st">&quot;again; and our knowledge of all these early stages of thought and feeling</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>  <span class="st">&quot;is in any case so conjectural and imperfect that farther discussion would</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>  <span class="st">&quot;not be worth while.</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>  <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>  <span class="st">&quot;Religion, therefore, as I now ask you arbitrarily to take it, shall mean</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>  <span class="st">&quot;for us _the feelings, acts, and experiences of individual men in their</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a>  <span class="st">&quot;solitude, so far as they apprehend themselves to stand in relation to</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a>  <span class="st">&quot;whatever they may consider the divine_. Since the relation may be either</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a>  <span class="st">&quot;moral, physical, or ritual, it is evident that out of religion in the</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
+<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a>  <span class="st">&quot;sense in which we take it, theologies, philosophies, and ecclesiastical</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
+<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a>  <span class="st">&quot;organizations may secondarily grow.</span><span class="sc">\n</span><span class="st">&quot;</span></span>
+<span id="cb1-17"><a href="#cb1-17" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 <div id="character-and-character-shingle-tokenizers" class="section level2">
 <h2>Character and character-shingle tokenizers</h2>
 <p>The character tokenizer splits texts into individual characters.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tokenize_characters</span>(james)[[<span class="dv">1</span>]] </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;t&quot; &quot;h&quot; &quot;e&quot; &quot;q&quot; &quot;u&quot; &quot;e&quot; &quot;s&quot; &quot;t&quot; &quot;i&quot; &quot;o&quot; &quot;n&quot; &quot;t&quot; &quot;h&quot; &quot;u&quot; &quot;s&quot; &quot;b&quot; &quot;e&quot; &quot;c&quot; &quot;o&quot;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [20] &quot;m&quot; &quot;e&quot; &quot;s&quot; &quot;a&quot; &quot;v&quot; &quot;e&quot;</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [ reached getOption(&quot;max.print&quot;) -- omitted 517 entries ]</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">tokenize_characters</span>(james)[[<span class="dv">1</span>]] </span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;t&quot; &quot;h&quot; &quot;e&quot; &quot;q&quot; &quot;u&quot; &quot;e&quot; &quot;s&quot; &quot;t&quot; &quot;i&quot; &quot;o&quot; &quot;n&quot; &quot;t&quot; &quot;h&quot; &quot;u&quot; &quot;s&quot; &quot;b&quot; &quot;e&quot; &quot;c&quot; &quot;o&quot;</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="co">#&gt; [20] &quot;m&quot; &quot;e&quot; &quot;s&quot; &quot;a&quot; &quot;v&quot; &quot;e&quot;</span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="co">#&gt;  [ reached getOption(&quot;max.print&quot;) -- omitted 517 entries ]</span></span></code></pre></div>
 <p>You can also tokenize into character-based shingles.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tokenize_character_shingles</span>(james, <span class="at">n =</span> <span class="dv">3</span>, <span class="at">n_min =</span> <span class="dv">3</span>, </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">strip_non_alphanum =</span> <span class="cn">FALSE</span>)[[<span class="dv">1</span>]][<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>]</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;the&quot; &quot;he &quot; &quot;e q&quot; &quot; qu&quot; &quot;que&quot; &quot;ues&quot; &quot;est&quot; &quot;sti&quot; &quot;tio&quot; &quot;ion&quot; &quot;on &quot; &quot;n t&quot;</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [13] &quot; th&quot; &quot;thu&quot; &quot;hus&quot; &quot;us &quot; &quot;s b&quot; &quot; be&quot; &quot;bec&quot; &quot;eco&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">tokenize_character_shingles</span>(james, <span class="at">n =</span> <span class="dv">3</span>, <span class="at">n_min =</span> <span class="dv">3</span>, </span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>                            <span class="at">strip_non_alphanum =</span> <span class="cn">FALSE</span>)[[<span class="dv">1</span>]][<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>]</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;the&quot; &quot;he &quot; &quot;e q&quot; &quot; qu&quot; &quot;que&quot; &quot;ues&quot; &quot;est&quot; &quot;sti&quot; &quot;tio&quot; &quot;ion&quot; &quot;on &quot; &quot;n t&quot;</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co">#&gt; [13] &quot; th&quot; &quot;thu&quot; &quot;hus&quot; &quot;us &quot; &quot;s b&quot; &quot; be&quot; &quot;bec&quot; &quot;eco&quot;</span></span></code></pre></div>
 </div>
 <div id="word-and-word-stem-tokenizers" class="section level2">
 <h2>Word and word-stem tokenizers</h2>
 <p>The word tokenizer splits texts into words.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tokenize_words</span>(james)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;the&quot;       &quot;question&quot;  &quot;thus&quot;      &quot;becomes&quot;   &quot;a&quot;         &quot;verbal&quot;   </span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7] &quot;one&quot;       &quot;again&quot;     &quot;and&quot;       &quot;our&quot;       &quot;knowledge&quot; &quot;of&quot;       </span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [13] &quot;all&quot;       &quot;these&quot;     &quot;early&quot;     &quot;stages&quot;    &quot;of&quot;        &quot;thought&quot;  </span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [19] &quot;and&quot;       &quot;feeling&quot;   &quot;is&quot;        &quot;in&quot;        &quot;any&quot;       &quot;case&quot;     </span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [25] &quot;so&quot;       </span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [ reached getOption(&quot;max.print&quot;) -- omitted 87 entries ]</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">tokenize_words</span>(james)</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;the&quot;       &quot;question&quot;  &quot;thus&quot;      &quot;becomes&quot;   &quot;a&quot;         &quot;verbal&quot;   </span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co">#&gt;  [7] &quot;one&quot;       &quot;again&quot;     &quot;and&quot;       &quot;our&quot;       &quot;knowledge&quot; &quot;of&quot;       </span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co">#&gt; [13] &quot;all&quot;       &quot;these&quot;     &quot;early&quot;     &quot;stages&quot;    &quot;of&quot;        &quot;thought&quot;  </span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co">#&gt; [19] &quot;and&quot;       &quot;feeling&quot;   &quot;is&quot;        &quot;in&quot;        &quot;any&quot;       &quot;case&quot;     </span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co">#&gt; [25] &quot;so&quot;       </span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co">#&gt;  [ reached getOption(&quot;max.print&quot;) -- omitted 87 entries ]</span></span></code></pre></div>
 <p>Word stemming is provided by the <a href="https://cran.r-project.org/package=SnowballC">SnowballC</a>
 package.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tokenize_word_stems</span>(james)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;the&quot;      &quot;question&quot; &quot;thus&quot;     &quot;becom&quot;    &quot;a&quot;        &quot;verbal&quot;  </span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7] &quot;one&quot;      &quot;again&quot;    &quot;and&quot;      &quot;our&quot;      &quot;knowledg&quot; &quot;of&quot;      </span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [13] &quot;all&quot;      &quot;these&quot;    &quot;earli&quot;    &quot;stage&quot;    &quot;of&quot;       &quot;thought&quot; </span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [19] &quot;and&quot;      &quot;feel&quot;     &quot;is&quot;       &quot;in&quot;       &quot;ani&quot;      &quot;case&quot;    </span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [25] &quot;so&quot;      </span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [ reached getOption(&quot;max.print&quot;) -- omitted 87 entries ]</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">tokenize_word_stems</span>(james)</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;the&quot;      &quot;question&quot; &quot;thus&quot;     &quot;becom&quot;    &quot;a&quot;        &quot;verbal&quot;  </span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co">#&gt;  [7] &quot;one&quot;      &quot;again&quot;    &quot;and&quot;      &quot;our&quot;      &quot;knowledg&quot; &quot;of&quot;      </span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="co">#&gt; [13] &quot;all&quot;      &quot;these&quot;    &quot;earli&quot;    &quot;stage&quot;    &quot;of&quot;       &quot;thought&quot; </span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="co">#&gt; [19] &quot;and&quot;      &quot;feel&quot;     &quot;is&quot;       &quot;in&quot;       &quot;ani&quot;      &quot;case&quot;    </span></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="co">#&gt; [25] &quot;so&quot;      </span></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="co">#&gt;  [ reached getOption(&quot;max.print&quot;) -- omitted 87 entries ]</span></span></code></pre></div>
 <p>You can also provide a vector of stopwords which will be omitted. The
 <a href="https://github.com/quanteda/stopwords">stopwords package</a>,
 which contains stopwords for many languages from several sources, is
 recommended. This argument also works with the n-gram and skip n-gram
 tokenizers.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stopwords)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tokenize_words</span>(james, <span class="at">stopwords =</span> stopwords<span class="sc">::</span><span class="fu">stopwords</span>(<span class="st">&quot;en&quot;</span>))</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;question&quot;    &quot;thus&quot;        &quot;becomes&quot;     &quot;verbal&quot;      &quot;one&quot;        </span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [6] &quot;knowledge&quot;   &quot;early&quot;       &quot;stages&quot;      &quot;thought&quot;     &quot;feeling&quot;    </span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [11] &quot;case&quot;        &quot;conjectural&quot; &quot;imperfect&quot;   &quot;farther&quot;     &quot;discussion&quot; </span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [16] &quot;worth&quot;       &quot;religion&quot;    &quot;therefore&quot;   &quot;now&quot;         &quot;ask&quot;        </span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [21] &quot;arbitrarily&quot; &quot;take&quot;        &quot;shall&quot;       &quot;mean&quot;        &quot;us&quot;         </span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [ reached getOption(&quot;max.print&quot;) -- omitted 33 entries ]</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">library</span>(stopwords)</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">tokenize_words</span>(james, <span class="at">stopwords =</span> stopwords<span class="sc">::</span><span class="fu">stopwords</span>(<span class="st">&quot;en&quot;</span>))</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;question&quot;    &quot;thus&quot;        &quot;becomes&quot;     &quot;verbal&quot;      &quot;one&quot;        </span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="co">#&gt;  [6] &quot;knowledge&quot;   &quot;early&quot;       &quot;stages&quot;      &quot;thought&quot;     &quot;feeling&quot;    </span></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="co">#&gt; [11] &quot;case&quot;        &quot;conjectural&quot; &quot;imperfect&quot;   &quot;farther&quot;     &quot;discussion&quot; </span></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="co">#&gt; [16] &quot;worth&quot;       &quot;religion&quot;    &quot;therefore&quot;   &quot;now&quot;         &quot;ask&quot;        </span></span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a><span class="co">#&gt; [21] &quot;arbitrarily&quot; &quot;take&quot;        &quot;shall&quot;       &quot;mean&quot;        &quot;us&quot;         </span></span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a><span class="co">#&gt;  [ reached getOption(&quot;max.print&quot;) -- omitted 33 entries ]</span></span></code></pre></div>
 <p>An alternative word stemmer often used in NLP that preserves
 punctuation and separates common English contractions is the Penn
 Treebank tokenizer.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tokenize_ptb</span>(james)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;The&quot;       &quot;question&quot;  &quot;thus&quot;      &quot;becomes&quot;   &quot;a&quot;         &quot;verbal&quot;   </span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7] &quot;one&quot;       &quot;again&quot;     &quot;;&quot;         &quot;and&quot;       &quot;our&quot;       &quot;knowledge&quot;</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [13] &quot;of&quot;        &quot;all&quot;       &quot;these&quot;     &quot;early&quot;     &quot;stages&quot;    &quot;of&quot;       </span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [19] &quot;thought&quot;   &quot;and&quot;       &quot;feeling&quot;   &quot;is&quot;        &quot;in&quot;        &quot;any&quot;      </span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [25] &quot;case&quot;     </span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [ reached getOption(&quot;max.print&quot;) -- omitted 101 entries ]</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">tokenize_ptb</span>(james)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;The&quot;       &quot;question&quot;  &quot;thus&quot;      &quot;becomes&quot;   &quot;a&quot;         &quot;verbal&quot;   </span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co">#&gt;  [7] &quot;one&quot;       &quot;again&quot;     &quot;;&quot;         &quot;and&quot;       &quot;our&quot;       &quot;knowledge&quot;</span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="co">#&gt; [13] &quot;of&quot;        &quot;all&quot;       &quot;these&quot;     &quot;early&quot;     &quot;stages&quot;    &quot;of&quot;       </span></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="co">#&gt; [19] &quot;thought&quot;   &quot;and&quot;       &quot;feeling&quot;   &quot;is&quot;        &quot;in&quot;        &quot;any&quot;      </span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="co">#&gt; [25] &quot;case&quot;     </span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="co">#&gt;  [ reached getOption(&quot;max.print&quot;) -- omitted 101 entries ]</span></span></code></pre></div>
 </div>
 <div id="n-gram-and-skip-n-gram-tokenizers" class="section level2">
 <h2>N-gram and skip n-gram tokenizers</h2>
@@ -443,69 +443,69 @@ Treebank tokenizer.</p>
 <code>n_min</code> words and at most <code>n</code> words. This function
 will generate all such combinations of n-grams, omitting stopwords if
 desired.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tokenize_ngrams</span>(james, <span class="at">n =</span> <span class="dv">5</span>, <span class="at">n_min =</span> <span class="dv">2</span>,</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">stopwords =</span> stopwords<span class="sc">::</span><span class="fu">stopwords</span>(<span class="st">&quot;en&quot;</span>))</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;question thus&quot;                         </span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [2] &quot;question thus becomes&quot;                 </span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [3] &quot;question thus becomes verbal&quot;          </span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [4] &quot;question thus becomes verbal one&quot;      </span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [5] &quot;thus becomes&quot;                          </span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [6] &quot;thus becomes verbal&quot;                   </span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7] &quot;thus becomes verbal one&quot;               </span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [8] &quot;thus becomes verbal one knowledge&quot;     </span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9] &quot;becomes verbal&quot;                        </span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [10] &quot;becomes verbal one&quot;                    </span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [11] &quot;becomes verbal one knowledge&quot;          </span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [12] &quot;becomes verbal one knowledge early&quot;    </span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [13] &quot;verbal one&quot;                            </span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [14] &quot;verbal one knowledge&quot;                  </span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [15] &quot;verbal one knowledge early&quot;            </span></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [16] &quot;verbal one knowledge early stages&quot;     </span></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [17] &quot;one knowledge&quot;                         </span></span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [18] &quot;one knowledge early&quot;                   </span></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [19] &quot;one knowledge early stages&quot;            </span></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [20] &quot;one knowledge early stages thought&quot;    </span></span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [21] &quot;knowledge early&quot;                       </span></span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [22] &quot;knowledge early stages&quot;                </span></span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [23] &quot;knowledge early stages thought&quot;        </span></span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [24] &quot;knowledge early stages thought feeling&quot;</span></span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [25] &quot;early stages&quot;                          </span></span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [ reached getOption(&quot;max.print&quot;) -- omitted 197 entries ]</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">tokenize_ngrams</span>(james, <span class="at">n =</span> <span class="dv">5</span>, <span class="at">n_min =</span> <span class="dv">2</span>,</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>                <span class="at">stopwords =</span> stopwords<span class="sc">::</span><span class="fu">stopwords</span>(<span class="st">&quot;en&quot;</span>))</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;question thus&quot;                         </span></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="co">#&gt;  [2] &quot;question thus becomes&quot;                 </span></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="co">#&gt;  [3] &quot;question thus becomes verbal&quot;          </span></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="co">#&gt;  [4] &quot;question thus becomes verbal one&quot;      </span></span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="co">#&gt;  [5] &quot;thus becomes&quot;                          </span></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="co">#&gt;  [6] &quot;thus becomes verbal&quot;                   </span></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="co">#&gt;  [7] &quot;thus becomes verbal one&quot;               </span></span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="co">#&gt;  [8] &quot;thus becomes verbal one knowledge&quot;     </span></span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a><span class="co">#&gt;  [9] &quot;becomes verbal&quot;                        </span></span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="co">#&gt; [10] &quot;becomes verbal one&quot;                    </span></span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="co">#&gt; [11] &quot;becomes verbal one knowledge&quot;          </span></span>
+<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a><span class="co">#&gt; [12] &quot;becomes verbal one knowledge early&quot;    </span></span>
+<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a><span class="co">#&gt; [13] &quot;verbal one&quot;                            </span></span>
+<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a><span class="co">#&gt; [14] &quot;verbal one knowledge&quot;                  </span></span>
+<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a><span class="co">#&gt; [15] &quot;verbal one knowledge early&quot;            </span></span>
+<span id="cb8-19"><a href="#cb8-19" tabindex="-1"></a><span class="co">#&gt; [16] &quot;verbal one knowledge early stages&quot;     </span></span>
+<span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a><span class="co">#&gt; [17] &quot;one knowledge&quot;                         </span></span>
+<span id="cb8-21"><a href="#cb8-21" tabindex="-1"></a><span class="co">#&gt; [18] &quot;one knowledge early&quot;                   </span></span>
+<span id="cb8-22"><a href="#cb8-22" tabindex="-1"></a><span class="co">#&gt; [19] &quot;one knowledge early stages&quot;            </span></span>
+<span id="cb8-23"><a href="#cb8-23" tabindex="-1"></a><span class="co">#&gt; [20] &quot;one knowledge early stages thought&quot;    </span></span>
+<span id="cb8-24"><a href="#cb8-24" tabindex="-1"></a><span class="co">#&gt; [21] &quot;knowledge early&quot;                       </span></span>
+<span id="cb8-25"><a href="#cb8-25" tabindex="-1"></a><span class="co">#&gt; [22] &quot;knowledge early stages&quot;                </span></span>
+<span id="cb8-26"><a href="#cb8-26" tabindex="-1"></a><span class="co">#&gt; [23] &quot;knowledge early stages thought&quot;        </span></span>
+<span id="cb8-27"><a href="#cb8-27" tabindex="-1"></a><span class="co">#&gt; [24] &quot;knowledge early stages thought feeling&quot;</span></span>
+<span id="cb8-28"><a href="#cb8-28" tabindex="-1"></a><span class="co">#&gt; [25] &quot;early stages&quot;                          </span></span>
+<span id="cb8-29"><a href="#cb8-29" tabindex="-1"></a><span class="co">#&gt;  [ reached getOption(&quot;max.print&quot;) -- omitted 197 entries ]</span></span></code></pre></div>
 <p>A skip n-gram is like an n-gram in that it takes the <code>n</code>
 and <code>n_min</code> parameters. But rather than returning contiguous
 sequences of words, it will also return sequences of n-grams skipping
 words with gaps between <code>0</code> and the value of <code>k</code>.
 This function generates all such sequences, again omitting stopwords if
 desired. Note that the number of tokens returned can be very large.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tokenize_skip_ngrams</span>(james, <span class="at">n =</span> <span class="dv">5</span>, <span class="at">n_min =</span> <span class="dv">2</span>, <span class="at">k =</span> <span class="dv">2</span>,</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">stopwords =</span> stopwords<span class="sc">::</span><span class="fu">stopwords</span>(<span class="st">&quot;en&quot;</span>))</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;question thus&quot;                     &quot;question becomes&quot;                 </span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [3] &quot;question verbal&quot;                   &quot;question thus becomes&quot;            </span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [5] &quot;question thus verbal&quot;              &quot;question thus one&quot;                </span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7] &quot;question becomes verbal&quot;           &quot;question becomes one&quot;             </span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9] &quot;question becomes knowledge&quot;        &quot;question verbal one&quot;              </span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [11] &quot;question verbal knowledge&quot;         &quot;question verbal early&quot;            </span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [13] &quot;question thus becomes verbal&quot;      &quot;question thus becomes one&quot;        </span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [15] &quot;question thus becomes knowledge&quot;   &quot;question thus verbal one&quot;         </span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [17] &quot;question thus verbal knowledge&quot;    &quot;question thus verbal early&quot;       </span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [19] &quot;question thus one knowledge&quot;       &quot;question thus one early&quot;          </span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [21] &quot;question thus one stages&quot;          &quot;question becomes verbal one&quot;      </span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [23] &quot;question becomes verbal knowledge&quot; &quot;question becomes verbal early&quot;    </span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [25] &quot;question becomes one knowledge&quot;   </span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [ reached getOption(&quot;max.print&quot;) -- omitted 6083 entries ]</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">tokenize_skip_ngrams</span>(james, <span class="at">n =</span> <span class="dv">5</span>, <span class="at">n_min =</span> <span class="dv">2</span>, <span class="at">k =</span> <span class="dv">2</span>,</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>                     <span class="at">stopwords =</span> stopwords<span class="sc">::</span><span class="fu">stopwords</span>(<span class="st">&quot;en&quot;</span>))</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;question thus&quot;                     &quot;question becomes&quot;                 </span></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="co">#&gt;  [3] &quot;question verbal&quot;                   &quot;question thus becomes&quot;            </span></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="co">#&gt;  [5] &quot;question thus verbal&quot;              &quot;question thus one&quot;                </span></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a><span class="co">#&gt;  [7] &quot;question becomes verbal&quot;           &quot;question becomes one&quot;             </span></span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a><span class="co">#&gt;  [9] &quot;question becomes knowledge&quot;        &quot;question verbal one&quot;              </span></span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a><span class="co">#&gt; [11] &quot;question verbal knowledge&quot;         &quot;question verbal early&quot;            </span></span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a><span class="co">#&gt; [13] &quot;question thus becomes verbal&quot;      &quot;question thus becomes one&quot;        </span></span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a><span class="co">#&gt; [15] &quot;question thus becomes knowledge&quot;   &quot;question thus verbal one&quot;         </span></span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a><span class="co">#&gt; [17] &quot;question thus verbal knowledge&quot;    &quot;question thus verbal early&quot;       </span></span>
+<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a><span class="co">#&gt; [19] &quot;question thus one knowledge&quot;       &quot;question thus one early&quot;          </span></span>
+<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a><span class="co">#&gt; [21] &quot;question thus one stages&quot;          &quot;question becomes verbal one&quot;      </span></span>
+<span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a><span class="co">#&gt; [23] &quot;question becomes verbal knowledge&quot; &quot;question becomes verbal early&quot;    </span></span>
+<span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a><span class="co">#&gt; [25] &quot;question becomes one knowledge&quot;   </span></span>
+<span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a><span class="co">#&gt;  [ reached getOption(&quot;max.print&quot;) -- omitted 6083 entries ]</span></span></code></pre></div>
 </div>
 <div id="sentence-and-paragraph-tokenizers" class="section level2">
 <h2>Sentence and paragraph tokenizers</h2>
 <p>Sometimes it is desirable to split texts into sentences or paragraphs
 prior to tokenizing into other forms.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tokenize_sentences</span>(james) </span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">tokenize_sentences</span>(james) </span></code></pre></div>
 <pre><code>#&gt; [[1]]
 #&gt; [1] &quot;The question thus becomes a verbal one again; and our knowledge of all these early stages of thought and feeling is in any case so conjectural and imperfect that farther discussion would not be worth while.&quot;                                               
 #&gt; [2] &quot;Religion, therefore, as I now ask you arbitrarily to take it, shall mean for us _the feelings, acts, and experiences of individual men in their solitude, so far as they apprehend themselves to stand in relation to whatever they may consider the divine_.&quot;
 #&gt; [3] &quot;Since the relation may be either moral, physical, or ritual, it is evident that out of religion in the sense in which we take it, theologies, philosophies, and ecclesiastical organizations may secondarily grow.&quot;</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tokenize_paragraphs</span>(james)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">tokenize_paragraphs</span>(james)</span></code></pre></div>
 <pre><code>#&gt; [[1]]
 #&gt; [1] &quot;The question thus becomes a verbal one again; and our knowledge of all these early stages of thought and feeling is in any case so conjectural and imperfect that farther discussion would not be worth while.&quot;                                                                                                                                                                                                                                                                   
 #&gt; [2] &quot;Religion, therefore, as I now ask you arbitrarily to take it, shall mean for us _the feelings, acts, and experiences of individual men in their solitude, so far as they apprehend themselves to stand in relation to whatever they may consider the divine_. Since the relation may be either moral, physical, or ritual, it is evident that out of religion in the sense in which we take it, theologies, philosophies, and ecclesiastical organizations may secondarily grow. &quot;</code></pre>
@@ -516,46 +516,46 @@ prior to tokenizing into other forms.</p>
 the document into smaller chunks, each with the same length. This
 function chunks a document and gives it each of the chunks an ID to show
 their order. These chunks can then be further tokenized.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>chunks <span class="ot">&lt;-</span> <span class="fu">chunk_text</span>(mobydick, <span class="at">chunk_size =</span> <span class="dv">100</span>, <span class="at">doc_id =</span> <span class="st">&quot;mobydick&quot;</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(chunks)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2195</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>chunks[<span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>]</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $`mobydick-0005`</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;of a poor devil of a sub sub appears to have gone through the long vaticans and street stalls of the earth picking up whatever random allusions to whales he could anyways find in any book whatsoever sacred or profane therefore you must not in every case at least take the higgledy piggledy whale statements however authentic in these extracts for veritable gospel cetology far from it as touching the ancient authors generally as well as the poets here appearing these extracts are solely valuable or entertaining as affording a glancing bird&#39;s eye view of what has been promiscuously said&quot;</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $`mobydick-0006`</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;thought fancied and sung of leviathan by many nations and generations including our own so fare thee well poor devil of a sub sub whose commentator i am thou belongest to that hopeless sallow tribe which no wine of this world will ever warm and for whom even pale sherry would be too rosy strong but with whom one sometimes loves to sit and feel poor devilish too and grow convivial upon tears and say to them bluntly with full eyes and empty glasses and in not altogether unpleasant sadness give it up sub subs for by how much the&quot;</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="fu">tokenize_words</span>(chunks[<span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>])</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $`mobydick-0005`</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;of&quot;       &quot;a&quot;        &quot;poor&quot;     &quot;devil&quot;    &quot;of&quot;       &quot;a&quot;       </span></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7] &quot;sub&quot;      &quot;sub&quot;      &quot;appears&quot;  &quot;to&quot;       &quot;have&quot;     &quot;gone&quot;    </span></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [13] &quot;through&quot;  &quot;the&quot;      &quot;long&quot;     &quot;vaticans&quot; &quot;and&quot;      &quot;street&quot;  </span></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [19] &quot;stalls&quot;   &quot;of&quot;       &quot;the&quot;      &quot;earth&quot;    &quot;picking&quot;  &quot;up&quot;      </span></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [25] &quot;whatever&quot;</span></span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [ reached getOption(&quot;max.print&quot;) -- omitted 75 entries ]</span></span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $`mobydick-0006`</span></span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;thought&quot;     &quot;fancied&quot;     &quot;and&quot;         &quot;sung&quot;        &quot;of&quot;         </span></span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [6] &quot;leviathan&quot;   &quot;by&quot;          &quot;many&quot;        &quot;nations&quot;     &quot;and&quot;        </span></span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [11] &quot;generations&quot; &quot;including&quot;   &quot;our&quot;         &quot;own&quot;         &quot;so&quot;         </span></span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [16] &quot;fare&quot;        &quot;thee&quot;        &quot;well&quot;        &quot;poor&quot;        &quot;devil&quot;      </span></span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [21] &quot;of&quot;          &quot;a&quot;           &quot;sub&quot;         &quot;sub&quot;         &quot;whose&quot;      </span></span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [ reached getOption(&quot;max.print&quot;) -- omitted 75 entries ]</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>chunks <span class="ot">&lt;-</span> <span class="fu">chunk_text</span>(mobydick, <span class="at">chunk_size =</span> <span class="dv">100</span>, <span class="at">doc_id =</span> <span class="st">&quot;mobydick&quot;</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="fu">length</span>(chunks)</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="co">#&gt; [1] 2195</span></span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>chunks[<span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>]</span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a><span class="co">#&gt; $`mobydick-0005`</span></span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="co">#&gt; [1] &quot;of a poor devil of a sub sub appears to have gone through the long vaticans and street stalls of the earth picking up whatever random allusions to whales he could anyways find in any book whatsoever sacred or profane therefore you must not in every case at least take the higgledy piggledy whale statements however authentic in these extracts for veritable gospel cetology far from it as touching the ancient authors generally as well as the poets here appearing these extracts are solely valuable or entertaining as affording a glancing bird&#39;s eye view of what has been promiscuously said&quot;</span></span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a><span class="co">#&gt; $`mobydick-0006`</span></span>
+<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a><span class="co">#&gt; [1] &quot;thought fancied and sung of leviathan by many nations and generations including our own so fare thee well poor devil of a sub sub whose commentator i am thou belongest to that hopeless sallow tribe which no wine of this world will ever warm and for whom even pale sherry would be too rosy strong but with whom one sometimes loves to sit and feel poor devilish too and grow convivial upon tears and say to them bluntly with full eyes and empty glasses and in not altogether unpleasant sadness give it up sub subs for by how much the&quot;</span></span>
+<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a><span class="fu">tokenize_words</span>(chunks[<span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>])</span>
+<span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a><span class="co">#&gt; $`mobydick-0005`</span></span>
+<span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;of&quot;       &quot;a&quot;        &quot;poor&quot;     &quot;devil&quot;    &quot;of&quot;       &quot;a&quot;       </span></span>
+<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a><span class="co">#&gt;  [7] &quot;sub&quot;      &quot;sub&quot;      &quot;appears&quot;  &quot;to&quot;       &quot;have&quot;     &quot;gone&quot;    </span></span>
+<span id="cb14-14"><a href="#cb14-14" tabindex="-1"></a><span class="co">#&gt; [13] &quot;through&quot;  &quot;the&quot;      &quot;long&quot;     &quot;vaticans&quot; &quot;and&quot;      &quot;street&quot;  </span></span>
+<span id="cb14-15"><a href="#cb14-15" tabindex="-1"></a><span class="co">#&gt; [19] &quot;stalls&quot;   &quot;of&quot;       &quot;the&quot;      &quot;earth&quot;    &quot;picking&quot;  &quot;up&quot;      </span></span>
+<span id="cb14-16"><a href="#cb14-16" tabindex="-1"></a><span class="co">#&gt; [25] &quot;whatever&quot;</span></span>
+<span id="cb14-17"><a href="#cb14-17" tabindex="-1"></a><span class="co">#&gt;  [ reached getOption(&quot;max.print&quot;) -- omitted 75 entries ]</span></span>
+<span id="cb14-18"><a href="#cb14-18" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb14-19"><a href="#cb14-19" tabindex="-1"></a><span class="co">#&gt; $`mobydick-0006`</span></span>
+<span id="cb14-20"><a href="#cb14-20" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;thought&quot;     &quot;fancied&quot;     &quot;and&quot;         &quot;sung&quot;        &quot;of&quot;         </span></span>
+<span id="cb14-21"><a href="#cb14-21" tabindex="-1"></a><span class="co">#&gt;  [6] &quot;leviathan&quot;   &quot;by&quot;          &quot;many&quot;        &quot;nations&quot;     &quot;and&quot;        </span></span>
+<span id="cb14-22"><a href="#cb14-22" tabindex="-1"></a><span class="co">#&gt; [11] &quot;generations&quot; &quot;including&quot;   &quot;our&quot;         &quot;own&quot;         &quot;so&quot;         </span></span>
+<span id="cb14-23"><a href="#cb14-23" tabindex="-1"></a><span class="co">#&gt; [16] &quot;fare&quot;        &quot;thee&quot;        &quot;well&quot;        &quot;poor&quot;        &quot;devil&quot;      </span></span>
+<span id="cb14-24"><a href="#cb14-24" tabindex="-1"></a><span class="co">#&gt; [21] &quot;of&quot;          &quot;a&quot;           &quot;sub&quot;         &quot;sub&quot;         &quot;whose&quot;      </span></span>
+<span id="cb14-25"><a href="#cb14-25" tabindex="-1"></a><span class="co">#&gt;  [ reached getOption(&quot;max.print&quot;) -- omitted 75 entries ]</span></span></code></pre></div>
 </div>
 <div id="counting-words-characters-sentences" class="section level2">
 <h2>Counting words, characters, sentences</h2>
 <p>The package also offers functions for counting words, characters, and
 sentences in a format which works nicely with the rest of the
 functions.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">count_words</span>(mobydick)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; mobydick </span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   219415</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">count_characters</span>(mobydick)</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; mobydick </span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1235185</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">count_sentences</span>(mobydick)</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; mobydick </span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    29076</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">count_words</span>(mobydick)</span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="co">#&gt; mobydick </span></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="co">#&gt;   219415</span></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="fu">count_characters</span>(mobydick)</span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="co">#&gt; mobydick </span></span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a><span class="co">#&gt;  1235185</span></span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a><span class="fu">count_sentences</span>(mobydick)</span>
+<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a><span class="co">#&gt; mobydick </span></span>
+<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a><span class="co">#&gt;    29076</span></span></code></pre></div>
 </div>
 
 

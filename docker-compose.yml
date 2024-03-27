@@ -1,0 +1,33 @@
+version: '2'
+
+services:
+  manual:
+    build: ./
+    volumes:
+      - ./:/tokenizers/
+    working_dir: /tokenizers
+    command: make doc.pdf
+  vignette:
+    build: ./
+    volumes:
+      - ./:/tokenizers/
+    working_dir: /tokenizers
+    command: make vignette
+  build_doc:
+    build: ./
+    volumes:
+      - ./:/tokenizers/
+    working_dir: /tokenizers/
+    command: make roxygenise
+  pkg_test:
+    build: ./
+    volumes:
+      - ./:/tokenizers/
+    working_dir: /tokenizers/
+    command: make devtools_test
+  pkg_check:
+    build: ./
+    volumes:
+      - ./:/tokenizers/
+    working_dir: /tokenizers/
+    command: make
